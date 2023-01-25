@@ -242,6 +242,7 @@ Not allowed with {opt mcmcsum}.
 {phang}{cmd:. }{bf:{stata "webuse bangladesh, clear"}}{p_end}
 {phang}{cmd:. }{bf:{stata "version 12: xtmelogit c_use urban age child* || district: urban, cov(uns) var"}}{p_end}
 {phang}{cmd:. }{bf:{stata "version 12: reffadjustsim _cons urban, eqn(district) seed(12345)"}}{p_end}
+{phang}{cmd:. }{bf:{stata "webuse bangladesh, clear"}}{p_end}
 {phang}{cmd:. }{bf:{stata "meqrlogit c_use urban age child* || district: urban, cov(uns)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "reffadjustsim _cons urban, eqn(district) seed(12345)"}}{p_end}
 
