@@ -112,7 +112,7 @@ and {cmd:meqrpoisson}/{cmd:xtmepoisson}.
 {pstd}{bf:Example 1: Two level continuous response model} (see page 59 of the MLwiN User Manual){p_end}
 
 {phang}{cmd:. * read in data}{p_end}
-{phang}{cmd:. }{bf:{stata "use http://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear"}}{p_end}
+{phang}{cmd:. }{bf:{stata "use https://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear"}}{p_end}
 
 {phang}{cmd:. * fit model using MLwiN via runmlwin}{p_end}
 {phang}{cmd:. }{bf:{stata "runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) batch"}}{p_end}
@@ -144,7 +144,7 @@ and {cmd:meqrpoisson}/{cmd:xtmepoisson}.
 {pstd}{bf:Example 2: Multivariate response model} (see page 214 of the MLwiN User Manual){p_end}
 
 {phang}{cmd:. * read in data}{p_end}
-{phang}{cmd:. }{bf:{stata "use http://www.bristol.ac.uk/cmm/media/runmlwin/gcsemv1, clear"}}{p_end}
+{phang}{cmd:. }{bf:{stata "use https://www.bristol.ac.uk/cmm/media/runmlwin/gcsemv1, clear"}}{p_end}
 
 {phang}{cmd:. * fit model using MLwiN via runmlwin}{p_end}
 {phang}{cmd:. }{bf:{stata "runmlwin (written cons female, eq(1)) (csework cons female, eq(2)), level1(student: (cons, eq(1)) (cons, eq(2))) level2(school: (cons, eq(1)) (cons, eq(2))) batch"}}{p_end}
@@ -225,16 +225,16 @@ and {cmd:meqrpoisson}/{cmd:xtmepoisson}.
 
 {phang}Gutierrez RG, Carter S, Drukker DM. 2001. sg160: On boundary-value likelihood ratio tests. Stata Technical Bulletin. 60. 15-18.
 
-{phang}Leckie G, Charlton C. 2011. {cmd:runmlwin}: Stata module for fitting multilevel models in the MLwiN software package. Centre for Multilevel Modelling, University of Bristol, UK. {browse "http://www.bristol.ac.uk/cmm/software/runmlwin/"}
+{phang}Leckie G, Charlton C. 2011. {cmd:runmlwin}: Stata module for fitting multilevel models in the MLwiN software package. Centre for Multilevel Modelling, University of Bristol, UK. {browse "https://www.bristol.ac.uk/cmm/software/runmlwin/"}
 
 {phang}Macdonald-Wallis C, Lawlor DA, Palmer TM, Tilling K. 2012.
 Multivariate multilevel spline models for parallel growth processes: application to weight and mean arterial pressure in pregnancy. Statistics in Medicine, 31, 3147-3164.
 
 {phang}Palmer TM, Macdonald-Wallis CM, Lawlor DA, Tilling K. Estimating adjusted associations between random effects from multilevel models: the reffadjust package. The Stata Journal. In press.
 
-{phang}Rasbash J, Charlton C, Browne WJ, Healy M, Cameron B. 2009. MLwiN version 2.1. Centre for Multilevel Modelling, University of Bristol, UK. {browse "http://www.bristol.ac.uk/cmm/software/mlwin"}.
+{phang}Rasbash J, Charlton C, Browne WJ, Healy M, Cameron B. 2009. MLwiN version 2.1. Centre for Multilevel Modelling, University of Bristol, UK. {browse "https://www.bristol.ac.uk/cmm/software/mlwin"}.
 
-{phang}Rasbash J, Steele F, Browne WJ, Goldstein H. 2009. A user's guide to MLwiN, v2.10. Centre for Multilevel Modelling, University of Bristol, UK. {browse "http://www.bristol.ac.uk/cmm/software/mlwin/download/manuals.html"}.
+{phang}Rasbash J, Steele F, Browne WJ, Goldstein H. 2009. A user's guide to MLwiN, v2.10. Centre for Multilevel Modelling, University of Bristol, UK. {browse "https://www.bristol.ac.uk/cmm/software/mlwin/download/manuals.html"}.
 
 
 {marker authors}{...}

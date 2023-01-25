@@ -33,13 +33,13 @@ Note that in Stata 13 the following commands were renamed; {cmd:xtmixed} became 
 {marker references}{...}
 {title:References}
 
-{phang}Leckie G, Charlton C. 2011. {cmd:runmlwin}: Stata module for fitting multilevel models in the MLwiN software package. Centre for Multilevel Modelling, University of Bristol, UK. {browse "http://www.bristol.ac.uk/cmm/software/runmlwin/"}
+{phang}Leckie G, Charlton C. 2011. {cmd:runmlwin}: Stata module for fitting multilevel models in the MLwiN software package. Centre for Multilevel Modelling, University of Bristol, UK. {browse "https://www.bristol.ac.uk/cmm/software/runmlwin/"}
 
 {phang}Macdonald-Wallis CM, Lawlor DA, Palmer TM, Tilling K. 2012. Multivariate multilevel spline models for parallel growth processes: application to weight and mean arterial pressure in pregnancy. Statistics in Medicine, 31, 3147-3164.
 
 {phang}Palmer TM, Macdonald-Wallis CM, Lawlor DA, Tilling K. Estimating adjusted associations between random effects from multilevel models: the reffadjust package. The Stata Journal. In press.
 
-{phang}Rasbash J, Charlton C, Browne WJ, Healy M, Cameron B. 2009. MLwiN version 2.1. Centre for Multilevel Modelling, University of Bristol, UK. {browse "http://www.bristol.ac.uk/cmm/software/mlwin"}.
+{phang}Rasbash J, Charlton C, Browne WJ, Healy M, Cameron B. 2009. MLwiN version 2.1. Centre for Multilevel Modelling, University of Bristol, UK. {browse "https://www.bristol.ac.uk/cmm/software/mlwin"}.
 
 
 {marker authors}{...}
