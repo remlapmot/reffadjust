@@ -82,6 +82,9 @@ nlcom `r(beta_tenure)'
 version 13: mixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure || idcode: tenure, cov(uns)
 reffadjust4nlcom _cons tenure, eqn(idcode)
 nlcom `r(beta_tenure)'
+mixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure || idcode: tenure, cov(uns)
+reffadjust4nlcom _cons tenure, eqn(idcode)
+nlcom `r(beta_tenure)'
 
 // Example 4: based on xtmelogit helpfile
 webuse bangladesh, clear
@@ -89,6 +92,9 @@ version 12: xtmelogit c_use urban age child* || district: urban, cov(uns) var
 version 12: reffadjust4nlcom _cons urban, eqn(district)
 nlcom `r(beta_urban)'
 version 13: meqrlogit c_use urban age child* || district: urban, cov(uns)
+reffadjust4nlcom _cons urban, eqn(district)
+nlcom `r(beta_urban)'
+meqrlogit c_use urban age child* || district: urban, cov(uns)
 reffadjust4nlcom _cons urban, eqn(district)
 nlcom `r(beta_urban)'
 
@@ -100,6 +106,9 @@ nlcom `r(beta_visit)'
 version 13: meqrpoisson seizures treat lbas lbas_trt lage visit || subject: visit, cov(uns) intpoints(9)
 reffadjust4nlcom _cons visit, eqn(subject)
 nlcom `r(beta_visit)'
+meqrpoisson seizures treat lbas lbas_trt lage visit || subject: visit, cov(uns) intpoints(9)
+reffadjust4nlcom _cons visit, eqn(subject)
+nlcom `r(beta_visit)'
 
 // Example 6: repeated group variable
 webuse nlswork, clear
@@ -109,6 +118,11 @@ nlcom `r(beta_union)'
 version 12: reffadjust4nlcom race _cons, eqn(idcode) sub(2)
 nlcom `r(beta__cons)'
 version 13: mixed ln_w grade age || idcode: tenure union, cov(uns) || idcode: race, cov(uns)
+reffadjust4nlcom tenure union, eqn(idcode) sub(1)
+nlcom `r(beta_union)'
+reffadjust4nlcom race _cons, eqn(idcode) sub(2)
+nlcom `r(beta__cons)'
+mixed ln_w grade age || idcode: tenure union, cov(uns) || idcode: race, cov(uns)
 reffadjust4nlcom tenure union, eqn(idcode) sub(1)
 nlcom `r(beta_union)'
 reffadjust4nlcom race _cons, eqn(idcode) sub(2)
