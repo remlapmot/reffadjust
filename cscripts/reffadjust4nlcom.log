@@ -3,7 +3,7 @@
        log:  C:\Users\tom\Documents\GitHub\reffadjust\cscripts\reffadjust4nlcom
 > .log
   log type:  text
- opened on:  25 Jan 2023, 15:14:04
+ opened on:  25 Jan 2023, 15:58:02
 
 . * 2023-01-25 Examples from reffadjust4nlcom helpfile
 . 
@@ -33,7 +33,7 @@ C:\Users\tom\Documents\GitHub\reffadjust\reffadjust4nlcom.ado
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed Jan 25 15:14:05 2023
+MLN - Software for N-level analysis.   Wed Jan 25 15:58:03 2023
 
 
 C:\Users\tom\AppData\Local\Temp\ST_68f8_000002.tmp
@@ -52,7 +52,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.33
+Run time (seconds)   =       0.35
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -115,7 +115,7 @@ Level 1: student             |
 >     seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed Jan 25 15:14:05 2023
+MLN - Software for N-level analysis.   Wed Jan 25 15:58:03 2023
 
 
 C:\Users\tom\AppData\Local\Temp\ST_68f8_000003.tmp
@@ -139,7 +139,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.73
+Run time (seconds)         =       1.78
 Deviance (dbar)            =    9123.21
 Deviance (thetabar)        =    9031.71
 Effective no. of pars (pd) =      91.49
@@ -190,7 +190,7 @@ beta_standlrt|      1.315   .4548198      875   0.002     .4509287    2.245767
 >  (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed Jan 25 15:14:07 2023
+MLN - Software for N-level analysis.   Wed Jan 25 15:58:05 2023
 
 
 C:\Users\tom\AppData\Local\Temp\ST_68f8_000002.tmp
@@ -211,7 +211,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.52
+Run time (seconds)   =       0.54
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.489
@@ -281,7 +281,7 @@ Level 1: student             |
 > seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed Jan 25 15:14:08 2023
+MLN - Software for N-level analysis.   Wed Jan 25 15:58:06 2023
 
 
 C:\Users\tom\AppData\Local\Temp\ST_68f8_000003.tmp
@@ -307,7 +307,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       2.54
+Run time (seconds)         =       2.58
 Deviance (dbar)            =   29389.01
 Deviance (thetabar)        =   28878.48
 Effective no. of pars (pd) =     510.53
@@ -410,6 +410,19 @@ idcode: Unstructured         |
 LR test vs. linear model: chi2(3) = 9168.36               Prob > chi2 = 0.0000
 
 Note: LR test is conservative and provided only for reference.
+
+. version 12: reffadjust4nlcom _cons tenure, eqn(idcode)
+
+. nlcom `r(beta_tenure)'
+
+       _nl_1: tanh([atr1_1_1_2]_cons)*exp([lns1_1_1]_cons + [lns1_1_2]_cons)/ex
+> p(2*[lns1_1_1]_cons)
+
+------------------------------------------------------------------------------
+     ln_wage | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       _nl_1 |   1.384766   .6149301     2.25   0.024     .1795253    2.590007
+------------------------------------------------------------------------------
 
 . version 13: mixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure
 >  || idcode: tenure, cov(uns)
@@ -535,6 +548,19 @@ LR test vs. logistic model: chi2(3) = 58.42               Prob > chi2 = 0.0000
 
 Note: LR test is conservative and provided only for reference.
 
+. version 12: reffadjust4nlcom _cons urban, eqn(district)
+
+. nlcom `r(beta_urban)'
+
+       _nl_1: tanh([atr1_1_1_2]_cons)*exp([lns1_1_1]_cons + [lns1_1_2]_cons)/ex
+> p(2*[lns1_1_1]_cons)
+
+------------------------------------------------------------------------------
+       c_use | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       _nl_1 |  -.6091417   .1605193    -3.79   0.000    -.9237537   -.2945297
+------------------------------------------------------------------------------
+
 . version 13: meqrlogit c_use urban age child* || district: urban, cov(uns)
 note: children omitted because of collinearity.
 
@@ -654,6 +680,19 @@ subject: Unstructured        |
 LR test vs. Poisson model: chi2(3) = 324.54               Prob > chi2 = 0.0000
 
 Note: LR test is conservative and provided only for reference.
+
+. version 12: reffadjust4nlcom _cons visit, eqn(subject)
+
+. nlcom `r(beta_visit)'
+
+       _nl_1: tanh([atr1_1_1_2]_cons)*exp([lns1_1_1]_cons + [lns1_1_2]_cons)/ex
+> p(2*[lns1_1_1]_cons)
+
+------------------------------------------------------------------------------
+    seizures | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       _nl_1 |   .0054029   .1669653     0.03   0.974    -.3218432    .3326489
+------------------------------------------------------------------------------
 
 . version 13: meqrpoisson seizures treat lbas lbas_trt lage visit || subject: v
 > isit, cov(uns) intpoints(9)
@@ -777,6 +816,32 @@ LR test vs. linear model: chi2(6) = 10154.21              Prob > chi2 = 0.0000
 
 Note: LR test is conservative and provided only for reference.
 
+. version 12: reffadjust4nlcom tenure union, eqn(idcode) sub(1)
+
+. nlcom `r(beta_union)'
+
+       _nl_1: tanh([atr1_1_1_2]_cons)*exp([lns1_1_1]_cons + [lns1_1_2]_cons)/ex
+> p(2*[lns1_1_2]_cons)
+
+------------------------------------------------------------------------------
+     ln_wage | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       _nl_1 |   .0323953   .0101649     3.19   0.001     .0124725    .0523181
+------------------------------------------------------------------------------
+
+. version 12: reffadjust4nlcom race _cons, eqn(idcode) sub(2)
+
+. nlcom `r(beta__cons)'
+
+       _nl_1: tanh([atr1_2_1_2]_cons)*exp([lns1_2_1]_cons + [lns1_2_2]_cons)/ex
+> p(2*[lns1_2_2]_cons)
+
+------------------------------------------------------------------------------
+     ln_wage | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       _nl_1 |  -.2546305   .0900785    -2.83   0.005    -.4311811   -.0780799
+------------------------------------------------------------------------------
+
 . version 13: mixed ln_w grade age || idcode: tenure union, cov(uns) || idcode:
 >  race, cov(uns)
 
@@ -863,5 +928,5 @@ end of do-file
        log:  C:\Users\tom\Documents\GitHub\reffadjust\cscripts\reffadjust4nlcom
 > .log
   log type:  text
- closed on:  25 Jan 2023, 15:16:22
+ closed on:  25 Jan 2023, 16:00:20
 -------------------------------------------------------------------------------
