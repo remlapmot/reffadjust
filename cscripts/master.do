@@ -12,7 +12,8 @@ cscript master
 cap noi ado describe reffadjust
 
 local cscripts ///
-    reffadjust4nlcom
+    reffadjust4nlcom ///
+    reffadjustsim
 
 foreach dofile of local cscripts {
     log using `dofile'.log, text replace name(`dofile')
