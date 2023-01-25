@@ -177,7 +177,7 @@ and {cmd:meqrpoisson}/{cmd:xtmepoisson}.
 {phang}{cmd:. }{bf:{stata "version 12: xtmixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure || idcode: tenure, cov(uns) var"}}{p_end}
 {phang}{cmd:. }{bf:{stata "version 12: reffadjust4nlcom _cons tenure, eqn(idcode)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "nlcom `r(beta_tenure)'"}}{p_end}
-{phang}{cmd:. }{bf:{stata "version 13: mixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure || idcode: tenure, cov(uns)"}}{p_end}
+{phang}{cmd:. }{bf:{stata "mixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure || idcode: tenure, cov(uns)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "reffadjust4nlcom _cons tenure, eqn(idcode)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "nlcom `r(beta_tenure)'"}}{p_end}
 
@@ -187,7 +187,7 @@ and {cmd:meqrpoisson}/{cmd:xtmepoisson}.
 {phang}{cmd:. }{bf:{stata "version 12: xtmelogit c_use urban age child* || district: urban, cov(uns) var"}}{p_end}
 {phang}{cmd:. }{bf:{stata "version 12: reffadjust4nlcom _cons urban, eqn(district)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "nlcom `r(beta_urban)'"}}{p_end}
-{phang}{cmd:. }{bf:{stata "version 13: meqrlogit c_use urban age child* || district: urban, cov(uns)"}}{p_end}
+{phang}{cmd:. }{bf:{stata "meqrlogit c_use urban age child* || district: urban, cov(uns)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "reffadjust4nlcom _cons urban, eqn(district)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "nlcom `r(beta_urban)'"}}{p_end}
 
@@ -197,7 +197,7 @@ and {cmd:meqrpoisson}/{cmd:xtmepoisson}.
 {phang}{cmd:. }{bf:{stata "version 12: xtmepoisson seizures treat lbas lbas_trt lage visit || subject: visit, cov(uns) var intpoints(9)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "version 12: reffadjust4nlcom _cons visit, eqn(subject)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "nlcom `r(beta_visit)'"}}{p_end}
-{phang}{cmd:. }{bf:{stata "version 13: meqrpoisson seizures treat lbas lbas_trt lage visit || subject: visit, cov(uns) intpoints(9)"}}{p_end}
+{phang}{cmd:. }{bf:{stata "meqrpoisson seizures treat lbas lbas_trt lage visit || subject: visit, cov(uns) intpoints(9)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "reffadjust4nlcom _cons visit, eqn(subject)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "nlcom `r(beta_visit)'"}}{p_end}
 
@@ -209,7 +209,7 @@ and {cmd:meqrpoisson}/{cmd:xtmepoisson}.
 {phang}{cmd:. }{bf:{stata "nlcom `r(beta_union)'"}}{p_end}
 {phang}{cmd:. }{bf:{stata "version 12: reffadjust4nlcom race _cons, eqn(idcode) sub(2)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "nlcom `r(beta__cons)'"}}{p_end}
-{phang}{cmd:. }{bf:{stata "version 13: mixed ln_w grade age || idcode: tenure union, cov(uns) || idcode: race, cov(uns)"}}{p_end}
+{phang}{cmd:. }{bf:{stata "mixed ln_w grade age || idcode: tenure union, cov(uns) || idcode: race, cov(uns)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "reffadjust4nlcom tenure union, eqn(idcode) sub(1)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "nlcom `r(beta_union)'"}}{p_end}
 {phang}{cmd:. }{bf:{stata "reffadjust4nlcom race _cons, eqn(idcode) sub(2)"}}{p_end}
