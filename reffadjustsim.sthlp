@@ -233,6 +233,7 @@ Not allowed with {opt mcmcsum}.
 {pstd}{bf:Example 3: based on xtmixed helpfile}{p_end}
 {phang}{cmd:. }{bf:{stata "webuse nlswork, clear"}}{p_end}
 {phang}{cmd:. }{bf:{stata "version 12: xtmixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure || idcode: tenure, cov(uns) var"}}{p_end}
+{phang}{cmd:. }{bf:{stata "version 12: reffadjustsim _cons tenure, eqn(idcode) seed(12345)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "mixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure || idcode: tenure, cov(uns)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "reffadjustsim _cons tenure, eqn(idcode) seed(12345)"}}{p_end}
 
@@ -240,6 +241,7 @@ Not allowed with {opt mcmcsum}.
 {pstd}{bf:Example 4: based on xtmelogit helpfile}{p_end}
 {phang}{cmd:. }{bf:{stata "webuse bangladesh, clear"}}{p_end}
 {phang}{cmd:. }{bf:{stata "version 12: xtmelogit c_use urban age child* || district: urban, cov(uns) var"}}{p_end}
+{phang}{cmd:. }{bf:{stata "version 12: reffadjustsim _cons urban, eqn(district) seed(12345)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "meqrlogit c_use urban age child* || district: urban, cov(uns)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "reffadjustsim _cons urban, eqn(district) seed(12345)"}}{p_end}
 
@@ -247,6 +249,7 @@ Not allowed with {opt mcmcsum}.
 {pstd}{bf:Example 5: based on xtmepoisson helpfile}{p_end}
 {phang}{cmd:. }{bf:{stata "webuse epilepsy, clear"}}{p_end}
 {phang}{cmd:. }{bf:{stata "version 12: xtmepoisson seizures treat lbas lbas_trt lage visit || subject: visit, cov(uns) var intpoints(9)"}}{p_end}
+{phang}{cmd:. }{bf:{stata "version 12: reffadjustsim _cons visit, eqn(subject) seed(12345)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "meqrpoisson seizures treat lbas lbas_trt lage visit || subject: visit, cov(uns) intpoints(9)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "reffadjustsim _cons visit, eqn(subject) seed(12345)"}}{p_end}
 
@@ -254,6 +257,8 @@ Not allowed with {opt mcmcsum}.
 {pstd}{bf:Example 6: repeated group variable}{p_end}
 {phang}{cmd:. }{bf:{stata "webuse nlswork, clear"}}{p_end}
 {phang}{cmd:. }{bf:{stata "version 12: xtmixed ln_w grade age || idcode: tenure union, cov(uns) || idcode: race, cov(uns) var"}}{p_end}
+{phang}{cmd:. }{bf:{stata "version 12: reffadjustsim tenure union, eqn(idcode) sub(1) seed(12345)"}}{p_end}
+{phang}{cmd:. }{bf:{stata "version 12: reffadjustsim race _cons, eqn(idcode) sub(2) seed(12345)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "mixed ln_w grade age || idcode: tenure union, cov(uns) || idcode: race, cov(uns)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "reffadjustsim tenure union, eqn(idcode) sub(1) seed(12345)"}}{p_end}
 {phang}{cmd:. }{bf:{stata "reffadjustsim race _cons, eqn(idcode) sub(2) seed(12345)"}}{p_end}
