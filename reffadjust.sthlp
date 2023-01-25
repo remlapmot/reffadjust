@@ -48,7 +48,7 @@ Note that in Stata 13 the following commands were renamed; {cmd:xtmixed} became 
 {phang}Tom Palmer, MRC Integrative Epidemiology Unit and Population Health Sciences, Bristol Medical School, University of Bristol, UK.
  {browse "mailto:tom.palmer@bristol.ac.uk":tom.palmer@bristol.ac.uk}.{p_end}
 
-{phang}Corrie Macdonald-Wallis, MRC and University of Bristol Integrative Epidemiology Unit and Population Health Sciences, Bristol Medical School, University of Bristol, UK.
+{phang}Corrie Macdonald-Wallis, MRC Integrative Epidemiology Unit and Population Health Sciences, Bristol Medical School, University of Bristol, UK.
  {browse "mailto:c.macdonald-wallis@bristol.ac.uk":c.macdonald-wallis@bristol.ac.uk}.{p_end}
 
 
