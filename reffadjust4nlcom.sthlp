@@ -240,11 +240,11 @@ Multivariate multilevel spline models for parallel growth processes: application
 {marker authors}{...}
 {title:Authors}
 
-{phang}Tom Palmer, Department of Mathematics and Statistics, Lancaster University, UK.
- {browse "mailto:tom.palmer@lancaster.ac.uk":tom.palmer@lancaster.ac.uk}.{p_end}
+{phang}Tom Palmer, MRC Integrative Epidemiology Unit and Population Health Sciences, Bristol Medical School, University of Bristol, UK.
+ {browse "mailto:tom.palmer@bristol.ac.uk":tom.palmer@bristol.ac.uk}.{p_end}
 
-{phang}Corrie Macdonald-Wallis, MRC and University of Bristol Integrative Epidemiology Unit,
-School of Social and Community Medicine, University of Bristol, UK.
+{phang}Corrie Macdonald-Wallis, MRC Integrative Epidemiology Unit and Population Health Sciences,
+Bristol Medical School, University of Bristol, UK.
  {browse "mailto:c.macdonald-wallis@bristol.ac.uk":c.macdonald-wallis@bristol.ac.uk}.{p_end}
 
 
