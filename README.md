@@ -15,7 +15,7 @@ The approach is described in more detail in Macdonald-Wallis et al. (2012) and P
 
 To install, issue in Stata (in versions 13 and above):
 ```stata
-net install reffadjust, from(https://raw.github.com/remlapmot/reffadjust/master/)
+net install reffadjust, from("https://raw.github.com/remlapmot/reffadjust/master/")
 ```
 
 ## References
