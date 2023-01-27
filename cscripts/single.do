@@ -7,7 +7,7 @@ cap noi log close _all
 
 cscript single
 
-local cscripts reffadjust4nlcom
+local cscripts reffadjustsim // reffadjust4nlcom
 
 foreach dofile of local cscripts {
     log using `dofile'.log, text replace name(`dofile')
