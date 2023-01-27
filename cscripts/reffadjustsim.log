@@ -1,0 +1,863 @@
+-------------------------------------------------------------------------------
+      name:  reffadjustsim
+       log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
+  log type:  text
+ opened on:  27 Jan 2023, 06:51:45
+
+. * 2023-01-25 reffadjustsim cscript
+. 
+. cscript reffadjustsim adofiles reffadjustsim
+------------------------------------------------------------BEGIN reffadjustsim
+
+-> which reffadjustsim, usesysdir
+/Users/tom/Documents/GitHub/reffadjust/reffadjustsim.ado
+*! version 1.1.0 2sep2013 Tom Palmer & Corrie Macdonald-Wallis
+
+. 
+. // Examples 1 & 2 assume the path to the MLwiN executable is set in global ML
+> wiN_path; see runmlwin
+. 
+. if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.06\\mlwi
+> n.exe"
+
+. 
+. if "$MLwiN_path" != "" {
+. // Example 1: Two level continuous response model (see page 59 of the MLwiN U
+> ser Manual)
+. * read in data
+. use https://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear
+. 
+. * fit model using MLwiN via runmlwin
+. runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons st
+> andlrt) batch
+. 
+. * report coefficient as median with 2.5 & 97.5 percentiles
+. reffadjustsim cons standlrt, eqn(RP2) seed(12345)
+. 
+. * report coefficient as mean & Wald-type confidence interval
+. * Warning: mean and Wald-type confidence are inaccurate in this example
+. reffadjustsim cons standlrt, eqn(RP2) seed(12345) waldtype
+. 
+. * compare with delta-method confidence interval (first refit model)
+. runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons st
+> andlrt) batch
+. reffadjust4nlcom cons standlrt, eqn(RP2)
+. nlcom `r(beta_standlrt)'
+. 
+. * compare with Bayesian posterior distribution
+. runmlwin normexam cons standlrt, level1(student: cons) ///
+>     level2(school: cons standlrt) batch mcmc(on) initsprevious seed(121211)
+. mcmcsum, getchains
+. reffadjustsim cons standlrt, eqn(RP2) mcmcsum
+. 
+. // Example 2: Multivariate response model (see page 214 of the MLwiN User Man
+> ual)
+. * read in data
+. use https://www.bristol.ac.uk/cmm/media/runmlwin/gcsemv1, clear
+. 
+. * fit model using MLwiN via runmlwin
+. runmlwin (written cons female, eq(1)) (csework cons female, eq(2)), ///
+>     level1(student: (cons, eq(1)) (cons, eq(2))) ///
+>     level2(school: (cons, eq(1)) (cons, eq(2))) batch
+. 
+. * report coefficient as median with 2.5 and 97.5 percentiles
+. reffadjustsim cons_1 cons_2, eqn(RP2) seed(12345)
+. 
+. * report coefficient as mean with Wald-type confidence interval
+. reffadjustsim cons_1 cons_2, eqn(RP2) seed(12345) waldtype
+. 
+. * compare with delta-method confidence interval (first refit model)
+. runmlwin (written cons female, eq(1)) (csework cons female, eq(2)), ///
+>     level1(student: (cons, eq(1)) (cons, eq(2))) ///
+>     level2(school: (cons, eq(1)) (cons, eq(2))) batch
+. reffadjust4nlcom cons_1 cons_2, eqn(RP2)
+. nlcom `r(beta_cons_2)'
+. 
+. * compare with Bayesian posterior distribution
+. runmlwin (written cons female, eq(1)) (csework cons female, eq(2)), ///
+>     level1(student: (cons, eq(1)) (cons, eq(2))) ///
+>     level2(school: (cons, eq(1)) (cons, eq(2))) batch mcmc(on) initsprevious 
+> seed(121211)
+. mcmcsum, getchains
+. reffadjustsim cons_1 cons_2, eqn(RP2) mcmcsum
+. }
+
+. 
+. // Example 3: based on xtmixed helpfile
+. webuse nlswork, clear
+(National Longitudinal Survey of Young Women, 14-24 years old in 1968)
+
+. version 12: xtmixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenu
+> re || idcode: tenure, cov(uns) var
+
+Performing EM optimization: 
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -8985.3816  
+Iteration 1:   log likelihood = -8966.3054  
+Iteration 2:   log likelihood =  -8965.819  
+Iteration 3:   log likelihood =  -8965.819  
+
+Computing standard errors:
+
+Mixed-effects ML regression                     Number of obs     =     28,099
+Group variable: idcode                          Number of groups  =      4,697
+                                                Obs per group:
+                                                              min =          1
+                                                              avg =        6.0
+                                                              max =         15
+                                                Wald chi2(6)      =    6767.13
+Log likelihood =  -8965.819                     Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+     ln_wage | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       grade |   .0690318   .0017885    38.60   0.000     .0655264    .0725372
+         age |   .0321872   .0027908    11.53   0.000     .0267174     .037657
+             |
+ c.age#c.age |  -.0006574   .0000466   -14.09   0.000    -.0007488    -.000566
+             |
+     ttl_exp |   .0350762   .0011352    30.90   0.000     .0328513     .037301
+      tenure |   .0393576   .0017198    22.88   0.000     .0359868    .0427284
+             |
+    c.tenure#|
+    c.tenure |  -.0019926   .0001232   -16.18   0.000    -.0022341   -.0017512
+             |
+       _cons |    .162264    .044888     3.61   0.000     .0742851    .2502429
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+idcode: Unstructured         |
+                 var(tenure) |   .0005174   .0000566      .0004176    .0006411
+                  var(_cons) |   .0632497   .0020808      .0593001    .0674624
+           cov(tenure,_cons) |   .0007165   .0002809      .0001658    .0012671
+-----------------------------+------------------------------------------------
+               var(Residual) |   .0815016   .0007978      .0799529    .0830803
+------------------------------------------------------------------------------
+LR test vs. linear model: chi2(3) = 9168.36               Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. version 12: reffadjustsim _cons tenure, eqn(idcode) seed(12345)
+
+------------------------------------------------------------------------------
+       _cons |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+      tenure |   1.377053                 .2240176            2.619102
+------------------------------------------------------------------------------
+
+. version 13: mixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure
+>  || idcode: tenure, cov(uns)
+
+Performing EM optimization: 
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -8985.3816  
+Iteration 1:   log likelihood = -8966.3054  
+Iteration 2:   log likelihood =  -8965.819  
+Iteration 3:   log likelihood =  -8965.819  
+
+Computing standard errors:
+
+Mixed-effects ML regression                     Number of obs     =     28,099
+Group variable: idcode                          Number of groups  =      4,697
+                                                Obs per group:
+                                                              min =          1
+                                                              avg =        6.0
+                                                              max =         15
+                                                Wald chi2(6)      =    6767.13
+Log likelihood =  -8965.819                     Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+     ln_wage | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       grade |   .0690318   .0017885    38.60   0.000     .0655264    .0725372
+         age |   .0321872   .0027908    11.53   0.000     .0267174     .037657
+             |
+ c.age#c.age |  -.0006574   .0000466   -14.09   0.000    -.0007488    -.000566
+             |
+     ttl_exp |   .0350762   .0011352    30.90   0.000     .0328513     .037301
+      tenure |   .0393576   .0017198    22.88   0.000     .0359868    .0427284
+             |
+    c.tenure#|
+    c.tenure |  -.0019926   .0001232   -16.18   0.000    -.0022341   -.0017512
+             |
+       _cons |    .162264    .044888     3.61   0.000     .0742851    .2502429
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+idcode: Unstructured         |
+                 var(tenure) |   .0005174   .0000566      .0004176    .0006411
+                  var(_cons) |   .0632497   .0020808      .0593001    .0674624
+           cov(tenure,_cons) |   .0007165   .0002809      .0001658    .0012671
+-----------------------------+------------------------------------------------
+               var(Residual) |   .0815016   .0007978      .0799529    .0830803
+------------------------------------------------------------------------------
+LR test vs. linear model: chi2(3) = 9168.36               Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. reffadjustsim _cons tenure, eqn(idcode) seed(12345)
+
+------------------------------------------------------------------------------
+       _cons |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+      tenure |   1.378925                  .209926            2.614578
+------------------------------------------------------------------------------
+
+. mixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure || idcode: 
+> tenure, cov(uns)
+
+Performing EM optimization ...
+
+Performing gradient-based optimization: 
+Iteration 0:   log likelihood = -8985.3816  
+Iteration 1:   log likelihood = -8966.3857  
+Iteration 2:   log likelihood =  -8965.819  
+Iteration 3:   log likelihood =  -8965.819  
+
+Computing standard errors ...
+
+Mixed-effects ML regression                     Number of obs     =     28,099
+Group variable: idcode                          Number of groups  =      4,697
+                                                Obs per group:
+                                                              min =          1
+                                                              avg =        6.0
+                                                              max =         15
+                                                Wald chi2(6)      =    6767.13
+Log likelihood =  -8965.819                     Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+     ln_wage | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       grade |   .0690318   .0017885    38.60   0.000     .0655264    .0725372
+         age |   .0321872   .0027908    11.53   0.000     .0267174     .037657
+             |
+ c.age#c.age |  -.0006574   .0000466   -14.09   0.000    -.0007488    -.000566
+             |
+     ttl_exp |   .0350762   .0011352    30.90   0.000     .0328513     .037301
+      tenure |   .0393576   .0017198    22.88   0.000     .0359868    .0427284
+             |
+    c.tenure#|
+    c.tenure |  -.0019926   .0001232   -16.18   0.000    -.0022341   -.0017512
+             |
+       _cons |    .162264    .044888     3.61   0.000     .0742851    .2502429
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+idcode: Unstructured         |
+                 var(tenure) |   .0005174   .0000566      .0004176    .0006411
+                  var(_cons) |   .0632497   .0020808      .0593001    .0674625
+           cov(tenure,_cons) |   .0007165   .0002809      .0001658    .0012671
+-----------------------------+------------------------------------------------
+               var(Residual) |   .0815016   .0007978      .0799529    .0830803
+------------------------------------------------------------------------------
+LR test vs. linear model: chi2(3) = 9168.36               Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. reffadjustsim _cons tenure, eqn(idcode) seed(12345)
+
+------------------------------------------------------------------------------
+       _cons |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+      tenure |   1.378925                 .2099255            2.614579
+------------------------------------------------------------------------------
+
+. 
+. // Example 4: based on xtmelogit helpfile
+. webuse bangladesh, clear
+(Bangladesh Fertility Survey, 1989)
+
+. version 12: xtmelogit c_use urban age child* || district: urban, cov(uns) var
+note: children omitted because of collinearity.
+
+Refining starting values: 
+
+Iteration 0:   log likelihood = -1215.8594  (not concave)
+Iteration 1:   log likelihood = -1204.0802  
+Iteration 2:   log likelihood = -1199.7991  
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -1199.7991  
+Iteration 1:   log likelihood = -1199.4804  
+Iteration 2:   log likelihood = -1199.3158  
+Iteration 3:   log likelihood =  -1199.315  
+Iteration 4:   log likelihood =  -1199.315  
+
+Mixed-effects logistic regression               Number of obs     =      1,934
+Group variable: district                        Number of groups  =         60
+
+                                                Obs per group:
+                                                              min =          2
+                                                              avg =       32.2
+                                                              max =        118
+
+Integration points =   7                        Wald chi2(5)      =      97.50
+Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+       c_use | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       urban |   .8157872    .171552     4.76   0.000     .4795516    1.152023
+         age |   -.026415    .008023    -3.29   0.001    -.0421398   -.0106902
+      child1 |    1.13252   .1603285     7.06   0.000     .8182819    1.446758
+      child2 |   1.357739   .1770522     7.67   0.000     1.010724    1.704755
+      child3 |   1.353827   .1828801     7.40   0.000     .9953881    1.712265
+    children |          0  (omitted)
+       _cons |   -1.71165   .1605617   -10.66   0.000    -2.026345   -1.396954
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+district: Unstructured       |
+                  var(urban) |   .6663223   .3224716      .2580709    1.720401
+                  var(_cons) |   .3897434   .1292459      .2034722    .7465388
+            cov(urban,_cons) |  -.4058846   .1755418     -.7499403   -.0618289
+------------------------------------------------------------------------------
+LR test vs. logistic model: chi2(3) = 58.42               Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. version 12: reffadjustsim _cons urban, eqn(district) seed(12345)
+
+------------------------------------------------------------------------------
+       _cons |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+       urban |  -.5931824                -.9623631           -.2892333
+------------------------------------------------------------------------------
+
+. webuse bangladesh, clear
+(Bangladesh Fertility Survey, 1989)
+
+. version 13: meqrlogit c_use urban age child* || district: urban, cov(uns)
+note: children omitted because of collinearity.
+
+Refining starting values: 
+
+Iteration 0:   log likelihood = -1215.8594  (not concave)
+Iteration 1:   log likelihood = -1204.0802  
+Iteration 2:   log likelihood = -1199.7991  
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -1199.7991  
+Iteration 1:   log likelihood = -1199.4804  
+Iteration 2:   log likelihood = -1199.3158  
+Iteration 3:   log likelihood =  -1199.315  
+Iteration 4:   log likelihood =  -1199.315  
+
+Mixed-effects logistic regression               Number of obs     =      1,934
+Group variable: district                        Number of groups  =         60
+
+                                                Obs per group:
+                                                              min =          2
+                                                              avg =       32.2
+                                                              max =        118
+
+Integration points =   7                        Wald chi2(5)      =      97.50
+Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+       c_use | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       urban |   .8157872    .171552     4.76   0.000     .4795516    1.152023
+         age |   -.026415    .008023    -3.29   0.001    -.0421398   -.0106902
+      child1 |    1.13252   .1603285     7.06   0.000     .8182819    1.446758
+      child2 |   1.357739   .1770522     7.67   0.000     1.010724    1.704755
+      child3 |   1.353827   .1828801     7.40   0.000     .9953881    1.712265
+    children |          0  (omitted)
+       _cons |   -1.71165   .1605617   -10.66   0.000    -2.026345   -1.396954
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+district: Unstructured       |
+                  var(urban) |   .6663223   .3224716      .2580709    1.720401
+                  var(_cons) |   .3897434   .1292459      .2034722    .7465388
+            cov(urban,_cons) |  -.4058846   .1755418     -.7499403   -.0618289
+------------------------------------------------------------------------------
+LR test vs. logistic model: chi2(3) = 58.42               Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. reffadjustsim _cons urban, eqn(district) seed(12345)
+
+------------------------------------------------------------------------------
+       _cons |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+       urban |  -.5911106                -.9693946           -.3012607
+------------------------------------------------------------------------------
+
+. webuse bangladesh, clear
+(Bangladesh Fertility Survey, 1989)
+
+. meqrlogit c_use urban age child* || district: urban, cov(uns)
+note: children omitted because of collinearity.
+
+Refining starting values: 
+
+Iteration 0:   log likelihood = -1215.8594  (not concave)
+Iteration 1:   log likelihood = -1204.0802  
+Iteration 2:   log likelihood = -1199.7991  
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -1199.7991  
+Iteration 1:   log likelihood = -1199.4804  
+Iteration 2:   log likelihood = -1199.3158  
+Iteration 3:   log likelihood =  -1199.315  
+Iteration 4:   log likelihood =  -1199.315  
+
+Mixed-effects logistic regression               Number of obs     =      1,934
+Group variable: district                        Number of groups  =         60
+
+                                                Obs per group:
+                                                              min =          2
+                                                              avg =       32.2
+                                                              max =        118
+
+Integration points =   7                        Wald chi2(5)      =      97.50
+Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+       c_use | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       urban |   .8157872    .171552     4.76   0.000     .4795516    1.152023
+         age |   -.026415    .008023    -3.29   0.001    -.0421398   -.0106902
+      child1 |    1.13252   .1603285     7.06   0.000     .8182819    1.446758
+      child2 |   1.357739   .1770522     7.67   0.000     1.010724    1.704755
+      child3 |   1.353827   .1828801     7.40   0.000     .9953881    1.712265
+    children |          0  (omitted)
+       _cons |   -1.71165   .1605617   -10.66   0.000    -2.026345   -1.396954
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+district: Unstructured       |
+                  var(urban) |   .6663223   .3224716      .2580709    1.720401
+                  var(_cons) |   .3897434   .1292459      .2034722    .7465388
+            cov(urban,_cons) |  -.4058846   .1755418     -.7499403   -.0618289
+------------------------------------------------------------------------------
+LR test vs. logistic model: chi2(3) = 58.42               Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. reffadjustsim _cons urban, eqn(district) seed(12345)
+
+------------------------------------------------------------------------------
+       _cons |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+       urban |  -.5911106                -.9693946           -.3012607
+------------------------------------------------------------------------------
+
+. 
+. // Example 5: based on xtmepoisson helpfile
+. webuse epilepsy, clear
+(Epilepsy data; progabide drug treatment)
+
+. version 12: xtmepoisson seizures treat lbas lbas_trt lage visit || subject: v
+> isit, cov(uns) var intpoints(9)
+
+Refining starting values: 
+
+Iteration 0:   log likelihood = -672.17188  (not concave)
+Iteration 1:   log likelihood = -660.46056  
+Iteration 2:   log likelihood = -655.86903  
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -655.86903  
+Iteration 1:   log likelihood = -655.68216  
+Iteration 2:   log likelihood = -655.68103  
+Iteration 3:   log likelihood = -655.68103  
+
+Mixed-effects Poisson regression                Number of obs     =        236
+Group variable: subject                         Number of groups  =         59
+
+                                                Obs per group:
+                                                              min =          4
+                                                              avg =        4.0
+                                                              max =          4
+
+Integration points =   9                        Wald chi2(5)      =     115.56
+Log likelihood = -655.68103                     Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+    seizures | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       treat |  -.9286589   .4021642    -2.31   0.021    -1.716886   -.1404316
+        lbas |   .8849766    .131252     6.74   0.000     .6277275    1.142226
+    lbas_trt |   .3379758   .2044444     1.65   0.098    -.0627279    .7386794
+        lage |   .4767192    .353622     1.35   0.178    -.2163673    1.169806
+       visit |  -.2664098   .1647096    -1.62   0.106    -.5892347    .0564151
+       _cons |   2.099555   .2203711     9.53   0.000     1.667635    2.531474
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+subject: Unstructured        |
+                  var(visit) |   .5314808   .2293851      .2280931    1.238406
+                  var(_cons) |   .2514928   .0587892      .1590552    .3976522
+            cov(visit,_cons) |   .0028715   .0887018     -.1709808    .1767238
+------------------------------------------------------------------------------
+LR test vs. Poisson model: chi2(3) = 324.54               Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. version 12: reffadjustsim _cons visit, eqn(subject) seed(12345)
+
+------------------------------------------------------------------------------
+       _cons |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+       visit |    .004434                -.3128617            .3397987
+------------------------------------------------------------------------------
+
+. version 13: meqrpoisson seizures treat lbas lbas_trt lage visit || subject: v
+> isit, cov(uns) intpoints(9)
+
+Refining starting values: 
+
+Iteration 0:   log likelihood = -672.17188  (not concave)
+Iteration 1:   log likelihood = -660.46056  
+Iteration 2:   log likelihood = -655.86903  
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -655.86903  
+Iteration 1:   log likelihood = -655.68216  
+Iteration 2:   log likelihood = -655.68103  
+Iteration 3:   log likelihood = -655.68103  
+
+Mixed-effects Poisson regression                Number of obs     =        236
+Group variable: subject                         Number of groups  =         59
+
+                                                Obs per group:
+                                                              min =          4
+                                                              avg =        4.0
+                                                              max =          4
+
+Integration points =   9                        Wald chi2(5)      =     115.56
+Log likelihood = -655.68103                     Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+    seizures | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       treat |  -.9286589   .4021642    -2.31   0.021    -1.716886   -.1404316
+        lbas |   .8849766    .131252     6.74   0.000     .6277275    1.142226
+    lbas_trt |   .3379758   .2044444     1.65   0.098    -.0627279    .7386794
+        lage |   .4767192    .353622     1.35   0.178    -.2163673    1.169806
+       visit |  -.2664098   .1647096    -1.62   0.106    -.5892347    .0564151
+       _cons |   2.099555   .2203711     9.53   0.000     1.667635    2.531474
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+subject: Unstructured        |
+                  var(visit) |   .5314808   .2293851      .2280931    1.238406
+                  var(_cons) |   .2514928   .0587892      .1590552    .3976522
+            cov(visit,_cons) |   .0028715   .0887018     -.1709808    .1767238
+------------------------------------------------------------------------------
+LR test vs. Poisson model: chi2(3) = 324.54               Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. reffadjustsim _cons visit, eqn(subject) seed(12345)
+
+------------------------------------------------------------------------------
+       _cons |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+       visit |   .0024536                -.3218566            .3391222
+------------------------------------------------------------------------------
+
+. meqrpoisson seizures treat lbas lbas_trt lage visit || subject: visit, cov(un
+> s) intpoints(9)
+
+Refining starting values: 
+
+Iteration 0:   log likelihood = -672.17188  (not concave)
+Iteration 1:   log likelihood = -660.46056  
+Iteration 2:   log likelihood = -655.86903  
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -655.86903  
+Iteration 1:   log likelihood = -655.68216  
+Iteration 2:   log likelihood = -655.68103  
+Iteration 3:   log likelihood = -655.68103  
+
+Mixed-effects Poisson regression                Number of obs     =        236
+Group variable: subject                         Number of groups  =         59
+
+                                                Obs per group:
+                                                              min =          4
+                                                              avg =        4.0
+                                                              max =          4
+
+Integration points =   9                        Wald chi2(5)      =     115.56
+Log likelihood = -655.68103                     Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+    seizures | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       treat |  -.9286589   .4021642    -2.31   0.021    -1.716886   -.1404316
+        lbas |   .8849766    .131252     6.74   0.000     .6277275    1.142226
+    lbas_trt |   .3379758   .2044444     1.65   0.098    -.0627279    .7386794
+        lage |   .4767192    .353622     1.35   0.178    -.2163673    1.169806
+       visit |  -.2664098   .1647096    -1.62   0.106    -.5892347    .0564151
+       _cons |   2.099555   .2203711     9.53   0.000     1.667635    2.531474
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+subject: Unstructured        |
+                  var(visit) |   .5314808   .2293851      .2280931    1.238406
+                  var(_cons) |   .2514928   .0587892      .1590552    .3976522
+            cov(visit,_cons) |   .0028715   .0887018     -.1709808    .1767238
+------------------------------------------------------------------------------
+LR test vs. Poisson model: chi2(3) = 324.54               Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. reffadjustsim _cons visit, eqn(subject) seed(12345)
+
+------------------------------------------------------------------------------
+       _cons |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+       visit |   .0024536                -.3218566            .3391222
+------------------------------------------------------------------------------
+
+. 
+. // Example 6: repeated group variable
+. webuse nlswork, clear
+(National Longitudinal Survey of Young Women, 14-24 years old in 1968)
+
+. version 12: xtmixed ln_w grade age || idcode: tenure union, cov(uns) || idcod
+> e: race, cov(uns) var
+
+Performing EM optimization: 
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -5208.9293  
+Iteration 1:   log likelihood = -5196.1179  (not concave)
+Iteration 2:   log likelihood = -5176.3192  
+Iteration 3:   log likelihood = -5171.5874  
+Iteration 4:   log likelihood = -5171.0757  
+Iteration 5:   log likelihood = -5171.0495  
+Iteration 6:   log likelihood = -5171.0492  
+
+Computing standard errors:
+
+Mixed-effects ML regression                     Number of obs     =     19,008
+Group variable: idcode                          Number of groups  =      4,132
+                                                Obs per group:
+                                                              min =          1
+                                                              avg =        4.6
+                                                              max =         12
+                                                Wald chi2(2)      =    2164.18
+Log likelihood = -5171.0492                     Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+     ln_wage | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       grade |    .083625   .0022067    37.90   0.000        .0793      .08795
+         age |   .0104518   .0004215    24.80   0.000     .0096256    .0112779
+       _cons |   .2739857   .0306868     8.93   0.000     .2138407    .3341307
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+idcode: Unstructured         |
+                 var(tenure) |   .0007758   .0000666      .0006556    .0009181
+                  var(union) |   .0514475   .0041886      .0438595    .0603483
+           cov(tenure,union) |   .0016667   .0004909      .0007044    .0026289
+-----------------------------+------------------------------------------------
+idcode: Unstructured         |
+                   var(race) |   .0202236    .013914      .0052508    .0778915
+                  var(_cons) |   .1578102   .0312782      .1070104    .2327257
+             cov(race,_cons) |  -.0401892   .0220462      -.083399    .0030206
+-----------------------------+------------------------------------------------
+               var(Residual) |   .0583641   .0007602      .0568929    .0598732
+------------------------------------------------------------------------------
+LR test vs. linear model: chi2(6) = 10154.21              Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. version 12: reffadjustsim tenure union, eqn(idcode) sub(1) seed(12345)
+
+------------------------------------------------------------------------------
+      tenure |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+       union |   .0321253                 .0121897            .0521846
+------------------------------------------------------------------------------
+
+. version 12: reffadjustsim race _cons, eqn(idcode) sub(2) seed(12345)
+
+------------------------------------------------------------------------------
+        race |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+       _cons |  -.2544458                -.4765553           -.1166169
+------------------------------------------------------------------------------
+
+. version 13: mixed ln_w grade age || idcode: tenure union, cov(uns) || idcode:
+>  race, cov(uns)
+
+Performing EM optimization: 
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -5208.9293  
+Iteration 1:   log likelihood = -5196.1179  (not concave)
+Iteration 2:   log likelihood = -5176.3192  
+Iteration 3:   log likelihood = -5171.5874  
+Iteration 4:   log likelihood = -5171.0757  
+Iteration 5:   log likelihood = -5171.0495  
+Iteration 6:   log likelihood = -5171.0492  
+
+Computing standard errors:
+
+Mixed-effects ML regression                     Number of obs     =     19,008
+Group variable: idcode                          Number of groups  =      4,132
+                                                Obs per group:
+                                                              min =          1
+                                                              avg =        4.6
+                                                              max =         12
+                                                Wald chi2(2)      =    2164.18
+Log likelihood = -5171.0492                     Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+     ln_wage | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       grade |    .083625   .0022067    37.90   0.000        .0793      .08795
+         age |   .0104518   .0004215    24.80   0.000     .0096256    .0112779
+       _cons |   .2739857   .0306868     8.93   0.000     .2138407    .3341307
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+idcode: Unstructured         |
+                 var(tenure) |   .0007758   .0000666      .0006556    .0009181
+                  var(union) |   .0514475   .0041886      .0438595    .0603483
+           cov(tenure,union) |   .0016667   .0004909      .0007044    .0026289
+-----------------------------+------------------------------------------------
+idcode: Unstructured         |
+                   var(race) |   .0202236    .013914      .0052508    .0778915
+                  var(_cons) |   .1578102   .0312782      .1070104    .2327257
+             cov(race,_cons) |  -.0401892   .0220462      -.083399    .0030206
+-----------------------------+------------------------------------------------
+               var(Residual) |   .0583641   .0007602      .0568929    .0598732
+------------------------------------------------------------------------------
+LR test vs. linear model: chi2(6) = 10154.21              Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. reffadjustsim tenure union, eqn(idcode) sub(1) seed(12345)
+
+------------------------------------------------------------------------------
+      tenure |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+       union |   .0323377                 .0125811             .052049
+------------------------------------------------------------------------------
+
+. reffadjustsim race _cons, eqn(idcode) sub(2) seed(12345)
+
+------------------------------------------------------------------------------
+        race |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+       _cons |  -.2531632                -.4789376           -.1148716
+------------------------------------------------------------------------------
+
+. mixed ln_w grade age || idcode: tenure union, cov(uns) || idcode: race, cov(u
+> ns)
+
+Performing EM optimization ...
+
+Performing gradient-based optimization: 
+Iteration 0:   log likelihood = -5208.9293  
+Iteration 1:   log likelihood = -5200.2654  (not concave)
+Iteration 2:   log likelihood = -5175.6435  (not concave)
+Iteration 3:   log likelihood = -5174.0466  
+Iteration 4:   log likelihood = -5171.7468  
+Iteration 5:   log likelihood = -5171.0813  
+Iteration 6:   log likelihood = -5171.0494  
+Iteration 7:   log likelihood = -5171.0492  
+
+Computing standard errors ...
+
+Mixed-effects ML regression                     Number of obs     =     19,008
+Group variable: idcode                          Number of groups  =      4,132
+                                                Obs per group:
+                                                              min =          1
+                                                              avg =        4.6
+                                                              max =         12
+                                                Wald chi2(2)      =    2164.18
+Log likelihood = -5171.0492                     Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+     ln_wage | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       grade |    .083625   .0022067    37.90   0.000        .0793    .0879499
+         age |   .0104518   .0004215    24.80   0.000     .0096256    .0112779
+       _cons |   .2739858   .0306868     8.93   0.000     .2138408    .3341308
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+idcode: Unstructured         |
+                 var(tenure) |   .0007758   .0000666      .0006556    .0009181
+                  var(union) |   .0514475   .0041886      .0438594    .0603483
+           cov(tenure,union) |   .0016667   .0004909      .0007044    .0026289
+-----------------------------+------------------------------------------------
+idcode: Unstructured         |
+                   var(race) |    .020223   .0139129       .005251    .0778841
+                  var(_cons) |   .1578084   .0312759      .1070116    .2327176
+             cov(race,_cons) |   -.040188   .0220445     -.0833946    .0030185
+-----------------------------+------------------------------------------------
+               var(Residual) |   .0583641   .0007602      .0568929    .0598732
+------------------------------------------------------------------------------
+LR test vs. linear model: chi2(6) = 10154.21              Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. reffadjustsim tenure union, eqn(idcode) sub(1) seed(12345)
+
+------------------------------------------------------------------------------
+      tenure |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+       union |   .0323377                 .0125811             .052049
+------------------------------------------------------------------------------
+
+. reffadjustsim race _cons, eqn(idcode) sub(2) seed(12345)
+
+------------------------------------------------------------------------------
+        race |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+       _cons |  -.2531583                -.4789189           -.1148732
+------------------------------------------------------------------------------
+
+. 
+end of do-file
+      name:  reffadjustsim
+       log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
+  log type:  text
+ closed on:  27 Jan 2023, 06:53:27
+-------------------------------------------------------------------------------
