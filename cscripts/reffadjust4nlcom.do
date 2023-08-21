@@ -4,7 +4,7 @@ cscript reffadjust4nlcom adofiles reffadjust4nlcom
 
 // Examples 1 & 2 assume the path to the MLwiN executable is set in global MLwiN_path; see runmlwin
 
-if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.06\\mlwin.exe"
+if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.07\\mlwin.exe"
 
 if "$MLwiN_path" != "" {
 // Example 1: Two level continuous response model (see page 59 of the MLwiN User Manual)
