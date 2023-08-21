@@ -3,7 +3,7 @@
        log:  C:\Users\tom\Documents\GitHub\reffadjust\cscripts\reffadjust4nlcom
 > .log
   log type:  text
- opened on:  25 Jan 2023, 16:38:37
+ opened on:  21 Aug 2023, 21:16:20
 
 . * 2023-01-25 Examples from reffadjust4nlcom helpfile
 . 
@@ -15,33 +15,48 @@ C:\Users\tom\Documents\GitHub\reffadjust\reffadjust4nlcom.ado
 *! version 1.1.0 2sep2013 Tom Palmer & Corrie Macdonald-Wallis
 
 . 
+. about
+
+Stata/MP 17.0 for Windows (64-bit x86-64)
+Revision 18 Jul 2023
+Copyright 1985-2021 StataCorp LLC
+
+Total physical memory:       32.00 GB
+Available physical memory:   19.85 GB
+
+Stata license: Unlimited-user 2-core network, expiring 21 Jan 2024
+Serial number: 501709378202
+  Licensed to: Tom Palmer
+               University of Bristol
+
+. 
 . // Examples 1 & 2 assume the path to the MLwiN executable is set in global ML
 > wiN_path; see runmlwin
 . 
-. if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.06\\mlwi
+. if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.07\\mlwi
 > n.exe"
 
 . 
+. if "$MLwiN_path" != "" {
 . // Example 1: Two level continuous response model (see page 59 of the MLwiN U
 > ser Manual)
 . * read in data
 . use https://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear
-
 . 
 . * fit model using MLwiN via runmlwin
 . runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons st
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed Jan 25 16:38:37 2023
+MLN - Software for N-level analysis.   Mon Aug 21 21:16:22 2023
 
 
-C:\Users\tom\AppData\Local\Temp\ST_68f8_000002.tmp
+C:\Users\tom\AppData\Local\Temp\ST_74f4_000002.tmp
 
-C:\Users\tom\AppData\Local\Temp\ST_68f8_000006.tmp
+C:\Users\tom\AppData\Local\Temp\ST_74f4_000006.tmp
  --- End MLwiN error log --- 
 
-MLwiN 3.06 multilevel model                     Number of obs      =      4059
+MLwiN 3.07 multilevel model                     Number of obs      =      4059
 Normal response model
 Estimation algorithm: IGLS
 
@@ -52,7 +67,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.34
+Run time (seconds)   =       2.03
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -74,11 +89,9 @@ Level 2: school              |
 Level 1: student             |
                    var(cons) |   .5536575   .0124818      .5291937    .5781214
 ------------------------------------------------------------------------------
-
 . 
 . * report coefficient and delta-method confidence interval
 . reffadjust4nlcom cons standlrt, eqn(RP2)
-
 . nlcom `r(beta_standlrt)'
 
        _nl_1: [RP2]cov(cons\standlrt)/[RP2]var(standlrt)
@@ -88,7 +101,6 @@ Level 1: student             |
 -------------+----------------------------------------------------------------
        _nl_1 |   1.241144   .4275471     2.90   0.004     .4031675    2.079121
 ------------------------------------------------------------------------------
-
 . 
 . * compare reporting coefficient as median with 2.5 & 97.5 percentiles
 . // reffadjustsim cons standlrt, eqn(RP2) seed(12345)
@@ -99,33 +111,29 @@ Level 1: student             |
 . 
 . * to view just the coefficient or string expression for the coefficient
 . reffadjust4nlcom cons standlrt, eqn(RP2)
-
 . display `r(beta_standlrt)'
 1.2411444
-
 . mata st_macroexpand("`r(beta_standlrt)'")
   [RP2]cov(cons\standlrt)/[RP2]var(standlrt)
-
 . 
 . * compare with Bayesian posterior distribution
 . sort school student
-
 . runmlwin normexam cons standlrt, level1(student: cons) ///
 >     level2(school: cons standlrt) batch mcmc(on) initsprevious ///
 >     seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed Jan 25 16:38:38 2023
+MLN - Software for N-level analysis.   Mon Aug 21 21:16:23 2023
 
 
-C:\Users\tom\AppData\Local\Temp\ST_68f8_000003.tmp
+C:\Users\tom\AppData\Local\Temp\ST_74f4_000003.tmp
 
-C:\Users\tom\AppData\Local\Temp\ST_68f8_000007.tmp
+C:\Users\tom\AppData\Local\Temp\ST_74f4_000007.tmp
 
-C:\Users\tom\AppData\Local\Temp\ST_68f8_000001.tmp
+C:\Users\tom\AppData\Local\Temp\ST_74f4_000001.tmp
  --- End MLwiN error log --- 
 
-MLwiN 3.06 multilevel model                     Number of obs      =      4059
+MLwiN 3.07 multilevel model                     Number of obs      =      4059
 Normal response model
 Estimation algorithm: MCMC
 
@@ -139,7 +147,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.74
+Run time (seconds)         =       1.36
 Deviance (dbar)            =    9123.21
 Deviance (thetabar)        =    9031.71
 Effective no. of pars (pd) =      91.49
@@ -162,26 +170,20 @@ Level 2: school              |
 Level 1: student             |
                    var(cons) |  .5543991  .0124193   4550   .5305235  .5790426
 ------------------------------------------------------------------------------
-
 . mcmcsum, getchains
-
 . reffadjust4nlcom cons standlrt, eqn(RP2) mcmcsum
-
 . gen beta_standlrt = `r(beta_standlrt)'
-
 . mcmcsum beta_standlrt, variables
 ------------------------------------------------------------------------------
              |      Mean    Std. Dev.     ESS     P       [95% Cred. Interval]
 -------------+----------------------------------------------------------------
 beta_standlrt|      1.315   .4548198      875   0.002     .4509287    2.245767
 ------------------------------------------------------------------------------
-
 . 
 . // Example 2: Multivariate response model (see page 214 of the MLwiN User Man
 > ual)
 . * read in data
 . use https://www.bristol.ac.uk/cmm/media/runmlwin/gcsemv1, clear
-
 . 
 . * fit model using MLwiN via runmlwin
 . runmlwin (written cons female, eq(1)) ///
@@ -190,17 +192,17 @@ beta_standlrt|      1.315   .4548198      875   0.002     .4509287    2.245767
 >  (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed Jan 25 16:38:40 2023
+MLN - Software for N-level analysis.   Mon Aug 21 21:16:24 2023
 
 
-C:\Users\tom\AppData\Local\Temp\ST_68f8_000002.tmp
+C:\Users\tom\AppData\Local\Temp\ST_74f4_000002.tmp
 
-C:\Users\tom\AppData\Local\Temp\ST_68f8_000006.tmp
+C:\Users\tom\AppData\Local\Temp\ST_74f4_000006.tmp
 
-C:\Users\tom\AppData\Local\Temp\ST_68f8_000007.tmp
+C:\Users\tom\AppData\Local\Temp\ST_74f4_000007.tmp
  --- End MLwiN error log --- 
 
-MLwiN 3.06 multilevel model                     Number of obs      =      1905
+MLwiN 3.07 multilevel model                     Number of obs      =      1905
 Multivariate response model
 Estimation algorithm: IGLS
 
@@ -211,10 +213,10 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.54
+Run time (seconds)   =       0.42
 Number of iterations =          4
 Log likelihood       = -13400.244
-Deviance             =  26800.489
+Deviance             =  26800.488
 ------------------------------------------------------------------------------
              |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
@@ -240,11 +242,9 @@ Level 1: student             |
           cov(cons_1,cons_2) |   73.00323    4.17829      64.81393    81.19252
                  var(cons_2) |   180.0982   6.245801      167.8566    192.3397
 ------------------------------------------------------------------------------
-
 . 
 . * report coefficient and delta-method confidence interval
 . reffadjust4nlcom cons_1 cons_2, eqn(RP2)
-
 . nlcom `r(beta_cons_2)'
 
        _nl_1: [RP2]cov(cons_1\cons_2)/[RP2]var(cons_2)
@@ -254,7 +254,6 @@ Level 1: student             |
 -------------+----------------------------------------------------------------
        _nl_1 |   .3309709   .0986417     3.36   0.001     .1376367    .5243051
 ------------------------------------------------------------------------------
-
 . 
 . * compare reporting coefficient as median with 2.5 and 97.5 percentiles
 . // reffadjustsim cons_1 cons_2, eqn(RP2) seed(12345)
@@ -264,36 +263,32 @@ Level 1: student             |
 . 
 . * to view just the coefficient or string expression for the coefficient
 . reffadjust4nlcom cons_1 cons_2, eqn(RP2)
-
 . display `r(beta_cons_2)'
 .33097086
-
 . mata st_macroexpand("`r(beta_cons_2)'")
   [RP2]cov(cons_1\cons_2)/[RP2]var(cons_2)
-
 . 
 . * compare with Bayesian posterior distribution
 . sort school student
-
 . runmlwin (written cons female, eq(1)) (csework cons female, eq(2)), ///
 >     level1(student: (cons, eq(1)) (cons, eq(2))) ///
 >     level2(school: (cons, eq(1)) (cons, eq(2))) batch mcmc(on) initsprevious 
 > seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed Jan 25 16:38:40 2023
+MLN - Software for N-level analysis.   Mon Aug 21 21:16:25 2023
 
 
-C:\Users\tom\AppData\Local\Temp\ST_68f8_000003.tmp
+C:\Users\tom\AppData\Local\Temp\ST_74f4_000003.tmp
 
-C:\Users\tom\AppData\Local\Temp\ST_68f8_000007.tmp
+C:\Users\tom\AppData\Local\Temp\ST_74f4_000007.tmp
 
-C:\Users\tom\AppData\Local\Temp\ST_68f8_000008.tmp
+C:\Users\tom\AppData\Local\Temp\ST_74f4_000008.tmp
 
-C:\Users\tom\AppData\Local\Temp\ST_68f8_000001.tmp
+C:\Users\tom\AppData\Local\Temp\ST_74f4_000001.tmp
  --- End MLwiN error log --- 
 
-MLwiN 3.06 multilevel model                     Number of obs      =      1905
+MLwiN 3.07 multilevel model                     Number of obs      =      1905
 Multivariate response model
 Estimation algorithm: MCMC
 
@@ -307,7 +302,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =        2.6
+Run time (seconds)         =          2
 Deviance (dbar)            =   29389.01
 Deviance (thetabar)        =   28878.48
 Effective no. of pars (pd) =     510.53
@@ -337,21 +332,17 @@ Level 1: student             |
           cov(cons_1,cons_2) |  73.19428  4.198675   3552   65.40832  81.85799
                  var(cons_2) |  180.6279  6.336076   3797   168.7305  193.4391
 ------------------------------------------------------------------------------
-
 . mcmcsum, getchains
-
 . reffadjust4nlcom cons_1 cons_2, eqn(RP2) mcmcsum
-
 . gen beta_cons_2 = `r(beta_cons_2)'
-
 . mcmcsum beta_cons_2, variables
 ------------------------------------------------------------------------------
              |      Mean    Std. Dev.     ESS     P       [95% Cred. Interval]
 -------------+----------------------------------------------------------------
  beta_cons_2 |   .3298458   .1004882     2514   0.001     .1274332    .5260629
 ------------------------------------------------------------------------------
+. }
 
-. 
 . 
 . // Example 3: based on xtmixed helpfile
 . webuse nlswork, clear
@@ -1202,5 +1193,5 @@ end of do-file
        log:  C:\Users\tom\Documents\GitHub\reffadjust\cscripts\reffadjust4nlcom
 > .log
   log type:  text
- closed on:  25 Jan 2023, 16:41:34
+ closed on:  21 Aug 2023, 21:18:28
 -------------------------------------------------------------------------------
