@@ -2,6 +2,8 @@
 
 cscript reffadjust4nlcom adofiles reffadjust4nlcom
 
+about
+
 // Examples 1 & 2 assume the path to the MLwiN executable is set in global MLwiN_path; see runmlwin
 
 if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.07\\mlwin.exe"
