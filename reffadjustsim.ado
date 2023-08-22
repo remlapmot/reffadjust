@@ -3,6 +3,9 @@ program reffadjustsim, rclass
 if _caller() >= 13 version 13.0
 if _caller() < 13 version 11.2
 
+if c(stata_version) >= 14 {
+	version `c(version)', user
+}
 
 * estimates replay
 if replay() {
