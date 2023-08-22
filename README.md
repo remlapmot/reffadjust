@@ -29,7 +29,7 @@ net install reffadjust, from("https://raw.github.com/remlapmot/reffadjust/master
 
 ## Acknowledgements
 
-Thanks to Gemma Clayton for helpful comments.
+Thanks to Gemma Clayton for discovering that `reffadjustsim` had stopped working under a recent version of Stata. And thanks to Stata Corp. for providing me with a fix for this issue.
 
 ## References
 
