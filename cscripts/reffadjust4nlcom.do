@@ -8,6 +8,8 @@ about
 
 if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.07\\mlwin.exe"
 
+if c(os) != "Windows" global MLwiN_path "/Users/tom/.wine/drive_c/Program\ Files/MLwiN\ v3.07/mlnscript.exe"
+
 if "$MLwiN_path" != "" {
 // Example 1: Two level continuous response model (see page 59 of the MLwiN User Manual)
 * read in data
