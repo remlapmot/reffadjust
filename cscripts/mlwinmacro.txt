@@ -1,0 +1,53 @@
+ECHO 0
+NOTE   ***********************************************************************
+NOTE   MLwiN macro created by runmlwin Stata command:  5 Sep 2023, 19:14:11
+NOTE   See: www.bristol.ac.uk/cmm/runmlwin for help
+NOTE   ***********************************************************************
+
+NOTE   Initialise MLwiN storage
+INIT 3 10000 1500 5 30
+
+OPTS 0
+NOTE   Don't use worksheet for matrix storage
+MEMS 1
+
+MONI 0
+MARK 0
+NOTE divert error messages to a file
+ERRO 0
+LOGO 'C:\Users\tom\AppData\Local\Temp\ST_6870_000003.tmp' 1
+
+NOTE   Import the Stata data set into MLwiN
+RSTA   'C:\Users\tom\AppData\Local\Temp\ST_6870_000002.tmp'
+
+NOTE   Specify the response variable(s)
+RESP   'normexam'
+
+NOTE   Specify the level identifier(s)
+IDEN 2 'school'
+IDEN 1 'student'
+
+NOTE   Specify covariate(s) used anywhere in the model
+ADDT   'cons'
+ADDT   'standlrt'
+
+NOTE   Specify level 2 random part covariate(s)
+SETV 2 'cons'
+SETV 2 'standlrt'
+
+NOTE   Specify level 1 random part covariate(s)
+SETV 1 'cons'
+
+NOTE   Set estimation method to be IGLS
+METH 1
+
+NOTE   Fit the model
+STAR
+BATC 1
+NEXT
+MONI 1
+ITNU 0 b21
+CONV b22
+
+NOTE   ***********************************************************************
+
