@@ -14,7 +14,7 @@ if "$MLwiN_path" != "" {
 use https://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear
 
 * fit model using MLwiN via runmlwin
-runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) batch
+runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) batch savemacro(mlwinmacro.txt, replace)
 
 * report coefficient as median with 2.5 & 97.5 percentiles
 reffadjustsim cons standlrt, eqn(RP2) seed(12345)
