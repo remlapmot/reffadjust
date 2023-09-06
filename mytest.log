@@ -1,0 +1,271 @@
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/tom/Documents/GitHub/reffadjust/mytest.log
+  log type:  text
+ opened on:   6 Sep 2023, 19:58:03
+
+. 
+. use https://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear
+
+. 
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school:
+>  cons standlrt) mlwinscriptpath("/Applications/MLwiN/mlnscript")
+ 
+Applications not found
+
+. 
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school:
+>  cons standlrt) mlwinscriptpath(/Applications/MLwiN/mlnscript)
+ 
+.. invalid name
+
+. 
+. set trace on
+
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school:
+>  cons standlrt) mlwinscriptpath(/Applications/MLwiN/mlnscript)
+  ---------------------------------------------------------- begin runmlwin ---
+  - if c(stata_version) >= 15 local user user
+  - if _caller() >= 12 version 12.0, `user'
+  = if _caller() >= 12 version 12.0, user
+  - if _caller() <= 9 version 9.0, `user'
+  = if _caller() <= 9 version 9.0, user
+  - display " "
+ 
+  - if replay() {
+    if ("`e(cmd)'" ~= "runmlwin") error 301
+    syntax [, Level(cilevel) CFORMAT(string) PFORMAT(string) SFORMAT(string) no
+> HEADer noGRoup noCONTrast noFETable noRETable SD CORrelations OR IRr RRr MOde
+>  MEdian Zratio *]
+    runmlwin_display, level(`level') cformat(`cformat') pformat(`pformat') sfor
+> mat(`sformat') `header' `group' `contrast' `fetable' `retable' `sd' `correlat
+> ions' `or' `irr' `rrr' `mode' `median' `zratio'
+    makecns, displaycns
+    }
+  - else {
+  - syntax anything [if] [in], [Level(cilevel) CFORMAT(string) PFORMAT(string) 
+> SFORMAT(string) noHEADer noGRoup noCONTrast noFETable noRETable SD CORrelatio
+> ns OR IRr RRr MOde MEdian Zratio *]
+  - timer clear 99
+  - timer on 99
+  - Estimates `0'
+  = Estimates normexam cons standlrt, level1(student: cons) level2(school: cons
+>  standlrt) mlwinscriptpath(/Applications/MLwiN/mlnscript)
+    ---------------------------------------------- begin runmlwin.Estimates ---
+    - if _caller() >= 12 version 12.0
+    - if _caller() <= 9 version 9.0
+    - local runmlwin_cmdline `0'
+    = local runmlwin_cmdline normexam cons standlrt, level1(student: cons) leve
+> l2(school: cons standlrt) mlwinscriptpath(/Applications/MLwiN/mlnscript)
+    - local maxlevels 1
+    - gettoken comma tmpstr : 0, parse(",") bind
+    - while strpos("`tmpstr'", "level") != 0 {
+    = while strpos(", level1(student: cons) level2(school: cons standlrt) mlwin
+> scriptpath(/Applications/MLwiN/mlnscript)", "level") != 0 {
+    - local tmpstr = substr("`tmpstr'", strpos("`tmpstr'", "level") + 5, .)
+    = local tmpstr = substr(", level1(student: cons) level2(school: cons standl
+> rt) mlwinscriptpath(/Applications/MLwiN/mlnscript)", strpos(", level1(student
+> : cons) level2(school: cons standlrt) mlwinscriptpath(/Applications/MLwiN/mln
+> script)", "level") + 5, .)
+    - local lev = substr("`tmpstr'", 1, strpos("`tmpstr'", "(") - 1)
+    = local lev = substr("1(student: cons) level2(school: cons standlrt) mlwins
+> criptpath(/Applications/MLwiN/mlnscript)", 1, strpos("1(student: cons) level2
+> (school: cons standlrt) mlwinscriptpath(/Applications/MLwiN/mlnscript)", "(")
+>  - 1)
+    - if `=real("`lev'")' != . {
+    = if 1 != . {
+    - if `lev' > `maxlevels' {
+    = if 1 > 1 {
+      local maxlevels `lev'
+      }
+    - }
+    - }
+    - while strpos("`tmpstr'", "level") != 0 {
+    = while strpos("1(student: cons) level2(school: cons standlrt) mlwinscriptp
+> ath(/Applications/MLwiN/mlnscript)", "level") != 0 {
+    - local tmpstr = substr("`tmpstr'", strpos("`tmpstr'", "level") + 5, .)
+    = local tmpstr = substr("1(student: cons) level2(school: cons standlrt) mlw
+> inscriptpath(/Applications/MLwiN/mlnscript)", strpos("1(student: cons) level2
+> (school: cons standlrt) mlwinscriptpath(/Applications/MLwiN/mlnscript)", "lev
+> el") + 5, .)
+    - local lev = substr("`tmpstr'", 1, strpos("`tmpstr'", "(") - 1)
+    = local lev = substr("2(school: cons standlrt) mlwinscriptpath(/Application
+> s/MLwiN/mlnscript)", 1, strpos("2(school: cons standlrt) mlwinscriptpath(/App
+> lications/MLwiN/mlnscript)", "(") - 1)
+    - if `=real("`lev'")' != . {
+    = if 2 != . {
+    - if `lev' > `maxlevels' {
+    = if 2 > 1 {
+    - local maxlevels `lev'
+    = local maxlevels 2
+    - }
+    - }
+    - }
+    - while strpos("`tmpstr'", "level") != 0 {
+    = while strpos("2(school: cons standlrt) mlwinscriptpath(/Applications/MLwi
+> N/mlnscript)", "level") != 0 {
+      local tmpstr = substr("`tmpstr'", strpos("`tmpstr'", "level") + 5, .)
+      local lev = substr("`tmpstr'", 1, strpos("`tmpstr'", "(") - 1)
+      if `=real("`lev'")' != . {
+      if `lev' > `maxlevels' {
+      local maxlevels `lev'
+      }
+      }
+      }
+    - if ("`verbose'"~="") display as text "Highest level: `maxlevels'"
+    = if (""~="") display as text "Highest level: 2"
+    - local levargs
+    - forvalues l = 2/`maxlevels' {
+    = forvalues l = 2/2 {
+    - local levargs LEVEL`l'(string) `levargs'
+    = local levargs LEVEL2(string) 
+    - }
+    - syntax anything(name=eqlist id="equations" equalok) [if] [in], [ `levargs
+> ' ] LEVEL1(string) [ Weights(string) Constraints(numlist >0 integer) IGLS RIG
+> LS TOLerance(numlist >0 integer min=1 max=1) MAXIterations(numlist >0 integer
+>  min=1 max=1) FPSandwich RPSandwich INITSPrevious INITSB(namelist min=1 max=1
+> ) INITSV(namelist min=1 max=1) INITSModel(namelist min=1 max=1) DISCRETE(stri
+> ng) MCMC(string) SEED(numlist integer min=1 max=1) SIMulate(namelist min=1 ma
+> x=1) MLWINPATH(string) MLWINSCRIPTPATH(string) VIEWMacro SAVEMacro(string) SA
+> VEWorksheet(string) SAVEStata(string) USEWorksheet(string) Level(cilevel) CFO
+> RMAT(string) PFORMAT(string) SFORMAT(string) OR IRr RRr SD CORrelations MOde 
+> MEdian Zratio noHEADer noGRoup noCONTrast noFETable noRETable noDrop FORCESor
+> t FORCERecast noMLWIN noPause noVERSIONCHECK BATCh noSORT PLUGIN Verbose VIEW
+> FULLMacro SAVEFULLMacro(string) SAVEEQuation(string) MLWINSETTINGS(string) ]
+    = syntax anything(name=eqlist id="equations" equalok) [if] [in], [ LEVEL2(s
+> tring) ] LEVEL1(string) [ Weights(string) Constraints(numlist >0 integer) IGL
+> S RIGLS TOLerance(numlist >0 integer min=1 max=1) MAXIterations(numlist >0 in
+> teger min=1 max=1) FPSandwich RPSandwich INITSPrevious INITSB(namelist min=1 
+> max=1) INITSV(namelist min=1 max=1) INITSModel(namelist min=1 max=1) DISCRETE
+> (string) MCMC(string) SEED(numlist integer min=1 max=1) SIMulate(namelist min
+> =1 max=1) MLWINPATH(string) MLWINSCRIPTPATH(string) VIEWMacro SAVEMacro(strin
+> g) SAVEWorksheet(string) SAVEStata(string) USEWorksheet(string) Level(cilevel
+> ) CFORMAT(string) PFORMAT(string) SFORMAT(string) OR IRr RRr SD CORrelations 
+> MOde MEdian Zratio noHEADer noGRoup noCONTrast noFETable noRETable noDrop FOR
+> CESort FORCERecast noMLWIN noPause noVERSIONCHECK BATCh noSORT PLUGIN Verbose
+>  VIEWFULLMacro SAVEFULLMacro(string) SAVEEQuation(string) MLWINSETTINGS(strin
+> g) ]
+    - local doublevar 1
+    - if c(mode) == "batch" local batch = c(mode)
+    - if "`mlwinpath'" == "" & "`mlwinscriptpath'" ~= "" & "`batch'" ~= "" loca
+> l mlwinpath `mlwinscriptpath'
+    = if "" == "" & "/Applications/MLwiN/mlnscript" ~= "" & "" ~= "" local mlwi
+> npath /Applications/MLwiN/mlnscript
+    - if "`mlwinpath'" == "" & "$MLwiNScript_path" ~= "" & "`batch'" ~= "" loca
+> l mlwinpath $MLwiNScript_path
+    = if "" == "" & "" ~= "" & "" ~= "" local mlwinpath 
+    - if "`mlwinpath'" == "" & "$MLwiN_path" ~= "" local mlwinpath $MLwiN_path
+    = if "" == "" & "/Applications/MLwiN/mlnscript" ~= "" local mlwinpath /Appl
+> ications/MLwiN/mlnscript
+    - if "`mlwin'"~="nomlwin" & "`mlwinpath'" ~= "" {
+    = if ""~="nomlwin" & "/Applications/MLwiN/mlnscript" ~= "" {
+    - capture confirm file "`mlwinpath'"
+    = capture confirm file "/Applications/MLwiN/mlnscript"
+    - if _rc == 601 {
+      display as error "`mlwinpath' does not exist." _n
+      exit 198
+      }
+    - if "`versioncheck'" ~= "noversioncheck" {
+    = if "" ~= "noversioncheck" {
+    - quietly capture runmlwin_verinfo `mlwinpath'
+    = quietly capture runmlwin_verinfo /Applications/MLwiN/mlnscript
+      ---------------------------------------------- begin runmlwin_verinfo ---
+      - version 9.0
+      - syntax [anything] [, *]
+      - tempname ver1
+      - tempname ver2
+      - tempname ver3
+      - tempname ver4
+      - scalar `ver1' = .
+      = scalar __000001 = .
+      - scalar `ver2' = .
+      = scalar __000002 = .
+      - scalar `ver3' = .
+      = scalar __000003 = .
+      - scalar `ver4' = .
+      = scalar __000004 = .
+      - capture plugin call runmlwin_getversion, `"`anything'"' "`ver1'" "`ver2
+> '" "`ver3'" "`ver4'"
+      = capture plugin call runmlwin_getversion, `"/Applications/MLwiN/mlnscrip
+> t"' "__000001" "__000002" "__000003" "__000004"
+      - if c(rc) == 199 {
+      - display as error "Warning: getversion plugin could not be loaded"
+      - }
+      - display as text "Version: " `ver1' as text "." `ver2' as text "." `ver3
+> ' as text "." `ver4'
+      = display as text "Version: " __000001 as text "." __000002 as text "." _
+> _000003 as text "." __000004
+      - return clear
+      - return scalar ver1 = `ver1'
+      = return scalar ver1 = __000001
+      - return scalar ver2 = `ver2'
+      = return scalar ver2 = __000002
+      - return scalar ver3 = `ver3'
+      = return scalar ver3 = __000003
+      - return scalar ver4 = `ver4'
+      = return scalar ver4 = __000004
+      ------------------------------------------------ end runmlwin_verinfo ---
+    - if _rc == 198 {
+      display as error "`mlwinpath' is not a valid version of MLwiN"
+      exit 198
+      }
+    - local majorver `r(ver1)'
+    = local majorver .
+    - local minorver : display %02.0f `r(ver2)'
+    = local minorver : display %02.0f .
+    - local versionok = 1
+    - local versionold = 0
+    - if (`majorver' < 2) | (`majorver' == 2 & `minorver' < 36) local versionok
+>  = 0
+    = if (. < 2) | (. == 2 &  . < 36) local versionok = 0
+    - if (`majorver' < 3) | (`majorver' == 3 & `minorver' < 03) local versionol
+> d = 1
+    = if (. < 3) | (. == 3 &  . < 03) local versionold = 1
+    - if `versionok' == 0 {
+    = if 1 == 0 {
+      display as error "runmlwin assumes MLwiN version 2.36 or higher. You can 
+> download the latest version of MLwiN at:" _n "https://www.bristol.ac.uk/cmm/s
+> oftware/mlwin/download/upgrades.html." _n "If you want to ignore this warning
+>  and attempt to continue anyway you can use the noversioncheck option"
+      exit 198
+      }
+    - if `versionold' == 1 display as error "WARNING: Your version of MLwiN is 
+> out of date. You can download the latest version of MLwiN at:" _n "https://ww
+> w.bristol.ac.uk/cmm/software/mlwin/download/upgrades.html"
+    = if 0 == 1 display as error "WARNING: Your version of MLwiN is out of date
+> . You can download the latest version of MLwiN at:" _n "https://www.bristol.a
+> c.uk/cmm/software/mlwin/download/upgrades.html"
+    - }
+    - local mlwinversion `majorver'.`minorver'
+    = local mlwinversion .. .
+    - if "`mlwinversion'" ~= "..." {
+    = if ".. ." ~= "..." {
+    - if `mlwinversion' < 3 {
+    = if .. . < 3 {
+.. invalid name
+      local doublevar 0
+      }
+      }
+    ------------------------------------------------ end runmlwin.Estimates ---
+    if "`e(mcmcnofit)'" == "1" {
+    exit
+    }
+    timer off 99
+    quietly timer list
+    ereturn scalar time = r(t99)
+    timer clear 99
+    runmlwin_display, level(`level') cformat(`cformat') pformat(`pformat') sfor
+> mat(`sformat') `header' `group' `contrast' `fetable' `retable' `sd' `correlat
+> ions' `or' `irr' `rrr' `mode' `median' `zratio'
+    }
+  ------------------------------------------------------------ end runmlwin ---
+
+. set trace off
+
+. 
+. log close
+      name:  <unnamed>
+       log:  /Users/tom/Documents/GitHub/reffadjust/mytest.log
+  log type:  text
+ closed on:   6 Sep 2023, 19:58:03
+-------------------------------------------------------------------------------
