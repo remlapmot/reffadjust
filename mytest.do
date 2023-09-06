@@ -14,4 +14,7 @@ set trace off
 global MLwiNScript_path /Applications/MLwiN/mlnscript
 cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt)
 
+global MLwiNScript_path "/Applications/MLwiN/mlnscript"
+cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt)
+
 log close
