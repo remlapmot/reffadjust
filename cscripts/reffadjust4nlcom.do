@@ -15,7 +15,7 @@ if "$MLwiN_path" != "" {
 use https://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear
 
 * fit model using MLwiN via runmlwin
-runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) batch
+runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt)
 
 * report coefficient and delta-method confidence interval
 reffadjust4nlcom cons standlrt, eqn(RP2)
