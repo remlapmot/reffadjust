@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /Users/tom/Documents/GitHub/reffadjust/mytest.log
   log type:  text
- opened on:   6 Sep 2023, 20:06:37
+ opened on:   6 Sep 2023, 20:08:21
 
 . 
 . use https://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear
@@ -153,7 +153,8 @@ Applications not found
 > npath /Applications/MLwiN/mlnscript
     - if "`mlwinpath'" == "" & "$MLwiNScript_path" ~= "" & "`batch'" ~= "" loca
 > l mlwinpath $MLwiNScript_path
-    = if "" == "" & "" ~= "" & "" ~= "" local mlwinpath 
+    = if "" == "" & "/Applications/MLwiN/mlnscript" ~= "" & "" ~= "" local mlwi
+> npath /Applications/MLwiN/mlnscript
     - if "`mlwinpath'" == "" & "$MLwiN_path" ~= "" local mlwinpath $MLwiN_path
     = if "" == "" & "/Applications/MLwiN/mlnscript" ~= "" local mlwinpath /Appl
 > ications/MLwiN/mlnscript
@@ -271,9 +272,17 @@ Applications not found
 .. invalid name
 
 . 
+. global MLwiNScript_path "/Applications/MLwiN/mlnscript"
+
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school:
+>  cons standlrt)
+ 
+.. invalid name
+
+. 
 . log close
       name:  <unnamed>
        log:  /Users/tom/Documents/GitHub/reffadjust/mytest.log
   log type:  text
- closed on:   6 Sep 2023, 20:06:37
+ closed on:   6 Sep 2023, 20:08:21
 -------------------------------------------------------------------------------
