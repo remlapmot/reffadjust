@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /Users/tom/Documents/GitHub/reffadjust/mytest.log
   log type:  text
- opened on:   6 Sep 2023, 19:58:03
+ opened on:   6 Sep 2023, 20:06:37
 
 . 
 . use https://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear
@@ -263,9 +263,17 @@ Applications not found
 . set trace off
 
 . 
+. global MLwiNScript_path /Applications/MLwiN/mlnscript
+
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school:
+>  cons standlrt)
+ 
+.. invalid name
+
+. 
 . log close
       name:  <unnamed>
        log:  /Users/tom/Documents/GitHub/reffadjust/mytest.log
   log type:  text
- closed on:   6 Sep 2023, 19:58:03
+ closed on:   6 Sep 2023, 20:06:37
 -------------------------------------------------------------------------------
