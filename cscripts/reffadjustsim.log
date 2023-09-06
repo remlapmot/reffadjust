@@ -2,7 +2,7 @@
       name:  reffadjustsim
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
   log type:  text
- opened on:   6 Sep 2023, 14:36:49
+ opened on:   6 Sep 2023, 15:05:25
 - do `dofile'
 = do reffadjustsim
 
@@ -148,7 +148,7 @@ Serial number: 501709378202
     - Estimates `0'
     = Estimates normexam cons standlrt, level1(student: cons) level2(school: co
 > ns standlrt) batch
-<2 invalid name
+.. invalid name
       if "`e(mcmcnofit)'" == "1" {
       exit
       }
