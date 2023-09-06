@@ -1,0 +1,14 @@
+cap noi log cl _all
+log using mytest.log, text replace
+
+use https://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear
+
+cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath("/Applications/MLwiN/mlnscript")
+
+cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath(/Applications/MLwiN/mlnscript)
+
+set trace on
+cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath(/Applications/MLwiN/mlnscript)
+set trace off
+
+log close
