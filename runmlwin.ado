@@ -113,10 +113,12 @@ program Estimates, eclass sortpreserve
       if `versionold' == 1 display as error "WARNING: Your version of MLwiN is out of date. You can download the latest version of MLwiN at:" _n "https://www.bristol.ac.uk/cmm/software/mlwin/download/upgrades.html"
     }
     local mlwinversion `majorver'.`minorver'
-    if "`mlwinversion'" ~= "..." { // No version information found
-      if `mlwinversion' < 3 {
-        local doublevar 0
-      }
+    capture confirm number `mlwinversion' // Check version number is valid
+    if _rc { // if not replace with missing
+      local mlwinversion .
+    }
+    if `mlwinversion' < 3 {
+      local doublevar 0
     }
   }
 
@@ -2791,9 +2793,11 @@ program Estimates, eclass sortpreserve
         if `reseton' == 1 {
           file write `macro1' "NOTE   Specify element reset options for variance-covariance matrices" _n
           forvalues l = `maxlevels'(-1)1 {
-            if "`reset`l''"=="all" file write `macro1' "RESE `l' 0" _n
-            if "`reset`l''"=="variances" file write `macro1' "RESE `l' 1" _n
-            if "`reset`l''"=="none" file write `macro1' "RESE `l' 2" _n
+            local ll = `l'
+            if ("`mtype'"=="multivariate" | "`mtype'"=="multinomial") local ++ll
+            if "`reset`l''"=="all" file write `macro1' "RESE `ll' 0" _n
+            if "`reset`l''"=="variances" file write `macro1' "RESE `ll' 1" _n
+            if "`reset`l''"=="none" file write `macro1' "RESE `ll' 2" _n
           }
           file write `macro1' "" _n
         }
@@ -4171,6 +4175,9 @@ program Estimates, eclass sortpreserve
   if "`tempmat'" == "" ereturn scalar tempmat = 0
   else ereturn scalar tempmat = 1
 
+  if ("`cc'"~="") local classtype "(cross-classified)"
+  else local classtype "(hierarchical)"
+
   if ("`distribution'"~="multinomial") ereturn local depvars `response'
   if ("`distribution'"=="multinomial") ereturn local depvars :list uniq response
 
@@ -4190,15 +4197,15 @@ program Estimates, eclass sortpreserve
     ereturn local respcategories `responsecats'
   }
 
-  if ("`e(distribution)'"=="normal")                  ereturn local title Normal response model
-  if ("`e(distribution)'"=="binomial")                ereturn local title Binomial `e(link)' response model
-  if ("`e(distribution)'"=="multinomial" & ("`e(link)'"=="mlogit"))   ereturn local title Unordered multinomial logit response model
-  if ("`e(distribution)'"=="multinomial" & ("`e(link)'"=="ologit"))   ereturn local title Ordered multinomial logit response model
-  if ("`e(distribution)'"=="multinomial" & ("`e(link)'"=="oprobit"))  ereturn local title Ordered multinomial probit response model
-  if ("`e(distribution)'"=="multinomial" & ("`e(link)'"=="ocloglog")) ereturn local title Ordered multinomial cloglog response model
-  if ("`e(distribution)'"=="poisson")                 ereturn local title Poisson response model
-  if ("`e(distribution)'"=="nbinomial")                 ereturn local title Negative binomial response model
-  if (wordcount("`e(distribution)'")>1)                 ereturn local title Multivariate response model
+  if ("`e(distribution)'"=="normal")                  ereturn local title Normal response model `classtype'
+  if ("`e(distribution)'"=="binomial")                ereturn local title Binomial `e(link)' response model `classtype'
+  if ("`e(distribution)'"=="multinomial" & ("`e(link)'"=="mlogit"))   ereturn local title Unordered multinomial logit response model `classtype'
+  if ("`e(distribution)'"=="multinomial" & ("`e(link)'"=="ologit"))   ereturn local title Ordered multinomial logit response model `classtype'
+  if ("`e(distribution)'"=="multinomial" & ("`e(link)'"=="oprobit"))  ereturn local title Ordered multinomial probit response model `classtype'
+  if ("`e(distribution)'"=="multinomial" & ("`e(link)'"=="ocloglog")) ereturn local title Ordered multinomial cloglog response model `classtype'
+  if ("`e(distribution)'"=="poisson")                 ereturn local title Poisson response model `classtype'
+  if ("`e(distribution)'"=="nbinomial")                 ereturn local title Negative binomial response model `classtype'
+  if (wordcount("`e(distribution)'")>1)                 ereturn local title Multivariate response model `classtype'
 
   * Level IDs
   ereturn local level1var `lev1id'
@@ -4276,7 +4283,8 @@ program Estimates, eclass sortpreserve
 
       use `savechainnames' using "`savechains'", clear
       foreach stat in meanmcse sd mode ess lb ub rl1 rl2 bd pvalmean pvalmedian pvalmode {
-        mat `stat' = e(b)
+        matrix `stat' = J(1, `temp', .)
+        matrix colnames `stat' = `chainnames'
       }
 
       local acfpoints = 100
