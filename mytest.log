@@ -1,21 +1,21 @@
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  /Users/tom/Documents/GitHub/reffadjust/mytest.log
   log type:  text
- opened on:   7 Sep 2023, 11:22:32
+ opened on:   7 Sep 2023, 11:38:16
 
 . 
 . use https://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear
 
 . 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school:
->  cons standlrt) mlwinscriptpath("/Applications/MLwiN/mlnscript")
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath("/Applicati
+> ons/MLwiN/mlnscript")
  
 Applications not found
 
 . 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school:
->  cons standlrt) mlwinscriptpath(/Applications/MLwiN/mlnscript)
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath(/Applicatio
+> ns/MLwiN/mlnscript)
  
 Warning: getversion plugin could not be loaded
 MLwiN . multilevel model                        Number of obs      =      4059
@@ -29,7 +29,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.14
+Run time (seconds)   =       0.09
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -54,14 +54,13 @@ Level 1: student             |
 
 . 
 . // set trace on
-. // cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(scho
-> ol: cons standlrt) mlwinscriptpath(/Applications/MLwiN/mlnscript)
+. // cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath(/Applica
+> tions/MLwiN/mlnscript)
 . // set trace off
 . 
 . global MLwiN_path /Applications/MLwiN/mlnscript
 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school:
->  cons standlrt)
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt)
  
 Warning: getversion plugin could not be loaded
 MLwiN . multilevel model                        Number of obs      =      4059
@@ -75,7 +74,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.08
+Run time (seconds)   =       0.07
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -101,8 +100,7 @@ Level 1: student             |
 . 
 . global MLwiN_path "/Applications/MLwiN/mlnscript"
 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school:
->  cons standlrt)
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt)
  
 Warning: getversion plugin could not be loaded
 MLwiN . multilevel model                        Number of obs      =      4059
@@ -142,8 +140,7 @@ Level 1: student             |
 . 
 . global MLwiNScript_path /Applications/MLwiN/mlnscript
 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school:
->  cons standlrt)
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt)
  
 Warning: getversion plugin could not be loaded
 MLwiN . multilevel model                        Number of obs      =      4059
@@ -183,8 +180,7 @@ Level 1: student             |
 . 
 . global MLwiNScript_path "/Applications/MLwiN/mlnscript"
 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school:
->  cons standlrt)
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt)
  
 Warning: getversion plugin could not be loaded
 MLwiN . multilevel model                        Number of obs      =      4059
@@ -222,8 +218,8 @@ Level 1: student             |
 ------------------------------------------------------------------------------
 
 . 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school:
->  cons standlrt) mlwinpath(/Applications/MLwiN/mlnscript)
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinpath(/Applications/MLw
+> iN/mlnscript)
  
 Warning: getversion plugin could not be loaded
 MLwiN . multilevel model                        Number of obs      =      4059
@@ -263,9 +259,9 @@ Level 1: student             |
 . 
 . set trace on
 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school:
->  cons standlrt) mlwinpath("/Applications/MLwiN/mlnscript")
-  ---------------------------------------------------------- begin runmlwin ---
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinpath("/Applications/ML
+> wiN/mlnscript")
+  ----------------------------------------------------------------------------------------------------- begin runmlwin ---
   - if c(stata_version) >= 15 local user user
   - if _caller() >= 12 version 12.0, `user'
   = if _caller() >= 12 version 12.0, user
@@ -275,36 +271,44 @@ Level 1: student             |
  
   - if replay() {
     if ("`e(cmd)'" ~= "runmlwin") error 301
-    syntax [, Level(cilevel) CFORMAT(string) PFORMAT(string) SFORMAT(string) no
-> HEADer noGRoup noCONTrast noFETable noRETable SD CORrelations OR IRr RRr MOde
->  MEdian Zratio *]
-    runmlwin_display, level(`level') cformat(`cformat') pformat(`pformat') sfor
-> mat(`sformat') `header' `group' `contrast' `fetable' `retable' `sd' `correlat
-> ions' `or' `irr' `rrr' `mode' `median' `zratio'
+    syntax [, Level(cilevel) CFORMAT(string) PFORMAT(string) SFORMAT(string) noHEADer noGRoup noCONTrast noFETable noRETab
+> le SD CORrelations OR IRr RRr MOde MEdian Zratio *]
+    runmlwin_display, level(`level') cformat(`cformat') pformat(`pformat') sformat(`sformat') `header' `group' `contrast' 
+> `fetable' `retable' `sd' `correlations' `or' `irr' `rrr' `mode' `median' `zratio'
     makecns, displaycns
     }
   - else {
-  - syntax anything [if] [in], [Level(cilevel) CFORMAT(string) PFORMAT(string) 
-> SFORMAT(string) noHEADer noGRoup noCONTrast noFETable noRETable SD CORrelatio
-> ns OR IRr RRr MOde MEdian Zratio *]
+  - syntax anything [if] [in], [Level(cilevel) CFORMAT(string) PFORMAT(string) SFORMAT(string) noHEADer noGRoup noCONTrast
+>  noFETable noRETable SD CORrelations OR IRr RRr MOde MEdian Zratio *]
   - timer clear 99
   - timer on 99
   - Estimates `0'
-  = Estimates normexam cons standlrt, level1(student: cons) level2(school: cons
->  standlrt) mlwinpath("/Applications/MLwiN/mlnscript")
-    ---------------------------------------------- begin runmlwin.Estimates ---
+  = Estimates normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinpath("/Applications/MLwiN/m
+> lnscript")
+    ----------------------------------------------------------------------------------------- begin runmlwin.Estimates ---
     - if _caller() >= 12 version 12.0
     - if _caller() <= 9 version 9.0
     - local runmlwin_cmdline `0'
-    = local runmlwin_cmdline normexam cons standlrt, level1(student: cons) leve
-> l2(school: cons standlrt) mlwinpath("/Applications/MLwiN/mlnscript")
+    = local runmlwin_cmdline normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinpath("/Appli
+> cations/MLwiN/mlnscript")
     - local maxlevels 1
     - gettoken comma tmpstr : 0, parse(",") bind
-    - while strpos("`tmpstr'", "level") != 0 {
-    = while strpos(", level1(student: cons) level2(school: cons standlrt) mlwin
-> path("/Applications/MLwiN/mlnscript")", "level") != 0 {
+    - while strpos(`"`tmpstr'"', "level") != 0 {
+    = while strpos(`", level1(student: cons) level2(school: cons standlrt) mlwinpath("/Applications/MLwiN/mlnscript")"', "
+> level") != 0 {
+    - local tmpstr = substr(`"`tmpstr'"', strpos("`tmpstr'", "level") + 5, .)
+    = local tmpstr = substr(`", level1(student: cons) level2(school: cons standlrt) mlwinpath("/Applications/MLwiN/mlnscri
+> pt")"', strpos(", level1(student: cons) level2(school: cons standlrt) mlwinpath("/Applications/MLwiN/mlnscript")", "leve
+> l") + 5, .)
 Applications not found
-    ------------------------------------------------ end runmlwin.Estimates ---
+      local lev = substr(`"`tmpstr'"', 1, strpos("`tmpstr'", "(") - 1)
+      if `=real("`lev'")' != . {
+      if `lev' > `maxlevels' {
+      local maxlevels `lev'
+      }
+      }
+      }
+    ------------------------------------------------------------------------------------------- end runmlwin.Estimates ---
     if "`e(mcmcnofit)'" == "1" {
     exit
     }
@@ -312,20 +316,19 @@ Applications not found
     quietly timer list
     ereturn scalar time = r(t99)
     timer clear 99
-    runmlwin_display, level(`level') cformat(`cformat') pformat(`pformat') sfor
-> mat(`sformat') `header' `group' `contrast' `fetable' `retable' `sd' `correlat
-> ions' `or' `irr' `rrr' `mode' `median' `zratio'
+    runmlwin_display, level(`level') cformat(`cformat') pformat(`pformat') sformat(`sformat') `header' `group' `contrast' 
+> `fetable' `retable' `sd' `correlations' `or' `irr' `rrr' `mode' `median' `zratio'
     }
-  ------------------------------------------------------------ end runmlwin ---
+  ------------------------------------------------------------------------------------------------------- end runmlwin ---
 
 . set trace off
 
 . 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school:
->  cons standlrt) mlwinscriptpath(/Applications/MLwiN/mlnscript) batch
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath(/Applicatio
+> ns/MLwiN/mlnscript) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Thu Sep  7 11:22:33 2023
+MLN - Software for N-level analysis.   Thu Sep  7 11:38:17 2023
 
 
 /var/folders/cp/v8nnpg_90dq3clydrdlddfjm0000gn/T//S_99428.000002
@@ -345,7 +348,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.09
+Run time (seconds)   =       0.07
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -369,9 +372,46 @@ Level 1: student             |
 ------------------------------------------------------------------------------
 
 . 
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons) mlwinscriptpath(/Applications/MLwiN/
+> mlnscript)
+ 
+Warning: getversion plugin could not be loaded
+MLwiN . multilevel model                        Number of obs      =      4059
+Normal response model (hierarchical)
+Estimation algorithm: IGLS
+
+-----------------------------------------------------------
+                |   No. of       Observations per Group
+ Level Variable |   Groups    Minimum    Average    Maximum
+----------------+------------------------------------------
+         school |       65          2       62.4        198
+-----------------------------------------------------------
+
+Run time (seconds)   =       0.07
+Number of iterations =          4
+Log likelihood       = -4678.6211
+Deviance             =  9357.2422
+------------------------------------------------------------------------------
+    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        cons |   .0023908   .0400224    0.06    0.952    -.0760516    .0808332
+    standlrt |   .5633712   .0124654   45.19    0.000     .5389395    .5878029
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+Level 2: school              |
+                   var(cons) |   .0921275   .0181475      .0565591     .127696
+-----------------------------+------------------------------------------------
+Level 1: student             |
+                   var(cons) |    .565731   .0126585      .5409208    .5905412
+------------------------------------------------------------------------------
+
+. 
 . log close
       name:  <unnamed>
        log:  /Users/tom/Documents/GitHub/reffadjust/mytest.log
   log type:  text
- closed on:   7 Sep 2023, 11:22:33
--------------------------------------------------------------------------------
+ closed on:   7 Sep 2023, 11:38:17
+--------------------------------------------------------------------------------------------------------------------------
