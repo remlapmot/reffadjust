@@ -25,7 +25,9 @@ cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: co
 
 cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinpath(/Applications/MLwiN/mlnscript)
 
+set trace on
 cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinpath("/Applications/MLwiN/mlnscript")
+set trace off
 
 cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath(/Applications/MLwiN/mlnscript) batch
 
