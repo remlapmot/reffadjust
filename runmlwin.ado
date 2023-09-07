@@ -37,9 +37,9 @@ program Estimates, eclass sortpreserve
   * Separate off options
   local maxlevels 1
   gettoken comma tmpstr : 0, parse(",") bind
-  while strpos("`tmpstr'", "level") != 0 {
-    local tmpstr = substr("`tmpstr'", strpos("`tmpstr'", "level") + 5, .)
-    local lev = substr("`tmpstr'", 1, strpos("`tmpstr'", "(") - 1)
+  while strpos(`"`tmpstr'"', "level") != 0 {
+    local tmpstr = substr(`"`tmpstr'"', strpos(`"`tmpstr'"', "level") + 5, .)
+    local lev = substr(`"`tmpstr'"', 1, strpos(`"`tmpstr'"', "(") - 1)
     * Check this really is a level option
     if `=real("`lev'")' != . {
       if `lev' > `maxlevels' {
