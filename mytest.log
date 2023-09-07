@@ -1,24 +1,26 @@
---------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /Users/tom/Documents/GitHub/reffadjust/mytest.log
+       log:  C:\Users\tom\Documents\GitHub\reffadjust\mytest.log
   log type:  text
- opened on:   7 Sep 2023, 11:38:16
+ opened on:   7 Sep 2023, 17:40:09
 
 . 
 . use https://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear
 
 . 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath("/Applicati
-> ons/MLwiN/mlnscript")
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath(C:/Program File
+> s/MLwiN v3.07/mlnscript.exe) batch
  
-Applications not found
+ --- Begin MLwiN error log --- 
+MLN - Software for N-level analysis.   Thu Sep  7 17:40:10 2023
 
-. 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath(/Applicatio
-> ns/MLwiN/mlnscript)
- 
-Warning: getversion plugin could not be loaded
-MLwiN . multilevel model                        Number of obs      =      4059
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000002.tmp
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000006.tmp
+ --- End MLwiN error log --- 
+
+MLwiN 3.07 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -29,7 +31,54 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.09
+Run time (seconds)   =       0.42
+Number of iterations =          4
+Log likelihood       =  -4658.435
+Deviance             =    9316.87
+------------------------------------------------------------------------------
+    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
+    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+Level 2: school              |
+                   var(cons) |   .0904446    .017924      .0553142    .1255749
+          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
+               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
+-----------------------------+------------------------------------------------
+Level 1: student             |
+                   var(cons) |   .5536575   .0124818      .5291937    .5781214
+------------------------------------------------------------------------------
+
+. 
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath(C:/Program File
+> s/MLwiN v3.07/mlnscript.exe) batch
+ 
+ --- Begin MLwiN error log --- 
+MLN - Software for N-level analysis.   Thu Sep  7 17:40:10 2023
+
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000002.tmp
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000006.tmp
+ --- End MLwiN error log --- 
+
+MLwiN 3.07 multilevel model                     Number of obs      =      4059
+Normal response model (hierarchical)
+Estimation algorithm: IGLS
+
+-----------------------------------------------------------
+                |   No. of       Observations per Group
+ Level Variable |   Groups    Minimum    Average    Maximum
+----------------+------------------------------------------
+         school |       65          2       62.4        198
+-----------------------------------------------------------
+
+Run time (seconds)   =       0.42
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -54,290 +103,24 @@ Level 1: student             |
 
 . 
 . // set trace on
-. // cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath(/Applica
-> tions/MLwiN/mlnscript)
+. // cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath(/Application
+> s/MLwiN/mlnscript)
 . // set trace off
 . 
-. global MLwiN_path /Applications/MLwiN/mlnscript
+. global MLwiN_path C:/Program Files/MLwiN v3.07/mlnscript.exe
 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt)
- 
-Warning: getversion plugin could not be loaded
-MLwiN . multilevel model                        Number of obs      =      4059
-Normal response model (hierarchical)
-Estimation algorithm: IGLS
-
------------------------------------------------------------
-                |   No. of       Observations per Group
- Level Variable |   Groups    Minimum    Average    Maximum
-----------------+------------------------------------------
-         school |       65          2       62.4        198
------------------------------------------------------------
-
-Run time (seconds)   =       0.07
-Number of iterations =          4
-Log likelihood       =  -4658.435
-Deviance             =    9316.87
-------------------------------------------------------------------------------
-    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
-    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
-------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------
-   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
------------------------------+------------------------------------------------
-Level 2: school              |
-                   var(cons) |   .0904446    .017924      .0553142    .1255749
-          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
-               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
------------------------------+------------------------------------------------
-Level 1: student             |
-                   var(cons) |   .5536575   .0124818      .5291937    .5781214
-------------------------------------------------------------------------------
-
-. 
-. global MLwiN_path "/Applications/MLwiN/mlnscript"
-
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt)
- 
-Warning: getversion plugin could not be loaded
-MLwiN . multilevel model                        Number of obs      =      4059
-Normal response model (hierarchical)
-Estimation algorithm: IGLS
-
------------------------------------------------------------
-                |   No. of       Observations per Group
- Level Variable |   Groups    Minimum    Average    Maximum
-----------------+------------------------------------------
-         school |       65          2       62.4        198
------------------------------------------------------------
-
-Run time (seconds)   =       0.07
-Number of iterations =          4
-Log likelihood       =  -4658.435
-Deviance             =    9316.87
-------------------------------------------------------------------------------
-    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
-    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
-------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------
-   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
------------------------------+------------------------------------------------
-Level 2: school              |
-                   var(cons) |   .0904446    .017924      .0553142    .1255749
-          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
-               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
------------------------------+------------------------------------------------
-Level 1: student             |
-                   var(cons) |   .5536575   .0124818      .5291937    .5781214
-------------------------------------------------------------------------------
-
-. 
-. global MLwiNScript_path /Applications/MLwiN/mlnscript
-
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt)
- 
-Warning: getversion plugin could not be loaded
-MLwiN . multilevel model                        Number of obs      =      4059
-Normal response model (hierarchical)
-Estimation algorithm: IGLS
-
------------------------------------------------------------
-                |   No. of       Observations per Group
- Level Variable |   Groups    Minimum    Average    Maximum
-----------------+------------------------------------------
-         school |       65          2       62.4        198
------------------------------------------------------------
-
-Run time (seconds)   =       0.07
-Number of iterations =          4
-Log likelihood       =  -4658.435
-Deviance             =    9316.87
-------------------------------------------------------------------------------
-    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
-    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
-------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------
-   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
------------------------------+------------------------------------------------
-Level 2: school              |
-                   var(cons) |   .0904446    .017924      .0553142    .1255749
-          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
-               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
------------------------------+------------------------------------------------
-Level 1: student             |
-                   var(cons) |   .5536575   .0124818      .5291937    .5781214
-------------------------------------------------------------------------------
-
-. 
-. global MLwiNScript_path "/Applications/MLwiN/mlnscript"
-
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt)
- 
-Warning: getversion plugin could not be loaded
-MLwiN . multilevel model                        Number of obs      =      4059
-Normal response model (hierarchical)
-Estimation algorithm: IGLS
-
------------------------------------------------------------
-                |   No. of       Observations per Group
- Level Variable |   Groups    Minimum    Average    Maximum
-----------------+------------------------------------------
-         school |       65          2       62.4        198
------------------------------------------------------------
-
-Run time (seconds)   =       0.07
-Number of iterations =          4
-Log likelihood       =  -4658.435
-Deviance             =    9316.87
-------------------------------------------------------------------------------
-    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
-    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
-------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------
-   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
------------------------------+------------------------------------------------
-Level 2: school              |
-                   var(cons) |   .0904446    .017924      .0553142    .1255749
-          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
-               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
------------------------------+------------------------------------------------
-Level 1: student             |
-                   var(cons) |   .5536575   .0124818      .5291937    .5781214
-------------------------------------------------------------------------------
-
-. 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinpath(/Applications/MLw
-> iN/mlnscript)
- 
-Warning: getversion plugin could not be loaded
-MLwiN . multilevel model                        Number of obs      =      4059
-Normal response model (hierarchical)
-Estimation algorithm: IGLS
-
------------------------------------------------------------
-                |   No. of       Observations per Group
- Level Variable |   Groups    Minimum    Average    Maximum
-----------------+------------------------------------------
-         school |       65          2       62.4        198
------------------------------------------------------------
-
-Run time (seconds)   =       0.07
-Number of iterations =          4
-Log likelihood       =  -4658.435
-Deviance             =    9316.87
-------------------------------------------------------------------------------
-    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
-    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
-------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------
-   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
------------------------------+------------------------------------------------
-Level 2: school              |
-                   var(cons) |   .0904446    .017924      .0553142    .1255749
-          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
-               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
------------------------------+------------------------------------------------
-Level 1: student             |
-                   var(cons) |   .5536575   .0124818      .5291937    .5781214
-------------------------------------------------------------------------------
-
-. 
-. set trace on
-
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinpath("/Applications/ML
-> wiN/mlnscript")
-  ----------------------------------------------------------------------------------------------------- begin runmlwin ---
-  - if c(stata_version) >= 15 local user user
-  - if _caller() >= 12 version 12.0, `user'
-  = if _caller() >= 12 version 12.0, user
-  - if _caller() <= 9 version 9.0, `user'
-  = if _caller() <= 9 version 9.0, user
-  - display " "
- 
-  - if replay() {
-    if ("`e(cmd)'" ~= "runmlwin") error 301
-    syntax [, Level(cilevel) CFORMAT(string) PFORMAT(string) SFORMAT(string) noHEADer noGRoup noCONTrast noFETable noRETab
-> le SD CORrelations OR IRr RRr MOde MEdian Zratio *]
-    runmlwin_display, level(`level') cformat(`cformat') pformat(`pformat') sformat(`sformat') `header' `group' `contrast' 
-> `fetable' `retable' `sd' `correlations' `or' `irr' `rrr' `mode' `median' `zratio'
-    makecns, displaycns
-    }
-  - else {
-  - syntax anything [if] [in], [Level(cilevel) CFORMAT(string) PFORMAT(string) SFORMAT(string) noHEADer noGRoup noCONTrast
->  noFETable noRETable SD CORrelations OR IRr RRr MOde MEdian Zratio *]
-  - timer clear 99
-  - timer on 99
-  - Estimates `0'
-  = Estimates normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinpath("/Applications/MLwiN/m
-> lnscript")
-    ----------------------------------------------------------------------------------------- begin runmlwin.Estimates ---
-    - if _caller() >= 12 version 12.0
-    - if _caller() <= 9 version 9.0
-    - local runmlwin_cmdline `0'
-    = local runmlwin_cmdline normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinpath("/Appli
-> cations/MLwiN/mlnscript")
-    - local maxlevels 1
-    - gettoken comma tmpstr : 0, parse(",") bind
-    - while strpos(`"`tmpstr'"', "level") != 0 {
-    = while strpos(`", level1(student: cons) level2(school: cons standlrt) mlwinpath("/Applications/MLwiN/mlnscript")"', "
-> level") != 0 {
-    - local tmpstr = substr(`"`tmpstr'"', strpos("`tmpstr'", "level") + 5, .)
-    = local tmpstr = substr(`", level1(student: cons) level2(school: cons standlrt) mlwinpath("/Applications/MLwiN/mlnscri
-> pt")"', strpos(", level1(student: cons) level2(school: cons standlrt) mlwinpath("/Applications/MLwiN/mlnscript")", "leve
-> l") + 5, .)
-Applications not found
-      local lev = substr(`"`tmpstr'"', 1, strpos("`tmpstr'", "(") - 1)
-      if `=real("`lev'")' != . {
-      if `lev' > `maxlevels' {
-      local maxlevels `lev'
-      }
-      }
-      }
-    ------------------------------------------------------------------------------------------- end runmlwin.Estimates ---
-    if "`e(mcmcnofit)'" == "1" {
-    exit
-    }
-    timer off 99
-    quietly timer list
-    ereturn scalar time = r(t99)
-    timer clear 99
-    runmlwin_display, level(`level') cformat(`cformat') pformat(`pformat') sformat(`sformat') `header' `group' `contrast' 
-> `fetable' `retable' `sd' `correlations' `or' `irr' `rrr' `mode' `median' `zratio'
-    }
-  ------------------------------------------------------------------------------------------------------- end runmlwin ---
-
-. set trace off
-
-. 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath(/Applicatio
-> ns/MLwiN/mlnscript) batch
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Thu Sep  7 11:38:17 2023
+MLN - Software for N-level analysis.   Thu Sep  7 17:40:11 2023
 
 
-/var/folders/cp/v8nnpg_90dq3clydrdlddfjm0000gn/T//S_99428.000002
+C:\Users\tom\AppData\Local\Temp\ST_543c_000002.tmp
 
-/var/folders/cp/v8nnpg_90dq3clydrdlddfjm0000gn/T//S_99428.000006
+C:\Users\tom\AppData\Local\Temp\ST_543c_000006.tmp
  --- End MLwiN error log --- 
 
-Warning: getversion plugin could not be loaded
-MLwiN . multilevel model                        Number of obs      =      4059
+MLwiN 3.07 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -348,7 +131,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.07
+Run time (seconds)   =       0.44
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -372,11 +155,20 @@ Level 1: student             |
 ------------------------------------------------------------------------------
 
 . 
-. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons) mlwinscriptpath(/Applications/MLwiN/
-> mlnscript)
+. global MLwiN_path "C:/Program Files/MLwiN v3.07/mlnscript.exe"
+
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) batch
  
-Warning: getversion plugin could not be loaded
-MLwiN . multilevel model                        Number of obs      =      4059
+ --- Begin MLwiN error log --- 
+MLN - Software for N-level analysis.   Thu Sep  7 17:40:11 2023
+
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000002.tmp
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000006.tmp
+ --- End MLwiN error log --- 
+
+MLwiN 3.07 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -387,7 +179,293 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.07
+Run time (seconds)   =       0.42
+Number of iterations =          4
+Log likelihood       =  -4658.435
+Deviance             =    9316.87
+------------------------------------------------------------------------------
+    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
+    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+Level 2: school              |
+                   var(cons) |   .0904446    .017924      .0553142    .1255749
+          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
+               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
+-----------------------------+------------------------------------------------
+Level 1: student             |
+                   var(cons) |   .5536575   .0124818      .5291937    .5781214
+------------------------------------------------------------------------------
+
+. 
+. global MLwiNScript_path C:/Program Files/MLwiN v3.07/mlnscript.exe
+
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) batch
+ 
+ --- Begin MLwiN error log --- 
+MLN - Software for N-level analysis.   Thu Sep  7 17:40:12 2023
+
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000002.tmp
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000006.tmp
+ --- End MLwiN error log --- 
+
+MLwiN 3.07 multilevel model                     Number of obs      =      4059
+Normal response model (hierarchical)
+Estimation algorithm: IGLS
+
+-----------------------------------------------------------
+                |   No. of       Observations per Group
+ Level Variable |   Groups    Minimum    Average    Maximum
+----------------+------------------------------------------
+         school |       65          2       62.4        198
+-----------------------------------------------------------
+
+Run time (seconds)   =       0.41
+Number of iterations =          4
+Log likelihood       =  -4658.435
+Deviance             =    9316.87
+------------------------------------------------------------------------------
+    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
+    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+Level 2: school              |
+                   var(cons) |   .0904446    .017924      .0553142    .1255749
+          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
+               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
+-----------------------------+------------------------------------------------
+Level 1: student             |
+                   var(cons) |   .5536575   .0124818      .5291937    .5781214
+------------------------------------------------------------------------------
+
+. 
+. global MLwiNScript_path "C:/Program Files/MLwiN v3.07/mlnscript.exe"
+
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) batch
+ 
+ --- Begin MLwiN error log --- 
+MLN - Software for N-level analysis.   Thu Sep  7 17:40:12 2023
+
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000002.tmp
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000006.tmp
+ --- End MLwiN error log --- 
+
+MLwiN 3.07 multilevel model                     Number of obs      =      4059
+Normal response model (hierarchical)
+Estimation algorithm: IGLS
+
+-----------------------------------------------------------
+                |   No. of       Observations per Group
+ Level Variable |   Groups    Minimum    Average    Maximum
+----------------+------------------------------------------
+         school |       65          2       62.4        198
+-----------------------------------------------------------
+
+Run time (seconds)   =       0.42
+Number of iterations =          4
+Log likelihood       =  -4658.435
+Deviance             =    9316.87
+------------------------------------------------------------------------------
+    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
+    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+Level 2: school              |
+                   var(cons) |   .0904446    .017924      .0553142    .1255749
+          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
+               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
+-----------------------------+------------------------------------------------
+Level 1: student             |
+                   var(cons) |   .5536575   .0124818      .5291937    .5781214
+------------------------------------------------------------------------------
+
+. 
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinpath(C:/Program Files/MLwi
+> N v3.07/mlnscript.exe) batch
+ 
+ --- Begin MLwiN error log --- 
+MLN - Software for N-level analysis.   Thu Sep  7 17:40:12 2023
+
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000002.tmp
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000006.tmp
+ --- End MLwiN error log --- 
+
+MLwiN 3.07 multilevel model                     Number of obs      =      4059
+Normal response model (hierarchical)
+Estimation algorithm: IGLS
+
+-----------------------------------------------------------
+                |   No. of       Observations per Group
+ Level Variable |   Groups    Minimum    Average    Maximum
+----------------+------------------------------------------
+         school |       65          2       62.4        198
+-----------------------------------------------------------
+
+Run time (seconds)   =       0.40
+Number of iterations =          4
+Log likelihood       =  -4658.435
+Deviance             =    9316.87
+------------------------------------------------------------------------------
+    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
+    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+Level 2: school              |
+                   var(cons) |   .0904446    .017924      .0553142    .1255749
+          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
+               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
+-----------------------------+------------------------------------------------
+Level 1: student             |
+                   var(cons) |   .5536575   .0124818      .5291937    .5781214
+------------------------------------------------------------------------------
+
+. 
+. // set trace on
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinpath("C:/Program Files/MLw
+> iN v3.07/mlnscript.exe") batch
+ 
+ --- Begin MLwiN error log --- 
+MLN - Software for N-level analysis.   Thu Sep  7 17:40:13 2023
+
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000002.tmp
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000006.tmp
+ --- End MLwiN error log --- 
+
+MLwiN 3.07 multilevel model                     Number of obs      =      4059
+Normal response model (hierarchical)
+Estimation algorithm: IGLS
+
+-----------------------------------------------------------
+                |   No. of       Observations per Group
+ Level Variable |   Groups    Minimum    Average    Maximum
+----------------+------------------------------------------
+         school |       65          2       62.4        198
+-----------------------------------------------------------
+
+Run time (seconds)   =       0.41
+Number of iterations =          4
+Log likelihood       =  -4658.435
+Deviance             =    9316.87
+------------------------------------------------------------------------------
+    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
+    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+Level 2: school              |
+                   var(cons) |   .0904446    .017924      .0553142    .1255749
+          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
+               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
+-----------------------------+------------------------------------------------
+Level 1: student             |
+                   var(cons) |   .5536575   .0124818      .5291937    .5781214
+------------------------------------------------------------------------------
+
+. // set trace off
+. 
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) mlwinscriptpath(C:/Program File
+> s/MLwiN v3.07/mlnscript.exe) batch
+ 
+ --- Begin MLwiN error log --- 
+MLN - Software for N-level analysis.   Thu Sep  7 17:40:13 2023
+
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000002.tmp
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000006.tmp
+ --- End MLwiN error log --- 
+
+MLwiN 3.07 multilevel model                     Number of obs      =      4059
+Normal response model (hierarchical)
+Estimation algorithm: IGLS
+
+-----------------------------------------------------------
+                |   No. of       Observations per Group
+ Level Variable |   Groups    Minimum    Average    Maximum
+----------------+------------------------------------------
+         school |       65          2       62.4        198
+-----------------------------------------------------------
+
+Run time (seconds)   =       0.41
+Number of iterations =          4
+Log likelihood       =  -4658.435
+Deviance             =    9316.87
+------------------------------------------------------------------------------
+    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
+    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+Level 2: school              |
+                   var(cons) |   .0904446    .017924      .0553142    .1255749
+          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
+               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
+-----------------------------+------------------------------------------------
+Level 1: student             |
+                   var(cons) |   .5536575   .0124818      .5291937    .5781214
+------------------------------------------------------------------------------
+
+. 
+. cap noi runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons) mlwinscriptpath(C:/Program Files/MLwiN v
+> 3.07/mlnscript.exe) batch
+ 
+ --- Begin MLwiN error log --- 
+MLN - Software for N-level analysis.   Thu Sep  7 17:40:14 2023
+
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000002.tmp
+
+C:\Users\tom\AppData\Local\Temp\ST_543c_000006.tmp
+ --- End MLwiN error log --- 
+
+MLwiN 3.07 multilevel model                     Number of obs      =      4059
+Normal response model (hierarchical)
+Estimation algorithm: IGLS
+
+-----------------------------------------------------------
+                |   No. of       Observations per Group
+ Level Variable |   Groups    Minimum    Average    Maximum
+----------------+------------------------------------------
+         school |       65          2       62.4        198
+-----------------------------------------------------------
+
+Run time (seconds)   =       0.41
 Number of iterations =          4
 Log likelihood       = -4678.6211
 Deviance             =  9357.2422
@@ -411,7 +489,7 @@ Level 1: student             |
 . 
 . log close
       name:  <unnamed>
-       log:  /Users/tom/Documents/GitHub/reffadjust/mytest.log
+       log:  C:\Users\tom\Documents\GitHub\reffadjust\mytest.log
   log type:  text
- closed on:   7 Sep 2023, 11:38:17
---------------------------------------------------------------------------------------------------------------------------
+ closed on:   7 Sep 2023, 17:40:14
+------------------------------------------------------------------------------------------------------------------------------
