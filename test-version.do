@@ -1,3 +1,5 @@
+log close _all
+log using test-version.log, text replace
 di c(version), c(userversion), c(stata_version)
 
 version 13
@@ -24,11 +26,13 @@ version 17: di c(version), c(userversion), c(stata_version)
 
 di c(version), c(userversion), c(stata_version)
 
-version 13.0
+version 14.0
 di c(version), c(userversion), c(stata_version)
 end
 
+version 17
+
 mytestprog
 
-discard
 mytestprog2
+log cl
