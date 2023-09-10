@@ -1,11 +1,16 @@
 *! version 1.1.0 2sep2013 Tom Palmer & Corrie Macdonald-Wallis
 program reffadjustsim, rclass
+di c(version), c(userversion), c(stata_version)
 if _caller() >= 13 version 13.0
 if _caller() < 13 version 11.2
+
+di c(version), c(userversion), c(stata_version)
 
 if c(stata_version) >= 14 {
 	version `c(version)', user
 }
+
+di c(version), c(userversion), c(stata_version)
 
 * estimates replay
 if replay() {
