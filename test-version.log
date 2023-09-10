@@ -1,0 +1,77 @@
+----------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/tom/Documents/GitHub/reffadjust/test-version.log
+  log type:  text
+ opened on:  10 Sep 2023, 19:13:25
+
+. di c(version), c(userversion), c(stata_version)
+17 17 17
+
+. 
+. version 13
+
+. di c(version), c(userversion), c(stata_version)
+13 13 17
+
+. 
+. version 17: di c(version), c(userversion), c(stata_version)
+17 17 17
+
+. 
+. version 13, user
+
+. di c(version), c(userversion), c(stata_version)
+13 13 17
+
+. 
+. version 14.0
+
+. di c(version), c(userversion), c(stata_version)
+14 14 17
+
+. 
+. cap noi prog drop mytestprog
+
+. program mytestprog
+  1. di c(version), c(userversion), c(stata_version)
+  2. version 13
+  3. di c(version), c(userversion), c(stata_version)
+  4. 
+. version 13, user
+  5. di c(version), c(userversion), c(stata_version)
+  6. 
+. version 17: di c(version), c(userversion), c(stata_version)
+  7. 
+. di c(version), c(userversion), c(stata_version)
+  8. 
+. version 14.0
+  9. di c(version), c(userversion), c(stata_version)
+ 10. end
+
+. 
+. version 17
+
+. 
+. mytestprog
+17 17 17
+13 17 17
+13 13 17
+17 13 17
+13 13 17
+14 13 17
+
+. 
+. mytestprog2
+17 17 17
+13 17 17
+13 13 17
+17 13 17
+13 13 17
+14 13 17
+
+. log cl
+      name:  <unnamed>
+       log:  /Users/tom/Documents/GitHub/reffadjust/test-version.log
+  log type:  text
+ closed on:  10 Sep 2023, 19:13:25
+----------------------------------------------------------------------------------------------------------------------------
