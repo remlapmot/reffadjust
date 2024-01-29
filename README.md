@@ -35,6 +35,10 @@ net install reffadjust, from("https://raw.github.com/remlapmot/reffadjust/master
 
 Thanks to Gemma Clayton for discovering that `reffadjustsim` had stopped working under a recent version of Stata. And thanks to Stata Corp. for providing me with a fix for this issue.
 
+## Notes
+
+- 2024-01-29 Tested on Stata 18 and macOS
+
 ## References
 
 - Macdonald-Wallis C, Lawlor DA, Palmer TM, Tilling K. 2012. Multivariate multilevel spline models for parallel growth processes: application to weight and mean arterial pressure in pregnancy. Statistics in Medicine, 31, 26, 3147-3164. <https://doi.org/10.1002/sim.5385>
