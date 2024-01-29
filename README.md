@@ -14,15 +14,19 @@ The approach is described in more detail in Macdonald-Wallis et al. (2012) and P
 ## Installation
 
 To install, issue in Stata (in versions 13 and above) using the **github** package, first install the **github** package:
+
 ```stata
 net install github, from("https://haghish.github.io/github/")
 ```
+
 then run
+
 ```stata
 github install remlapmot/reffadjust
 ```
 
 Alternatively use `net install` directly as follows
+
 ```stata
 net install reffadjust, from("https://raw.github.com/remlapmot/reffadjust/master/")
 ```
