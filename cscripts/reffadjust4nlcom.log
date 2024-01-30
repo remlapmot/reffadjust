@@ -3,7 +3,7 @@
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjust4nlcom.l
 > og
   log type:  text
- opened on:  29 Jan 2024, 20:10:34
+ opened on:  30 Jan 2024, 06:53:01
 
 . * 2023-01-25 Examples from reffadjust4nlcom helpfile
 . 
@@ -37,7 +37,8 @@ Serial number: 501809305331
 
 . if c(os) == "MacOSX" global MLwiN_path "/Applications/MLwiN/mlnscript" // req
 > uires runmlwin_mcmcdiagnostics.arm64 renamed to runmlwin_mcmcdiagnostics.plug
-> in
+> in and manual installation of the files from https://ideas.repec.org/c/boc/bo
+> code/s457335.html
 
 . 
 . if "$MLwiN_path" != "" {
@@ -51,16 +52,15 @@ Serial number: 501809305331
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Mon Jan 29 20:10:35 2024
+MLN - Software for N-level analysis.   Tue 30 Jan 2024 06:53:03.568003
 
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_72250.000002
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_68811.000002
-
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_68811.000006
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_72250.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.07 multilevel model                     Number of obs      =      4059
+MLwiN 3.09 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -71,7 +71,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.10
+Run time (seconds)   =       1.92
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -127,18 +127,17 @@ Level 1: student             |
 >     seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Mon Jan 29 20:10:35 2024
+MLN - Software for N-level analysis.   Tue 30 Jan 2024 06:53:03.704203
 
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_72250.000003
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_68811.000003
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_72250.000007
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_68811.000007
-
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_68811.000001
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_72250.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.07 multilevel model                     Number of obs      =      4059
+MLwiN 3.09 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: MCMC
 
@@ -152,7 +151,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       4.46
+Run time (seconds)         =       1.07
 Deviance (dbar)            =    9122.42
 Deviance (thetabar)        =    9031.09
 Effective no. of pars (pd) =      91.34
@@ -197,18 +196,17 @@ beta_standlrt|   1.289067    .456183      857   0.001     .4577979       2.279
 >  (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Mon Jan 29 20:10:39 2024
+MLN - Software for N-level analysis.   Tue 30 Jan 2024 06:53:04.979935
 
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_72250.000002
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_68811.000002
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_72250.000006
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_68811.000006
-
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_68811.000007
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_72250.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.07 multilevel model                     Number of obs      =      1905
+MLwiN 3.09 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -219,7 +217,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.15
+Run time (seconds)   =       0.14
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -282,20 +280,19 @@ Level 1: student             |
 > seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Mon Jan 29 20:10:40 2024
+MLN - Software for N-level analysis.   Tue 30 Jan 2024 06:53:05.153257
 
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_72250.000003
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_68811.000003
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_72250.000007
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_68811.000007
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_72250.000008
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_68811.000008
-
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_68811.000001
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_72250.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.07 multilevel model                     Number of obs      =      1905
+MLwiN 3.09 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: MCMC
 
@@ -309,7 +306,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.86
+Run time (seconds)         =       1.85
 Deviance (dbar)            =   29388.29
 Deviance (thetabar)        =   28877.57
 Effective no. of pars (pd) =     510.73
@@ -1197,5 +1194,5 @@ end of do-file
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjust4nlcom.l
 > og
   log type:  text
- closed on:  29 Jan 2024, 20:12:19
+ closed on:  30 Jan 2024, 06:54:44
 -------------------------------------------------------------------------------

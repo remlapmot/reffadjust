@@ -37,6 +37,7 @@ Thanks to Gemma Clayton for discovering that `reffadjustsim` had stopped working
 
 ## Notes
 
+- 2024-01-30 Tested under MLwiN 3.09 (and Stata 18)
 - 2024-01-29 Tested on Stata 18 and macOS
 
 ## References
