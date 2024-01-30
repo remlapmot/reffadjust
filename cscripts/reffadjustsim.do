@@ -6,7 +6,7 @@ about
 
 // Examples 1 & 2 assume the path to the MLwiN executable is set in global MLwiN_path; see runmlwin
 
-if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.08\\mlwin.exe"
+if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.09\\mlwin.exe"
 if c(os) == "MacOSX" global MLwiN_path "/Applications/MLwiN/mlnscript" // requires runmlwin_mcmcdiagnostics.arm64 renamed to runmlwin_mcmcdiagnostics.plugin and manual installation of the files from https://ideas.repec.org/c/boc/bocode/s457335.html
 
 if "$MLwiN_path" != "" {
