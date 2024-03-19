@@ -31,6 +31,14 @@ Alternatively use `net install` directly as follows
 net install reffadjust, from("https://raw.github.com/remlapmot/reffadjust/master/")
 ```
 
+### Installation of MLwiN
+
+This is available from <https://www.bristol.ac.uk/cmm/software/mlwin/>.
+
+The MLwiN libraries are now available natively for macOS (both Intel and Apple Silicon Macs) and a range of Linux ditributions.
+
+On macOS the `mlnscript` and `libmln.dylib` files must be granted permission to run in _System Settings_ | _Privacy and Security_ | Scroll down to _Security_ section.
+
 ## Acknowledgements
 
 Thanks to Gemma Clayton for discovering that `reffadjustsim` had stopped working under a recent version of Stata. And thanks to Stata Corp. for providing me with a fix for this issue.
