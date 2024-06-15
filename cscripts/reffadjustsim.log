@@ -2,7 +2,7 @@
       name:  reffadjustsim
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
   log type:  text
- opened on:  19 Mar 2024, 11:03:52
+ opened on:  15 Jun 2024, 19:59:20
 
 . * 2023-01-25 reffadjustsim cscript
 . 
@@ -16,8 +16,8 @@
 . 
 . about
 
-Stata/MP 18.0 for Mac (Apple Silicon)
-Revision 14 Feb 2024
+StataNow/MP 18.5 for Mac (Apple Silicon)
+Revision 22 May 2024
 Copyright 1985-2023 StataCorp LLC
 
 Total physical memory: 8.01 GB
@@ -31,33 +31,104 @@ Serial number: 501809305331
 . // Examples 1 & 2 assume the path to the MLwiN executable is set in global ML
 > wiN_path; see runmlwin
 . 
-. if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.10\\mlwi
+. if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.11\\mlwi
 > n.exe"
 
-. if c(machine_type) == "Mac (Apple Silicon)" global MLwiN_path "/Applications/
-> MLwiN/mlnscript" // runmlwin now works on Apple Silicon Macs
+. if c(machine_type) == "Mac (Apple Silicon)" global MLwiN_path "/opt/mln/mlnsc
+> ript"
 
 . 
-. if "$MLwiN_path" != "" {
 . // Example 1: Two level continuous response model (see page 59 of the MLwiN U
 > ser Manual)
 . * read in data
 . use https://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear
+
 . 
 . * fit model using MLwiN via runmlwin
 . runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons st
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Tue 19 Mar 2024 11:03:52.662927
+MLN - Software for N-level analysis.   Sat 15 Jun 2024 18:59:20.336518
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000002
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000002
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000006
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.10 multilevel model                     Number of obs      =      4059
+MLwiN 3.11 multilevel model                     Number of obs      =      4059
+Normal response model (hierarchical)
+Estimation algorithm: IGLS
+
+-----------------------------------------------------------
+                |   No. of       Observations per Group
+ Level Variable |   Groups    Minimum    Average    Maximum
+----------------+------------------------------------------
+         school |       65          2       62.4        198
+-----------------------------------------------------------
+
+Run time (seconds)   =       0.08
+Number of iterations =          4
+Log likelihood       =  -4658.435
+Deviance             =    9316.87
+------------------------------------------------------------------------------
+    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
+    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+Level 2: school              |
+                   var(cons) |   .0904446    .017924      .0553142    .1255749
+          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
+               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
+-----------------------------+------------------------------------------------
+Level 1: student             |
+                   var(cons) |   .5536575   .0124818      .5291937    .5781214
+------------------------------------------------------------------------------
+
+. 
+. * report coefficient as median with 2.5 & 97.5 percentiles
+. reffadjustsim cons standlrt, eqn(RP2) seed(12345)
+
+------------------------------------------------------------------------------
+        cons |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+    standlrt |   1.242541                 .4311653            2.607229
+------------------------------------------------------------------------------
+
+. 
+. * report coefficient as mean & Wald-type confidence interval
+. * Warning: mean and Wald-type confidence are inaccurate in this example
+. reffadjustsim cons standlrt, eqn(RP2) seed(12345) waldtype
+
+------------------------------------------------------------------------------
+        cons |      Coef.   Std. Err.                     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+    standlrt |   1.319134    1.22225                     -1.076431      3.7147
+------------------------------------------------------------------------------
+Warning: Coef. & Wald-type conf. interval limits may be inaccurate.
+Please compare with default output which reports median & centiles.
+
+. 
+. * compare with delta-method confidence interval (first refit model)
+. runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons st
+> andlrt) batch
+ 
+ --- Begin MLwiN error log --- 
+MLN - Software for N-level analysis.   Sat 15 Jun 2024 18:59:20.471941
+
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000002
+
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000006
+ --- End MLwiN error log --- 
+
+Warning: getversion plugin could not be loaded
+MLwiN 3.11 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -90,75 +161,9 @@ Level 2: school              |
 Level 1: student             |
                    var(cons) |   .5536575   .0124818      .5291937    .5781214
 ------------------------------------------------------------------------------
-. 
-. * report coefficient as median with 2.5 & 97.5 percentiles
-. reffadjustsim cons standlrt, eqn(RP2) seed(12345)
 
-------------------------------------------------------------------------------
-        cons |     Median              2.5 Percentile      97.5 Percentile
--------------+----------------------------------------------------------------
-    standlrt |   1.242541                 .4311653            2.607229
-------------------------------------------------------------------------------
-. 
-. * report coefficient as mean & Wald-type confidence interval
-. * Warning: mean and Wald-type confidence are inaccurate in this example
-. reffadjustsim cons standlrt, eqn(RP2) seed(12345) waldtype
-
-------------------------------------------------------------------------------
-        cons |      Coef.   Std. Err.                     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-    standlrt |   1.319134    1.22225                     -1.076431      3.7147
-------------------------------------------------------------------------------
-Warning: Coef. & Wald-type conf. interval limits may be inaccurate.
-Please compare with default output which reports median & centiles.
-. 
-. * compare with delta-method confidence interval (first refit model)
-. runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons st
-> andlrt) batch
- 
- --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Tue 19 Mar 2024 11:03:52.772810
-
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000002
-
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000006
- --- End MLwiN error log --- 
-
-Warning: getversion plugin could not be loaded
-MLwiN 3.10 multilevel model                     Number of obs      =      4059
-Normal response model (hierarchical)
-Estimation algorithm: IGLS
-
------------------------------------------------------------
-                |   No. of       Observations per Group
- Level Variable |   Groups    Minimum    Average    Maximum
-----------------+------------------------------------------
-         school |       65          2       62.4        198
------------------------------------------------------------
-
-Run time (seconds)   =       0.04
-Number of iterations =          4
-Log likelihood       =  -4658.435
-Deviance             =    9316.87
-------------------------------------------------------------------------------
-    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
-    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
-------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------
-   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
------------------------------+------------------------------------------------
-Level 2: school              |
-                   var(cons) |   .0904446    .017924      .0553142    .1255749
-          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
-               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
------------------------------+------------------------------------------------
-Level 1: student             |
-                   var(cons) |   .5536575   .0124818      .5291937    .5781214
-------------------------------------------------------------------------------
 . reffadjust4nlcom cons standlrt, eqn(RP2)
+
 . nlcom `r(beta_standlrt)'
 
        _nl_1: [RP2]cov(cons\standlrt)/[RP2]var(standlrt)
@@ -168,23 +173,24 @@ Level 1: student             |
 -------------+----------------------------------------------------------------
        _nl_1 |   1.241144   .4275471     2.90   0.004     .4031675    2.079121
 ------------------------------------------------------------------------------
+
 . 
 . * compare with Bayesian posterior distribution
 . runmlwin normexam cons standlrt, level1(student: cons) ///
 >     level2(school: cons standlrt) batch mcmc(on) initsprevious seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Tue 19 Mar 2024 11:03:52.890854
+MLN - Software for N-level analysis.   Sat 15 Jun 2024 18:59:20.651424
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000003
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000003
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000007
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000007
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000001
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.10 multilevel model                     Number of obs      =      4059
+MLwiN 3.11 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: MCMC
 
@@ -198,7 +204,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.06
+Run time (seconds)         =       1.12
 Deviance (dbar)            =    9122.42
 Deviance (thetabar)        =    9031.09
 Effective no. of pars (pd) =      91.34
@@ -221,7 +227,9 @@ Level 2: school              |
 Level 1: student             |
                    var(cons) |  .5542075  .0123209   4645   .5309043   .578929
 ------------------------------------------------------------------------------
+
 . mcmcsum, getchains
+
 . reffadjustsim cons standlrt, eqn(RP2) mcmcsum
 
 ------------------------------------------------------------------------------
@@ -229,11 +237,13 @@ Level 1: student             |
 -------------+----------------------------------------------------------------
     standlrt |   1.266334                 .4572121            2.281147
 ------------------------------------------------------------------------------
+
 . 
 . // Example 2: Multivariate response model (see page 214 of the MLwiN User Man
 > ual)
 . * read in data
 . use https://www.bristol.ac.uk/cmm/media/runmlwin/gcsemv1, clear
+
 . 
 . * fit model using MLwiN via runmlwin
 . runmlwin (written cons female, eq(1)) (csework cons female, eq(2)), ///
@@ -241,17 +251,17 @@ Level 1: student             |
 >     level2(school: (cons, eq(1)) (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Tue 19 Mar 2024 11:03:54.081542
+MLN - Software for N-level analysis.   Sat 15 Jun 2024 18:59:21.945217
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000002
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000002
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000006
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000006
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000007
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.10 multilevel model                     Number of obs      =      1905
+MLwiN 3.11 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -262,7 +272,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.14
+Run time (seconds)   =       0.15
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -291,6 +301,7 @@ Level 1: student             |
           cov(cons_1,cons_2) |   73.00323    4.17829      64.81393    81.19252
                  var(cons_2) |   180.0982   6.245801      167.8566    192.3397
 ------------------------------------------------------------------------------
+
 . 
 . * report coefficient as median with 2.5 and 97.5 percentiles
 . reffadjustsim cons_1 cons_2, eqn(RP2) seed(12345)
@@ -300,6 +311,7 @@ Level 1: student             |
 -------------+----------------------------------------------------------------
       cons_2 |   .3308853                 .1231026            .5395364
 ------------------------------------------------------------------------------
+
 . 
 . * report coefficient as mean with Wald-type confidence interval
 . reffadjustsim cons_1 cons_2, eqn(RP2) seed(12345) waldtype
@@ -311,6 +323,7 @@ Level 1: student             |
 ------------------------------------------------------------------------------
 Warning: Coef. & Wald-type conf. interval limits may be inaccurate.
 Please compare with default output which reports median & centiles.
+
 . 
 . * compare with delta-method confidence interval (first refit model)
 . runmlwin (written cons female, eq(1)) (csework cons female, eq(2)), ///
@@ -318,17 +331,17 @@ Please compare with default output which reports median & centiles.
 >     level2(school: (cons, eq(1)) (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Tue 19 Mar 2024 11:03:54.273464
+MLN - Software for N-level analysis.   Sat 15 Jun 2024 18:59:22.165978
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000002
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000002
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000006
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000006
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000007
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.10 multilevel model                     Number of obs      =      1905
+MLwiN 3.11 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -339,7 +352,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.13
+Run time (seconds)   =       0.15
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -368,7 +381,9 @@ Level 1: student             |
           cov(cons_1,cons_2) |   73.00323    4.17829      64.81393    81.19252
                  var(cons_2) |   180.0982   6.245801      167.8566    192.3397
 ------------------------------------------------------------------------------
+
 . reffadjust4nlcom cons_1 cons_2, eqn(RP2)
+
 . nlcom `r(beta_cons_2)'
 
        _nl_1: [RP2]cov(cons_1\cons_2)/[RP2]var(cons_2)
@@ -378,6 +393,7 @@ Level 1: student             |
 -------------+----------------------------------------------------------------
        _nl_1 |   .3309709   .0986417     3.36   0.001     .1376367    .5243051
 ------------------------------------------------------------------------------
+
 . 
 . * compare with Bayesian posterior distribution
 . runmlwin (written cons female, eq(1)) (csework cons female, eq(2)), ///
@@ -386,19 +402,19 @@ Level 1: student             |
 > seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Tue 19 Mar 2024 11:03:54.445322
+MLN - Software for N-level analysis.   Sat 15 Jun 2024 18:59:22.425942
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000003
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000003
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000007
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000007
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000008
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000008
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_87143.000001
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_28029.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.10 multilevel model                     Number of obs      =      1905
+MLwiN 3.11 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: MCMC
 
@@ -412,7 +428,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.83
+Run time (seconds)         =       1.88
 Deviance (dbar)            =   29388.29
 Deviance (thetabar)        =   28877.57
 Effective no. of pars (pd) =     510.73
@@ -442,7 +458,9 @@ Level 1: student             |
           cov(cons_1,cons_2) |    73.189  4.186575   3819   65.23343  81.54988
                  var(cons_2) |   180.573   6.35916   4068   168.6235  193.2279
 ------------------------------------------------------------------------------
+
 . mcmcsum, getchains
+
 . reffadjustsim cons_1 cons_2, eqn(RP2) mcmcsum
 
 ------------------------------------------------------------------------------
@@ -450,7 +468,6 @@ Level 1: student             |
 -------------+----------------------------------------------------------------
       cons_2 |    .331149                   .13241            .5309237
 ------------------------------------------------------------------------------
-. }
 
 . 
 . // Example 3: based on xtmixed helpfile
@@ -1229,5 +1246,5 @@ end of do-file
       name:  reffadjustsim
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
   log type:  text
- closed on:  19 Mar 2024, 11:05:31
+ closed on:  15 Jun 2024, 20:01:05
 -------------------------------------------------------------------------------
