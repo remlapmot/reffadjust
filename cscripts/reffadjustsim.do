@@ -6,10 +6,9 @@ about
 
 // Examples 1 & 2 assume the path to the MLwiN executable is set in global MLwiN_path; see runmlwin
 
-if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.10\\mlwin.exe"
-if c(machine_type) == "Mac (Apple Silicon)" global MLwiN_path "/Applications/MLwiN/mlnscript" // runmlwin now works on Apple Silicon Macs
+if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.11\\mlwin.exe"
+if c(machine_type) == "Mac (Apple Silicon)" global MLwiN_path "/opt/mln/mlnscript"
 
-if "$MLwiN_path" != "" {
 // Example 1: Two level continuous response model (see page 59 of the MLwiN User Manual)
 * read in data
 use https://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear
@@ -63,7 +62,6 @@ runmlwin (written cons female, eq(1)) (csework cons female, eq(2)), ///
     level2(school: (cons, eq(1)) (cons, eq(2))) batch mcmc(on) initsprevious seed(121211)
 mcmcsum, getchains
 reffadjustsim cons_1 cons_2, eqn(RP2) mcmcsum
-}
 
 // Example 3: based on xtmixed helpfile
 webuse nlswork, clear
