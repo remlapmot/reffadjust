@@ -45,6 +45,7 @@ Thanks to Gemma Clayton for discovering that `reffadjustsim` had stopped working
 
 ## Notes
 
+- 2024-10-12 Tested under MLwiN 3.13 and StataNow 18.5
 - 2024-08-12 Tested under MLwiN 3.12 and StataNow 18.5
 - 2024-06-15 Tested under MLwiN 3.11 and StataNow 18.5
 - 2024-03-19 Tested under MLwiN 3.10 and Stata 18.0
