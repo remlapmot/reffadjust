@@ -1,0 +1,221 @@
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  D:\reffadjust\test.log
+  log type:  text
+ opened on:  20 Mar 2025, 20:01:56
+
+. do ex_stata18_mlwin313.do
+
+.  **Example 1: Two level continuous response model (see page 59 of the MLwiN U
+> ser Manual)
+. 
+. * read in data
+. use http://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear
+
+. 
+. * Identify the location of MLwiN
+. global MLwiN_path C:\Program Files\MLwiN v3.13\mlwin.exe
+
+. 
+. * fit model using MLwiN via runmlwin
+. runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons st
+> andlrt) batch
+ 
+ --- Begin MLwiN error log --- 
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 20:02:01
+
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000002.tmp
+
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000006.tmp
+ --- End MLwiN error log --- 
+
+MLwiN 3.13 multilevel model                     Number of obs      =      4059
+Normal response model (hierarchical)
+Estimation algorithm: IGLS
+
+-----------------------------------------------------------
+                |   No. of       Observations per Group
+ Level Variable |   Groups    Minimum    Average    Maximum
+----------------+------------------------------------------
+         school |       65          2       62.4        198
+-----------------------------------------------------------
+
+Run time (seconds)   =       0.31
+Number of iterations =          4
+Log likelihood       =  -4658.435
+Deviance             =    9316.87
+------------------------------------------------------------------------------
+    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
+    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+Level 2: school              |
+                   var(cons) |   .0904446    .017924      .0553142    .1255749
+          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
+               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
+-----------------------------+------------------------------------------------
+Level 1: student             |
+                   var(cons) |   .5536575   .0124818      .5291937    .5781214
+------------------------------------------------------------------------------
+
+. 
+. * report coefficient as median with 2.5 & 97.5 percentiles
+. reffadjustsim cons standlrt, eqn(RP2) seed(12345)
+
+------------------------------------------------------------------------------
+        cons |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+    standlrt |   1.242541                 .4311653            2.607229
+------------------------------------------------------------------------------
+
+. 
+. * report coefficient as mean & Wald-type confidence interval
+. * Warning: mean and Wald-type confidence are inaccurate in this example
+. reffadjustsim cons standlrt, eqn(RP2) seed(12345) waldtype
+
+------------------------------------------------------------------------------
+        cons |      Coef.   Std. Err.                     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+    standlrt |   1.319134    1.22225                     -1.076431      3.7147
+------------------------------------------------------------------------------
+Warning: Coef. & Wald-type conf. interval limits may be inaccurate.
+Please compare with default output which reports median & centiles.
+
+. 
+. * compare with delta-method confidence interval (first refit model)
+. runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons st
+> andlrt) batch
+ 
+ --- Begin MLwiN error log --- 
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 20:02:02
+
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000002.tmp
+
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000006.tmp
+ --- End MLwiN error log --- 
+
+MLwiN 3.13 multilevel model                     Number of obs      =      4059
+Normal response model (hierarchical)
+Estimation algorithm: IGLS
+
+-----------------------------------------------------------
+                |   No. of       Observations per Group
+ Level Variable |   Groups    Minimum    Average    Maximum
+----------------+------------------------------------------
+         school |       65          2       62.4        198
+-----------------------------------------------------------
+
+Run time (seconds)   =       0.30
+Number of iterations =          4
+Log likelihood       =  -4658.435
+Deviance             =    9316.87
+------------------------------------------------------------------------------
+    normexam |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        cons |  -.0115051    .039783   -0.29    0.772    -.0894783     .066468
+    standlrt |   .5567305    .019937   27.92    0.000     .5176547    .5958062
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+   Random-effects Parameters |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+Level 2: school              |
+                   var(cons) |   .0904446    .017924      .0553142    .1255749
+          cov(cons,standlrt) |   .0180414   .0067229      .0048649     .031218
+               var(standlrt) |   .0145361   .0044139      .0058851    .0231872
+-----------------------------+------------------------------------------------
+Level 1: student             |
+                   var(cons) |   .5536575   .0124818      .5291937    .5781214
+------------------------------------------------------------------------------
+
+. reffadjust4nlcom cons standlrt, eqn(RP2)
+
+. nlcom `r(beta_standlrt)'
+
+       _nl_1: [RP2]cov(cons\standlrt)/[RP2]var(standlrt)
+
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       _nl_1 |   1.241144   .4275471     2.90   0.004     .4031675    2.079121
+------------------------------------------------------------------------------
+
+. 
+. * compare with Bayesian posterior distribution
+. runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons st
+> andlrt) batch mcmc(on) initsprevious seed(121211)
+ 
+ --- Begin MLwiN error log --- 
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 20:02:02
+
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000003.tmp
+
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000007.tmp
+
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000001.tmp
+ --- End MLwiN error log --- 
+
+MLwiN 3.13 multilevel model                     Number of obs      =      4059
+Normal response model (hierarchical)
+Estimation algorithm: MCMC
+
+-----------------------------------------------------------
+                |   No. of       Observations per Group
+ Level Variable |   Groups    Minimum    Average    Maximum
+----------------+------------------------------------------
+         school |       65          2       62.4        198
+-----------------------------------------------------------
+
+Burnin                     =        500
+Chain                      =       5000
+Thinning                   =          1
+Run time (seconds)         =       1.35
+Deviance (dbar)            =    9123.21
+Deviance (thetabar)        =    9031.71
+Effective no. of pars (pd) =      91.49
+Bayesian DIC               =    9214.70
+------------------------------------------------------------------------------
+    normexam |      Mean    Std. Dev.     ESS     P       [95% Cred. Interval]
+-------------+----------------------------------------------------------------
+        cons |  -.0125681    .040883      249   0.381    -.0905471    .0686477
+    standlrt |   .5564547   .0208367      706   0.000     .5150133     .597012
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+   Random-effects Parameters |     Mean   Std. Dev.   ESS     [95% Cred. Int]
+-----------------------------+------------------------------------------------
+Level 2: school              |
+                   var(cons) |  .0971118  .0200117   2667   .0646451  .1426135
+          cov(cons,standlrt) |  .0193325  .0073905   1722   .0065965  .0353707
+               var(standlrt) |  .0152639  .0048458    957   .0077234  .0266211
+-----------------------------+------------------------------------------------
+Level 1: student             |
+                   var(cons) |  .5543991  .0124193   4550   .5305235  .5790426
+------------------------------------------------------------------------------
+
+. mcmcsum, getchains
+
+. reffadjustsim cons standlrt, eqn(RP2) mcmcsum
+
+------------------------------------------------------------------------------
+        cons |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+    standlrt |   1.299248                 .4498257             2.24639
+------------------------------------------------------------------------------
+
+. 
+. 
+. 
+end of do-file
+
+. log cl
+      name:  <unnamed>
+       log:  D:\reffadjust\test.log
+  log type:  text
+ closed on:  20 Mar 2025, 20:02:08
+-------------------------------------------------------------------------------
