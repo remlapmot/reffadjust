@@ -1,8 +1,8 @@
--------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  master
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/master.log
   log type:  text
- opened on:  12 Oct 2024, 13:04:31
+ opened on:  20 Mar 2025, 15:37:22
 
 . 
 . cscript master
@@ -27,7 +27,7 @@
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjust4nlcom.l
 > og
   log type:  text
- opened on:  12 Oct 2024, 13:04:31
+ opened on:  20 Mar 2025, 15:37:22
 
 . * 2023-01-25 Examples from reffadjust4nlcom helpfile
 . 
@@ -42,14 +42,14 @@
 . about
 
 StataNow/MP 18.5 for Mac (Apple Silicon)
-Revision 04 Sep 2024
+Revision 26 Feb 2025
 Copyright 1985-2023 StataCorp LLC
 
 Total physical memory: 8.01 GB
 
-Stata license: Unlimited-user 2-core network, expiring 29 Jan 2025
+Stata license: Unlimited-user 2-core network, expiring 29 Jan 2026
 Serial number: 501809305331
-  Licensed to: Tom Palmer
+  Licensed to: IT Services
                University of Bristol
 
 . 
@@ -74,11 +74,11 @@ Serial number: 501809305331
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 12 Oct 2024 12:04:36.169900
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:37:22.647719
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000002
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000002
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000006
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -93,7 +93,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       4.20
+Run time (seconds)   =       0.20
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -156,13 +156,13 @@ Level 1: student             |
 >     seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 12 Oct 2024 12:04:36.313123
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:37:22.786968
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000003
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000003
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000007
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000007
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000001
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -231,13 +231,13 @@ beta_standlrt|   1.289067    .456183      857   0.001     .4577979       2.279
 >  (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 12 Oct 2024 12:04:37.584789
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:37:24.065771
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000002
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000002
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000006
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000006
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000007
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -252,7 +252,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.14
+Run time (seconds)   =       0.15
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -322,15 +322,15 @@ Level 1: student             |
 > seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 12 Oct 2024 12:04:37.755552
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:37:24.253844
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000003
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000003
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000007
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000007
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000008
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000008
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000001
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -348,7 +348,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.81
+Run time (seconds)         =       1.82
 Deviance (dbar)            =   29388.29
 Deviance (thetabar)        =   28877.57
 Effective no. of pars (pd) =     510.73
@@ -1239,13 +1239,13 @@ end of do-file
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjust4nlcom.l
 > og
   log type:  text
- closed on:  12 Oct 2024, 13:06:14
+ closed on:  20 Mar 2025, 15:39:01
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
       name:  reffadjustsim
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
   log type:  text
- opened on:  12 Oct 2024, 13:06:14
+ opened on:  20 Mar 2025, 15:39:01
 
 . * 2023-01-25 reffadjustsim cscript
 . 
@@ -1260,14 +1260,14 @@ end of do-file
 . about
 
 StataNow/MP 18.5 for Mac (Apple Silicon)
-Revision 04 Sep 2024
+Revision 26 Feb 2025
 Copyright 1985-2023 StataCorp LLC
 
 Total physical memory: 8.01 GB
 
-Stata license: Unlimited-user 2-core network, expiring 29 Jan 2025
+Stata license: Unlimited-user 2-core network, expiring 29 Jan 2026
 Serial number: 501809305331
-  Licensed to: Tom Palmer
+  Licensed to: IT Services
                University of Bristol
 
 . 
@@ -1292,11 +1292,11 @@ Serial number: 501809305331
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 12 Oct 2024 12:06:16.226881
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:39:01.561295
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000002
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000002
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000006
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1311,7 +1311,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.08
+Run time (seconds)   =       0.06
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -1363,11 +1363,11 @@ Please compare with default output which reports median & centiles.
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 12 Oct 2024 12:06:16.341815
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:39:01.679006
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000002
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000002
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000006
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1423,13 +1423,13 @@ Level 1: student             |
 >     level2(school: cons standlrt) batch mcmc(on) initsprevious seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 12 Oct 2024 12:06:16.457032
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:39:01.793333
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000003
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000003
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000007
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000007
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000001
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1447,7 +1447,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.07
+Run time (seconds)         =       1.06
 Deviance (dbar)            =    9122.42
 Deviance (thetabar)        =    9031.09
 Effective no. of pars (pd) =      91.34
@@ -1494,13 +1494,13 @@ Level 1: student             |
 >     level2(school: (cons, eq(1)) (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 12 Oct 2024 12:06:17.703822
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:39:03.030484
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000002
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000002
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000006
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000006
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000007
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1515,7 +1515,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.14
+Run time (seconds)   =       0.13
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -1574,13 +1574,13 @@ Please compare with default output which reports median & centiles.
 >     level2(school: (cons, eq(1)) (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 12 Oct 2024 12:06:17.904518
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:39:03.223046
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000002
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000002
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000006
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000006
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000007
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1595,7 +1595,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.13
+Run time (seconds)   =       0.12
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -1645,15 +1645,15 @@ Level 1: student             |
 > seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 12 Oct 2024 12:06:18.067408
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:39:03.392230
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000003
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000003
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000007
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000007
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000008
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000008
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95103.000001
+/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1671,7 +1671,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.81
+Run time (seconds)         =       1.82
 Deviance (dbar)            =   29388.29
 Deviance (thetabar)        =   28877.57
 Effective no. of pars (pd) =     510.73
@@ -2489,7 +2489,7 @@ end of do-file
       name:  reffadjustsim
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
   log type:  text
- closed on:  12 Oct 2024, 13:07:55
+ closed on:  20 Mar 2025, 15:40:41
 -------------------------------------------------------------------------------
 
 . 
@@ -2497,5 +2497,5 @@ end of do-file
       name:  master
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/master.log
   log type:  text
- closed on:  12 Oct 2024, 13:07:55
+ closed on:  20 Mar 2025, 15:40:41
 -------------------------------------------------------------------------------
