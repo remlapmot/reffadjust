@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
       name:  reffadjustsim
-       log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
+       log:  D:\reffadjust\cscripts\reffadjustsim.log
   log type:  text
- opened on:  20 Mar 2025, 15:39:01
+ opened on:  20 Mar 2025, 19:55:42
 
 . * 2023-01-25 reffadjustsim cscript
 . 
@@ -10,17 +10,18 @@
 ------------------------------------------------------------BEGIN reffadjustsim
 
 -> which reffadjustsim, usesysdir
-/Users/tom/Documents/GitHub/reffadjust/reffadjustsim.ado
+D:\reffadjust\reffadjustsim.ado
 *! version 1.1.0 2sep2013 Tom Palmer & Corrie Macdonald-Wallis
 
 . 
 . about
 
-StataNow/MP 18.5 for Mac (Apple Silicon)
+StataNow/MP 18.5 for Windows (64-bit x86-64)
 Revision 26 Feb 2025
 Copyright 1985-2023 StataCorp LLC
 
-Total physical memory: 8.01 GB
+Total physical memory:       32.00 GB
+Available physical memory:   19.03 GB
 
 Stata license: Unlimited-user 2-core network, expiring 29 Jan 2026
 Serial number: 501809305331
@@ -31,7 +32,7 @@ Serial number: 501809305331
 . // Examples 1 & 2 assume the path to the MLwiN executable is set in global ML
 > wiN_path; see runmlwin
 . 
-. if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.11\\mlwi
+. if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.13\\mlwi
 > n.exe"
 
 . if c(machine_type) == "Mac (Apple Silicon)" global MLwiN_path "/opt/mln/mlnsc
@@ -49,14 +50,13 @@ Serial number: 501809305331
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:39:01.561295
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 19:55:43
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000002
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000002.tmp
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000006
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000006.tmp
  --- End MLwiN error log --- 
 
-Warning: getversion plugin could not be loaded
 MLwiN 3.13 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: IGLS
@@ -68,7 +68,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.06
+Run time (seconds)   =       1.43
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -120,14 +120,13 @@ Please compare with default output which reports median & centiles.
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:39:01.679006
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 19:55:44
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000002
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000002.tmp
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000006
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000006.tmp
  --- End MLwiN error log --- 
 
-Warning: getversion plugin could not be loaded
 MLwiN 3.13 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: IGLS
@@ -139,7 +138,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.04
+Run time (seconds)   =       0.33
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -180,16 +179,15 @@ Level 1: student             |
 >     level2(school: cons standlrt) batch mcmc(on) initsprevious seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:39:01.793333
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 19:55:45
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000003
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000003.tmp
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000007
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000007.tmp
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000001
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000001.tmp
  --- End MLwiN error log --- 
 
-Warning: getversion plugin could not be loaded
 MLwiN 3.13 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: MCMC
@@ -204,28 +202,28 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.06
-Deviance (dbar)            =    9122.42
-Deviance (thetabar)        =    9031.09
-Effective no. of pars (pd) =      91.34
-Bayesian DIC               =    9213.76
+Run time (seconds)         =       1.45
+Deviance (dbar)            =    9123.21
+Deviance (thetabar)        =    9031.71
+Effective no. of pars (pd) =      91.49
+Bayesian DIC               =    9214.70
 ------------------------------------------------------------------------------
     normexam |      Mean    Std. Dev.     ESS     P       [95% Cred. Interval]
 -------------+----------------------------------------------------------------
-        cons |   -.010594    .040224      189   0.395    -.0908355    .0678323
-    standlrt |   .5568075   .0200344      839   0.000     .5167302    .5960792
+        cons |  -.0125681    .040883      249   0.381    -.0905471    .0686477
+    standlrt |   .5564547   .0208367      706   0.000     .5150133     .597012
 ------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
    Random-effects Parameters |     Mean   Std. Dev.   ESS     [95% Cred. Int]
 -----------------------------+------------------------------------------------
 Level 2: school              |
-                   var(cons) |  .0961163  .0199991   2715   .0644542  .1421674
-          cov(cons,standlrt) |  .0190683  .0072205   1713   .0065699   .034989
-               var(standlrt) |  .0153485  .0046893    978   .0078805  .0261361
+                   var(cons) |  .0971118  .0200117   2667   .0646451  .1426135
+          cov(cons,standlrt) |  .0193325  .0073905   1722   .0065965  .0353707
+               var(standlrt) |  .0152639  .0048458    957   .0077234  .0266211
 -----------------------------+------------------------------------------------
 Level 1: student             |
-                   var(cons) |  .5542075  .0123209   4645   .5309043   .578929
+                   var(cons) |  .5543991  .0124193   4550   .5305235  .5790426
 ------------------------------------------------------------------------------
 
 . mcmcsum, getchains
@@ -235,7 +233,7 @@ Level 1: student             |
 ------------------------------------------------------------------------------
         cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-    standlrt |   1.266334                 .4572121            2.281147
+    standlrt |   1.299248                 .4498257             2.24639
 ------------------------------------------------------------------------------
 
 . 
@@ -251,16 +249,15 @@ Level 1: student             |
 >     level2(school: (cons, eq(1)) (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:39:03.030484
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 19:55:46
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000002
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000002.tmp
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000006
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000006.tmp
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000007
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000007.tmp
  --- End MLwiN error log --- 
 
-Warning: getversion plugin could not be loaded
 MLwiN 3.13 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: IGLS
@@ -272,7 +269,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.13
+Run time (seconds)   =       0.47
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -331,16 +328,15 @@ Please compare with default output which reports median & centiles.
 >     level2(school: (cons, eq(1)) (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:39:03.223046
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 19:55:47
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000002
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000002.tmp
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000006
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000006.tmp
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000007
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000007.tmp
  --- End MLwiN error log --- 
 
-Warning: getversion plugin could not be loaded
 MLwiN 3.13 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: IGLS
@@ -352,7 +348,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.12
+Run time (seconds)   =       0.46
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -402,18 +398,17 @@ Level 1: student             |
 > seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Thu 20 Mar 2025 15:39:03.392230
+MLN - Software for N-level analysis.   Thu 20 Mar 2025 19:55:47
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000003
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000003.tmp
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000007
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000007.tmp
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000008
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000008.tmp
 
-/var/folders/ly/ywcn0q251jj24qrshjnt1jjc0000gp/T//S_95402.000001
+C:\Users\tom\AppData\Local\Temp\ST_6da8_000001.tmp
  --- End MLwiN error log --- 
 
-Warning: getversion plugin could not be loaded
 MLwiN 3.13 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: MCMC
@@ -428,35 +423,35 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.82
-Deviance (dbar)            =   29388.29
-Deviance (thetabar)        =   28877.57
-Effective no. of pars (pd) =     510.73
-Bayesian DIC               =   29899.02
+Run time (seconds)         =       2.18
+Deviance (dbar)            =   29389.01
+Deviance (thetabar)        =   28878.48
+Effective no. of pars (pd) =     510.53
+Bayesian DIC               =   29899.54
 ------------------------------------------------------------------------------
              |      Mean    Std. Dev.     ESS     P       [95% Cred. Interval]
 -------------+----------------------------------------------------------------
 written      |
-      cons_1 |   49.50607   .9899419      242   0.000     47.57032    51.46915
-    female_1 |  -2.492796   .5577673     3451   0.000    -3.593134   -1.390972
+      cons_1 |   49.32531   .9430359      293   0.000      47.4336    51.20851
+    female_1 |  -2.494497   .5558111     3558   0.000    -3.552968   -1.406893
 -------------+----------------------------------------------------------------
 csework      |
-      cons_2 |    69.6792   1.232286      222   0.000     67.27528    72.03018
-    female_2 |   6.761519     .67411     3672   0.000     5.458935    8.089689
+      cons_2 |   69.67221   1.235998      223   0.000     67.21374    71.98098
+    female_2 |   6.754143   .6706416     3688   0.000     5.402785    8.054021
 ------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
    Random-effects Parameters |     Mean   Std. Dev.   ESS     [95% Cred. Int]
 -----------------------------+------------------------------------------------
 Level 2: school              |
-                 var(cons_1) |  50.08992   10.5095   2376   32.88132  73.71481
-          cov(cons_1,cons_2) |  26.20564  9.578987   2490   9.893032  46.83127
-                 var(cons_2) |  78.90363  15.49003   2637   53.52962  112.7813
+                 var(cons_1) |  49.54078  10.16831   2521   33.04803  74.00938
+          cov(cons_1,cons_2) |  26.33935   9.65715   2616   9.302722  46.84858
+                 var(cons_2) |   79.7973  15.77671   2759   53.62886  115.5522
 -----------------------------+------------------------------------------------
 Level 1: student             |
-                 var(cons_1) |  124.8802  4.356383   3734   116.8696  133.6906
-          cov(cons_1,cons_2) |    73.189  4.186575   3819   65.23343  81.54988
-                 var(cons_2) |   180.573   6.35916   4068   168.6235  193.2279
+                 var(cons_1) |  125.0641  4.407213   3493   116.7799  134.0302
+          cov(cons_1,cons_2) |  73.19428  4.198675   3552   65.40832  81.85799
+                 var(cons_2) |  180.6279  6.336076   3797   168.7305  193.4391
 ------------------------------------------------------------------------------
 
 . mcmcsum, getchains
@@ -466,7 +461,7 @@ Level 1: student             |
 ------------------------------------------------------------------------------
       cons_1 |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-      cons_2 |    .331149                   .13241            .5309237
+      cons_2 |   .3308952                 .1273949            .5275119
 ------------------------------------------------------------------------------
 
 . 
@@ -482,7 +477,7 @@ Performing EM optimization:
 Performing gradient-based optimization: 
 
 Iteration 0:  Log likelihood = -8985.3816  
-Iteration 1:  Log likelihood = -8966.3054  
+Iteration 1:  Log likelihood = -8966.2943  
 Iteration 2:  Log likelihood =  -8965.819  
 Iteration 3:  Log likelihood =  -8965.819  
 
@@ -533,7 +528,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-      tenure |   1.377053                 .2240176            2.619102
+      tenure |   1.377053                 .2240179            2.619103
 ------------------------------------------------------------------------------
 
 . version 13: mixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure
@@ -544,7 +539,7 @@ Performing EM optimization:
 Performing gradient-based optimization: 
 
 Iteration 0:  Log likelihood = -8985.3816  
-Iteration 1:  Log likelihood = -8966.3054  
+Iteration 1:  Log likelihood = -8966.2943  
 Iteration 2:  Log likelihood =  -8965.819  
 Iteration 3:  Log likelihood =  -8965.819  
 
@@ -595,7 +590,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-      tenure |   1.377053                 .2240176            2.619102
+      tenure |   1.377053                 .2240179            2.619103
 ------------------------------------------------------------------------------
 
 . mixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure || idcode: 
@@ -605,7 +600,7 @@ Performing EM optimization ...
 
 Performing gradient-based optimization: 
 Iteration 0:  Log likelihood = -8985.3816  
-Iteration 1:  Log likelihood = -8966.3858  
+Iteration 1:  Log likelihood = -8966.3619  
 Iteration 2:  Log likelihood =  -8965.819  
 Iteration 3:  Log likelihood =  -8965.819  
 
@@ -642,7 +637,7 @@ Log likelihood =  -8965.819                         Prob > chi2      =  0.0000
 -----------------------------+------------------------------------------------
 idcode: Unstructured         |
                  var(tenure) |   .0005174   .0000566      .0004176    .0006411
-                  var(_cons) |   .0632497   .0020808      .0593001    .0674625
+                  var(_cons) |   .0632497   .0020808      .0593001    .0674624
            cov(tenure,_cons) |   .0007165   .0002809      .0001658    .0012671
 -----------------------------+------------------------------------------------
                var(Residual) |   .0815016   .0007978      .0799529    .0830803
@@ -656,7 +651,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-      tenure |   1.377052                 .2240167            2.619102
+      tenure |   1.377053                 .2240179            2.619102
 ------------------------------------------------------------------------------
 
 . 
@@ -671,12 +666,12 @@ Refining starting values:
 
 Iteration 0:  Log likelihood = -1215.8594  (not concave)
 Iteration 1:  Log likelihood = -1204.0802  
-Iteration 2:  Log likelihood = -1199.7991  
+Iteration 2:  Log likelihood = -1199.7972  
 
 Performing gradient-based optimization: 
 
-Iteration 0:  Log likelihood = -1199.7991  
-Iteration 1:  Log likelihood = -1199.4804  
+Iteration 0:  Log likelihood = -1199.7972  
+Iteration 1:  Log likelihood = -1199.4736  
 Iteration 2:  Log likelihood = -1199.3158  
 Iteration 3:  Log likelihood =  -1199.315  
 Iteration 4:  Log likelihood =  -1199.315  
@@ -695,11 +690,11 @@ Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
 ------------------------------------------------------------------------------
        c_use | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-       urban |   .8157872    .171552     4.76   0.000     .4795516    1.152023
+       urban |   .8157872   .1715519     4.76   0.000     .4795516    1.152023
          age |   -.026415    .008023    -3.29   0.001    -.0421398   -.0106902
-      child1 |    1.13252   .1603285     7.06   0.000     .8182819    1.446758
+      child1 |    1.13252   .1603285     7.06   0.000      .818282    1.446758
       child2 |   1.357739   .1770522     7.67   0.000     1.010724    1.704755
-      child3 |   1.353827   .1828801     7.40   0.000     .9953881    1.712265
+      child3 |   1.353827   .1828801     7.40   0.000     .9953882    1.712265
     children |          0  (omitted)
        _cons |   -1.71165   .1605617   -10.66   0.000    -2.026345   -1.396954
 ------------------------------------------------------------------------------
@@ -708,9 +703,9 @@ Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
   Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
 -----------------------------+------------------------------------------------
 district: Unstructured       |
-                  var(urban) |   .6663223   .3224716      .2580709    1.720401
-                  var(_cons) |   .3897434   .1292459      .2034722    .7465388
-            cov(urban,_cons) |  -.4058846   .1755418     -.7499403   -.0618289
+                  var(urban) |   .6663221   .3224715      .2580709      1.7204
+                  var(_cons) |   .3897434   .1292458      .2034723    .7465388
+            cov(urban,_cons) |  -.4058846   .1755418     -.7499402   -.0618289
 ------------------------------------------------------------------------------
 LR test vs. logistic model: chi2(3) = 58.42               Prob > chi2 = 0.0000
 
@@ -721,7 +716,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       urban |  -.5931824                -.9623631           -.2892333
+       urban |  -.5931825                -.9623632           -.2892334
 ------------------------------------------------------------------------------
 
 . webuse bangladesh, clear
@@ -734,12 +729,12 @@ Refining starting values:
 
 Iteration 0:  Log likelihood = -1215.8594  (not concave)
 Iteration 1:  Log likelihood = -1204.0802  
-Iteration 2:  Log likelihood = -1199.7991  
+Iteration 2:  Log likelihood = -1199.7972  
 
 Performing gradient-based optimization: 
 
-Iteration 0:  Log likelihood = -1199.7991  
-Iteration 1:  Log likelihood = -1199.4804  
+Iteration 0:  Log likelihood = -1199.7972  
+Iteration 1:  Log likelihood = -1199.4736  
 Iteration 2:  Log likelihood = -1199.3158  
 Iteration 3:  Log likelihood =  -1199.315  
 Iteration 4:  Log likelihood =  -1199.315  
@@ -758,11 +753,11 @@ Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
 ------------------------------------------------------------------------------
        c_use | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-       urban |   .8157872    .171552     4.76   0.000     .4795516    1.152023
+       urban |   .8157872   .1715519     4.76   0.000     .4795516    1.152023
          age |   -.026415    .008023    -3.29   0.001    -.0421398   -.0106902
-      child1 |    1.13252   .1603285     7.06   0.000     .8182819    1.446758
+      child1 |    1.13252   .1603285     7.06   0.000      .818282    1.446758
       child2 |   1.357739   .1770522     7.67   0.000     1.010724    1.704755
-      child3 |   1.353827   .1828801     7.40   0.000     .9953881    1.712265
+      child3 |   1.353827   .1828801     7.40   0.000     .9953882    1.712265
     children |          0  (omitted)
        _cons |   -1.71165   .1605617   -10.66   0.000    -2.026345   -1.396954
 ------------------------------------------------------------------------------
@@ -771,9 +766,9 @@ Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
   Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
 -----------------------------+------------------------------------------------
 district: Unstructured       |
-                  var(urban) |   .6663223   .3224716      .2580709    1.720401
-                  var(_cons) |   .3897434   .1292459      .2034722    .7465388
-            cov(urban,_cons) |  -.4058846   .1755418     -.7499403   -.0618289
+                  var(urban) |   .6663221   .3224715      .2580709      1.7204
+                  var(_cons) |   .3897434   .1292458      .2034723    .7465388
+            cov(urban,_cons) |  -.4058846   .1755418     -.7499402   -.0618289
 ------------------------------------------------------------------------------
 LR test vs. logistic model: chi2(3) = 58.42               Prob > chi2 = 0.0000
 
@@ -784,7 +779,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       urban |  -.5931824                -.9623631           -.2892333
+       urban |  -.5931825                -.9623632           -.2892334
 ------------------------------------------------------------------------------
 
 . webuse bangladesh, clear
@@ -797,12 +792,12 @@ Refining starting values:
 
 Iteration 0:  Log likelihood = -1215.8594  (not concave)
 Iteration 1:  Log likelihood = -1204.0802  
-Iteration 2:  Log likelihood = -1199.7991  
+Iteration 2:  Log likelihood = -1199.7972  
 
 Performing gradient-based optimization: 
 
-Iteration 0:  Log likelihood = -1199.7991  
-Iteration 1:  Log likelihood = -1199.4804  
+Iteration 0:  Log likelihood = -1199.7972  
+Iteration 1:  Log likelihood = -1199.4736  
 Iteration 2:  Log likelihood = -1199.3158  
 Iteration 3:  Log likelihood =  -1199.315  
 Iteration 4:  Log likelihood =  -1199.315  
@@ -821,11 +816,11 @@ Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
 ------------------------------------------------------------------------------
        c_use | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-       urban |   .8157872    .171552     4.76   0.000     .4795516    1.152023
+       urban |   .8157872   .1715519     4.76   0.000     .4795516    1.152023
          age |   -.026415    .008023    -3.29   0.001    -.0421398   -.0106902
-      child1 |    1.13252   .1603285     7.06   0.000     .8182819    1.446758
+      child1 |    1.13252   .1603285     7.06   0.000      .818282    1.446758
       child2 |   1.357739   .1770522     7.67   0.000     1.010724    1.704755
-      child3 |   1.353827   .1828801     7.40   0.000     .9953881    1.712265
+      child3 |   1.353827   .1828801     7.40   0.000     .9953882    1.712265
     children |          0  (omitted)
        _cons |   -1.71165   .1605617   -10.66   0.000    -2.026345   -1.396954
 ------------------------------------------------------------------------------
@@ -834,9 +829,9 @@ Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
   Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
 -----------------------------+------------------------------------------------
 district: Unstructured       |
-                  var(urban) |   .6663223   .3224716      .2580709    1.720401
-                  var(_cons) |   .3897434   .1292459      .2034722    .7465388
-            cov(urban,_cons) |  -.4058846   .1755418     -.7499403   -.0618289
+                  var(urban) |   .6663221   .3224715      .2580709      1.7204
+                  var(_cons) |   .3897434   .1292458      .2034723    .7465388
+            cov(urban,_cons) |  -.4058846   .1755418     -.7499402   -.0618289
 ------------------------------------------------------------------------------
 LR test vs. logistic model: chi2(3) = 58.42               Prob > chi2 = 0.0000
 
@@ -847,7 +842,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       urban |  -.5931824                -.9623631           -.2892333
+       urban |  -.5931825                -.9623632           -.2892334
 ------------------------------------------------------------------------------
 
 . 
@@ -862,12 +857,12 @@ Refining starting values:
 
 Iteration 0:  Log likelihood = -672.17188  (not concave)
 Iteration 1:  Log likelihood = -660.46056  
-Iteration 2:  Log likelihood = -655.86903  
+Iteration 2:  Log likelihood = -655.86897  
 
 Performing gradient-based optimization: 
 
-Iteration 0:  Log likelihood = -655.86903  
-Iteration 1:  Log likelihood = -655.68216  
+Iteration 0:  Log likelihood = -655.86897  
+Iteration 1:  Log likelihood = -655.68211  
 Iteration 2:  Log likelihood = -655.68103  
 Iteration 3:  Log likelihood = -655.68103  
 
@@ -885,12 +880,12 @@ Log likelihood = -655.68103                     Prob > chi2       =     0.0000
 ------------------------------------------------------------------------------
     seizures | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-       treat |  -.9286589   .4021642    -2.31   0.021    -1.716886   -.1404316
-        lbas |   .8849766    .131252     6.74   0.000     .6277275    1.142226
-    lbas_trt |   .3379758   .2044444     1.65   0.098    -.0627279    .7386794
-        lage |   .4767192    .353622     1.35   0.178    -.2163673    1.169806
+       treat |  -.9286588   .4021644    -2.31   0.021    -1.716886   -.1404311
+        lbas |   .8849767    .131252     6.74   0.000     .6277275    1.142226
+    lbas_trt |   .3379757   .2044445     1.65   0.098    -.0627282    .7386796
+        lage |   .4767192   .3536221     1.35   0.178    -.2163673    1.169806
        visit |  -.2664098   .1647096    -1.62   0.106    -.5892347    .0564151
-       _cons |   2.099555   .2203711     9.53   0.000     1.667635    2.531474
+       _cons |   2.099555   .2203712     9.53   0.000     1.667635    2.531474
 ------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
@@ -910,7 +905,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       visit |    .004434                -.3128617            .3397987
+       visit |   .0044339                -.3128617            .3397987
 ------------------------------------------------------------------------------
 
 . version 13: meqrpoisson seizures treat lbas lbas_trt lage visit || subject: v
@@ -920,12 +915,12 @@ Refining starting values:
 
 Iteration 0:  Log likelihood = -672.17188  (not concave)
 Iteration 1:  Log likelihood = -660.46056  
-Iteration 2:  Log likelihood = -655.86903  
+Iteration 2:  Log likelihood = -655.86897  
 
 Performing gradient-based optimization: 
 
-Iteration 0:  Log likelihood = -655.86903  
-Iteration 1:  Log likelihood = -655.68216  
+Iteration 0:  Log likelihood = -655.86897  
+Iteration 1:  Log likelihood = -655.68211  
 Iteration 2:  Log likelihood = -655.68103  
 Iteration 3:  Log likelihood = -655.68103  
 
@@ -943,12 +938,12 @@ Log likelihood = -655.68103                     Prob > chi2       =     0.0000
 ------------------------------------------------------------------------------
     seizures | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-       treat |  -.9286589   .4021642    -2.31   0.021    -1.716886   -.1404316
-        lbas |   .8849766    .131252     6.74   0.000     .6277275    1.142226
-    lbas_trt |   .3379758   .2044444     1.65   0.098    -.0627279    .7386794
-        lage |   .4767192    .353622     1.35   0.178    -.2163673    1.169806
+       treat |  -.9286588   .4021644    -2.31   0.021    -1.716886   -.1404311
+        lbas |   .8849767    .131252     6.74   0.000     .6277275    1.142226
+    lbas_trt |   .3379757   .2044445     1.65   0.098    -.0627282    .7386796
+        lage |   .4767192   .3536221     1.35   0.178    -.2163673    1.169806
        visit |  -.2664098   .1647096    -1.62   0.106    -.5892347    .0564151
-       _cons |   2.099555   .2203711     9.53   0.000     1.667635    2.531474
+       _cons |   2.099555   .2203712     9.53   0.000     1.667635    2.531474
 ------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
@@ -968,7 +963,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       visit |    .004434                -.3128617            .3397987
+       visit |   .0044339                -.3128617            .3397987
 ------------------------------------------------------------------------------
 
 . meqrpoisson seizures treat lbas lbas_trt lage visit || subject: visit, cov(un
@@ -978,12 +973,12 @@ Refining starting values:
 
 Iteration 0:  Log likelihood = -672.17188  (not concave)
 Iteration 1:  Log likelihood = -660.46056  
-Iteration 2:  Log likelihood = -655.86903  
+Iteration 2:  Log likelihood = -655.86897  
 
 Performing gradient-based optimization: 
 
-Iteration 0:  Log likelihood = -655.86903  
-Iteration 1:  Log likelihood = -655.68216  
+Iteration 0:  Log likelihood = -655.86897  
+Iteration 1:  Log likelihood = -655.68211  
 Iteration 2:  Log likelihood = -655.68103  
 Iteration 3:  Log likelihood = -655.68103  
 
@@ -1001,12 +996,12 @@ Log likelihood = -655.68103                     Prob > chi2       =     0.0000
 ------------------------------------------------------------------------------
     seizures | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-       treat |  -.9286589   .4021642    -2.31   0.021    -1.716886   -.1404316
-        lbas |   .8849766    .131252     6.74   0.000     .6277275    1.142226
-    lbas_trt |   .3379758   .2044444     1.65   0.098    -.0627279    .7386794
-        lage |   .4767192    .353622     1.35   0.178    -.2163673    1.169806
+       treat |  -.9286588   .4021644    -2.31   0.021    -1.716886   -.1404311
+        lbas |   .8849767    .131252     6.74   0.000     .6277275    1.142226
+    lbas_trt |   .3379757   .2044445     1.65   0.098    -.0627282    .7386796
+        lage |   .4767192   .3536221     1.35   0.178    -.2163673    1.169806
        visit |  -.2664098   .1647096    -1.62   0.106    -.5892347    .0564151
-       _cons |   2.099555   .2203711     9.53   0.000     1.667635    2.531474
+       _cons |   2.099555   .2203712     9.53   0.000     1.667635    2.531474
 ------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
@@ -1026,7 +1021,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       visit |    .004434                -.3128617            .3397987
+       visit |   .0044339                -.3128617            .3397987
 ------------------------------------------------------------------------------
 
 . 
@@ -1042,12 +1037,13 @@ Performing EM optimization:
 Performing gradient-based optimization: 
 
 Iteration 0:  Log likelihood = -5208.9293  
-Iteration 1:  Log likelihood = -5196.1179  (not concave)
-Iteration 2:  Log likelihood = -5176.3192  
-Iteration 3:  Log likelihood = -5171.5874  
-Iteration 4:  Log likelihood = -5171.0757  
-Iteration 5:  Log likelihood = -5171.0495  
-Iteration 6:  Log likelihood = -5171.0492  
+Iteration 1:  Log likelihood = -5195.8418  (not concave)
+Iteration 2:  Log likelihood = -5176.3994  (not concave)
+Iteration 3:  Log likelihood = -5173.7903  
+Iteration 4:  Log likelihood = -5171.6533  
+Iteration 5:  Log likelihood = -5171.0807  
+Iteration 6:  Log likelihood = -5171.0497  
+Iteration 7:  Log likelihood = -5171.0492  
 
 Computing standard errors:
 
@@ -1073,15 +1069,15 @@ Log likelihood = -5171.0492                         Prob > chi2      =  0.0000
 -----------------------------+------------------------------------------------
 idcode: Unstructured         |
                  var(tenure) |   .0007758   .0000666      .0006556    .0009181
-                  var(union) |   .0514475   .0041886      .0438595    .0603483
+                  var(union) |   .0514474   .0041886      .0438594    .0603482
            cov(tenure,union) |   .0016667   .0004909      .0007044    .0026289
 -----------------------------+------------------------------------------------
 idcode: Unstructured         |
-                   var(race) |   .0202236    .013914      .0052508    .0778915
-                  var(_cons) |   .1578102   .0312782      .1070104    .2327257
-             cov(race,_cons) |  -.0401892   .0220462      -.083399    .0030206
+                   var(race) |   .0202178   .0139141      .0052472    .0779002
+                  var(_cons) |   .1577976   .0312792      .1069972    .2327173
+             cov(race,_cons) |  -.0401801   .0220467     -.0833909    .0030307
 -----------------------------+------------------------------------------------
-               var(Residual) |   .0583641   .0007602      .0568929    .0598732
+               var(Residual) |    .058364   .0007602      .0568929    .0598732
 ------------------------------------------------------------------------------
 LR test vs. linear model: chi2(6) = 10154.21              Prob > chi2 = 0.0000
 
@@ -1100,7 +1096,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
         race |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       _cons |  -.2544458                -.4765553           -.1166169
+       _cons |  -.2544072                -.4765797           -.1165675
 ------------------------------------------------------------------------------
 
 . version 13: mixed ln_w grade age || idcode: tenure union, cov(uns) || idcode:
@@ -1111,12 +1107,13 @@ Performing EM optimization:
 Performing gradient-based optimization: 
 
 Iteration 0:  Log likelihood = -5208.9293  
-Iteration 1:  Log likelihood = -5196.1179  (not concave)
-Iteration 2:  Log likelihood = -5176.3192  
-Iteration 3:  Log likelihood = -5171.5874  
-Iteration 4:  Log likelihood = -5171.0757  
-Iteration 5:  Log likelihood = -5171.0495  
-Iteration 6:  Log likelihood = -5171.0492  
+Iteration 1:  Log likelihood = -5195.8418  (not concave)
+Iteration 2:  Log likelihood = -5176.3994  (not concave)
+Iteration 3:  Log likelihood = -5173.7903  
+Iteration 4:  Log likelihood = -5171.6533  
+Iteration 5:  Log likelihood = -5171.0807  
+Iteration 6:  Log likelihood = -5171.0497  
+Iteration 7:  Log likelihood = -5171.0492  
 
 Computing standard errors:
 
@@ -1142,13 +1139,83 @@ Log likelihood = -5171.0492                         Prob > chi2      =  0.0000
 -----------------------------+------------------------------------------------
 idcode: Unstructured         |
                  var(tenure) |   .0007758   .0000666      .0006556    .0009181
+                  var(union) |   .0514474   .0041886      .0438594    .0603482
+           cov(tenure,union) |   .0016667   .0004909      .0007044    .0026289
+-----------------------------+------------------------------------------------
+idcode: Unstructured         |
+                   var(race) |   .0202178   .0139141      .0052472    .0779002
+                  var(_cons) |   .1577976   .0312792      .1069972    .2327173
+             cov(race,_cons) |  -.0401801   .0220467     -.0833909    .0030307
+-----------------------------+------------------------------------------------
+               var(Residual) |    .058364   .0007602      .0568929    .0598732
+------------------------------------------------------------------------------
+LR test vs. linear model: chi2(6) = 10154.21              Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. reffadjustsim tenure union, eqn(idcode) sub(1) seed(12345)
+
+------------------------------------------------------------------------------
+      tenure |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+       union |   .0321253                 .0121897            .0521846
+------------------------------------------------------------------------------
+
+. reffadjustsim race _cons, eqn(idcode) sub(2) seed(12345)
+
+------------------------------------------------------------------------------
+        race |     Median              2.5 Percentile      97.5 Percentile
+-------------+----------------------------------------------------------------
+       _cons |  -.2544072                -.4765797           -.1165675
+------------------------------------------------------------------------------
+
+. mixed ln_w grade age || idcode: tenure union, cov(uns) || idcode: race, cov(u
+> ns)
+
+Performing EM optimization ...
+
+Performing gradient-based optimization: 
+Iteration 0:  Log likelihood = -5208.9293  
+Iteration 1:  Log likelihood = -5202.1418  (not concave)
+Iteration 2:  Log likelihood = -5175.7909  (not concave)
+Iteration 3:  Log likelihood = -5174.2151  
+Iteration 4:  Log likelihood = -5171.7083  
+Iteration 5:  Log likelihood = -5171.1308  
+Iteration 6:  Log likelihood = -5171.0521  
+Iteration 7:  Log likelihood = -5171.0492  
+Iteration 8:  Log likelihood = -5171.0492  
+
+Computing standard errors ...
+
+Mixed-effects ML regression                         Number of obs    =  19,008
+Group variable: idcode                              Number of groups =   4,132
+                                                    Obs per group:
+                                                                 min =       1
+                                                                 avg =     4.6
+                                                                 max =      12
+                                                    Wald chi2(2)     = 2164.18
+Log likelihood = -5171.0492                         Prob > chi2      =  0.0000
+
+------------------------------------------------------------------------------
+     ln_wage | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       grade |    .083625   .0022067    37.90   0.000        .0793      .08795
+         age |   .0104518   .0004215    24.80   0.000     .0096256    .0112779
+       _cons |   .2739858   .0306868     8.93   0.000     .2138408    .3341308
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+idcode: Unstructured         |
+                 var(tenure) |   .0007758   .0000666      .0006556    .0009181
                   var(union) |   .0514475   .0041886      .0438595    .0603483
            cov(tenure,union) |   .0016667   .0004909      .0007044    .0026289
 -----------------------------+------------------------------------------------
 idcode: Unstructured         |
-                   var(race) |   .0202236    .013914      .0052508    .0778915
-                  var(_cons) |   .1578102   .0312782      .1070104    .2327257
-             cov(race,_cons) |  -.0401892   .0220462      -.083399    .0030206
+                   var(race) |   .0202217   .0139129      .0052502    .0778863
+                  var(_cons) |   .1578058   .0312762      .1070088     .232716
+             cov(race,_cons) |  -.0401861   .0220447      -.083393    .0030207
 -----------------------------+------------------------------------------------
                var(Residual) |   .0583641   .0007602      .0568929    .0598732
 ------------------------------------------------------------------------------
@@ -1169,82 +1236,13 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
         race |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       _cons |  -.2544458                -.4765553           -.1166169
-------------------------------------------------------------------------------
-
-. mixed ln_w grade age || idcode: tenure union, cov(uns) || idcode: race, cov(u
-> ns)
-
-Performing EM optimization ...
-
-Performing gradient-based optimization: 
-Iteration 0:  Log likelihood = -5208.9293  
-Iteration 1:  Log likelihood = -5200.3367  (not concave)
-Iteration 2:  Log likelihood = -5175.6347  (not concave)
-Iteration 3:  Log likelihood = -5174.0452  
-Iteration 4:  Log likelihood = -5173.1083  
-Iteration 5:  Log likelihood = -5171.0617  
-Iteration 6:  Log likelihood = -5171.0496  
-Iteration 7:  Log likelihood = -5171.0492  
-
-Computing standard errors ...
-
-Mixed-effects ML regression                         Number of obs    =  19,008
-Group variable: idcode                              Number of groups =   4,132
-                                                    Obs per group:
-                                                                 min =       1
-                                                                 avg =     4.6
-                                                                 max =      12
-                                                    Wald chi2(2)     = 2164.18
-Log likelihood = -5171.0492                         Prob > chi2      =  0.0000
-
-------------------------------------------------------------------------------
-     ln_wage | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       grade |   .0836249   .0022067    37.90   0.000     .0792999    .0879499
-         age |   .0104518   .0004215    24.80   0.000     .0096256    .0112779
-       _cons |   .2739862   .0306868     8.93   0.000      .213841    .3341313
-------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------
-  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
------------------------------+------------------------------------------------
-idcode: Unstructured         |
-                 var(tenure) |   .0007758   .0000666      .0006556    .0009181
-                  var(union) |   .0514474   .0041886      .0438594    .0603483
-           cov(tenure,union) |   .0016667   .0004909      .0007044    .0026289
------------------------------+------------------------------------------------
-idcode: Unstructured         |
-                   var(race) |    .020226   .0139118      .0052534    .0778719
-                  var(_cons) |   .1578136   .0312742      .1070188    .2327172
-             cov(race,_cons) |  -.0401921    .022043     -.0833957    .0030114
------------------------------+------------------------------------------------
-               var(Residual) |    .058364   .0007602      .0568929    .0598732
-------------------------------------------------------------------------------
-LR test vs. linear model: chi2(6) = 10154.21              Prob > chi2 = 0.0000
-
-Note: LR test is conservative and provided only for reference.
-
-. reffadjustsim tenure union, eqn(idcode) sub(1) seed(12345)
-
-------------------------------------------------------------------------------
-      tenure |     Median              2.5 Percentile      97.5 Percentile
--------------+----------------------------------------------------------------
-       union |   .0321254                 .0121898            .0521846
-------------------------------------------------------------------------------
-
-. reffadjustsim race _cons, eqn(idcode) sub(2) seed(12345)
-
-------------------------------------------------------------------------------
-        race |     Median              2.5 Percentile      97.5 Percentile
--------------+----------------------------------------------------------------
-       _cons |  -.2544602                -.4765056           -.1166449
+       _cons |  -.2544335                -.4765431           -.1166076
 ------------------------------------------------------------------------------
 
 . 
 end of do-file
       name:  reffadjustsim
-       log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
+       log:  D:\reffadjust\cscripts\reffadjustsim.log
   log type:  text
- closed on:  20 Mar 2025, 15:40:41
+ closed on:  20 Mar 2025, 19:57:57
 -------------------------------------------------------------------------------
