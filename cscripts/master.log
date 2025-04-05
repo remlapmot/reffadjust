@@ -2,7 +2,7 @@
       name:  master
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/master.log
   log type:  text
- opened on:   5 Apr 2025, 05:34:19
+ opened on:   5 Apr 2025, 06:03:32
 
 . 
 . cscript master
@@ -27,7 +27,7 @@
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjust4nlcom.l
 > og
   log type:  text
- opened on:   5 Apr 2025, 05:34:19
+ opened on:   5 Apr 2025, 06:03:32
 
 . * 2023-01-25 Examples from reffadjust4nlcom helpfile
 . 
@@ -41,11 +41,11 @@
 . 
 . about
 
-StataNow/MP 18.5 for Mac (Apple Silicon)
+StataNow/MP 18.5 for Unix (Apple Silicon)
 Revision 26 Feb 2025
 Copyright 1985-2023 StataCorp LLC
 
-Total physical memory: 16.00 GB
+Total usable memory: 16.00 GB
 
 Stata license: Unlimited-user 2-core network, expiring 29 Jan 2026
 Serial number: 501809305331
@@ -74,11 +74,11 @@ Serial number: 501809305331
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 05 Apr 2025 04:34:23.470218
+MLN - Software for N-level analysis.   Sat 05 Apr 2025 05:03:32.292480
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000002
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000002
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000006
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -93,7 +93,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       4.24
+Run time (seconds)   =       0.05
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -156,13 +156,13 @@ Level 1: student             |
 >     seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 05 Apr 2025 04:34:23.596844
+MLN - Software for N-level analysis.   Sat 05 Apr 2025 05:03:32.377940
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000003
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000003
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000007
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000007
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000001
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -180,7 +180,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       .763
+Run time (seconds)         =       .608
 Deviance (dbar)            =    9122.42
 Deviance (thetabar)        =    9031.09
 Effective no. of pars (pd) =      91.34
@@ -231,13 +231,13 @@ beta_standlrt|   1.289067    .456183      857   0.001     .4577979       2.279
 >  (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 05 Apr 2025 04:34:24.583332
+MLN - Software for N-level analysis.   Sat 05 Apr 2025 05:03:33.127439
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000002
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000002
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000006
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000006
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000007
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -252,7 +252,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.12
+Run time (seconds)   =       0.10
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -322,15 +322,15 @@ Level 1: student             |
 > seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 05 Apr 2025 04:34:24.745305
+MLN - Software for N-level analysis.   Sat 05 Apr 2025 05:03:33.248669
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000003
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000003
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000007
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000007
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000008
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000008
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000001
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -348,7 +348,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =        1.1
+Run time (seconds)         =       1.05
 Deviance (dbar)            =   29388.29
 Deviance (thetabar)        =   28877.57
 Effective no. of pars (pd) =     510.73
@@ -602,8 +602,7 @@ Note: LR test is conservative and provided only for reference.
 . webuse bangladesh, clear
 (Bangladesh Fertility Survey, 1989)
 
-. version 12: xtmelogit c_use urban age child* || district: urban, cov(uns) var
-note: children omitted because of collinearity.
+. version 12: xtmelogit c_use urban age child? || district: urban, cov(uns) var
 
 Refining starting values: 
 
@@ -638,7 +637,6 @@ Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
       child1 |    1.13252   .1603285     7.06   0.000     .8182819    1.446758
       child2 |   1.357739   .1770522     7.67   0.000     1.010724    1.704755
       child3 |   1.353827   .1828801     7.40   0.000     .9953881    1.712265
-    children |          0  (omitted)
        _cons |   -1.71165   .1605617   -10.66   0.000    -2.026345   -1.396954
 ------------------------------------------------------------------------------
 
@@ -667,8 +665,7 @@ Note: LR test is conservative and provided only for reference.
        _nl_1 |  -.6091416   .1605193    -3.79   0.000    -.9237536   -.2945295
 ------------------------------------------------------------------------------
 
-. version 13: meqrlogit c_use urban age child* || district: urban, cov(uns)
-note: children omitted because of collinearity.
+. version 13: meqrlogit c_use urban age child? || district: urban, cov(uns)
 
 Refining starting values: 
 
@@ -703,7 +700,6 @@ Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
       child1 |    1.13252   .1603285     7.06   0.000     .8182819    1.446758
       child2 |   1.357739   .1770522     7.67   0.000     1.010724    1.704755
       child3 |   1.353827   .1828801     7.40   0.000     .9953881    1.712265
-    children |          0  (omitted)
        _cons |   -1.71165   .1605617   -10.66   0.000    -2.026345   -1.396954
 ------------------------------------------------------------------------------
 
@@ -732,8 +728,7 @@ Note: LR test is conservative and provided only for reference.
        _nl_1 |  -.6091416   .1605193    -3.79   0.000    -.9237536   -.2945295
 ------------------------------------------------------------------------------
 
-. meqrlogit c_use urban age child* || district: urban, cov(uns)
-note: children omitted because of collinearity.
+. meqrlogit c_use urban age child? || district: urban, cov(uns)
 
 Refining starting values: 
 
@@ -768,7 +763,6 @@ Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
       child1 |    1.13252   .1603285     7.06   0.000     .8182819    1.446758
       child2 |   1.357739   .1770522     7.67   0.000     1.010724    1.704755
       child3 |   1.353827   .1828801     7.40   0.000     .9953881    1.712265
-    children |          0  (omitted)
        _cons |   -1.71165   .1605617   -10.66   0.000    -2.026345   -1.396954
 ------------------------------------------------------------------------------
 
@@ -1239,13 +1233,13 @@ end of do-file
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjust4nlcom.l
 > og
   log type:  text
- closed on:   5 Apr 2025, 05:35:41
+ closed on:   5 Apr 2025, 06:04:43
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
       name:  reffadjustsim
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
   log type:  text
- opened on:   5 Apr 2025, 05:35:41
+ opened on:   5 Apr 2025, 06:04:43
 
 . * 2023-01-25 reffadjustsim cscript
 . 
@@ -1259,11 +1253,11 @@ end of do-file
 . 
 . about
 
-StataNow/MP 18.5 for Mac (Apple Silicon)
+StataNow/MP 18.5 for Unix (Apple Silicon)
 Revision 26 Feb 2025
 Copyright 1985-2023 StataCorp LLC
 
-Total physical memory: 16.00 GB
+Total usable memory: 16.00 GB
 
 Stata license: Unlimited-user 2-core network, expiring 29 Jan 2026
 Serial number: 501809305331
@@ -1292,11 +1286,11 @@ Serial number: 501809305331
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 05 Apr 2025 04:35:41.925130
+MLN - Software for N-level analysis.   Sat 05 Apr 2025 05:04:43.447355
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000002
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000002
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000006
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1311,7 +1305,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.06
+Run time (seconds)   =       0.03
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -1363,11 +1357,11 @@ Please compare with default output which reports median & centiles.
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 05 Apr 2025 04:35:42.039324
+MLN - Software for N-level analysis.   Sat 05 Apr 2025 05:04:43.525830
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000002
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000002
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000006
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1382,7 +1376,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.05
+Run time (seconds)   =       0.03
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -1423,13 +1417,13 @@ Level 1: student             |
 >     level2(school: cons standlrt) batch mcmc(on) initsprevious seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 05 Apr 2025 04:35:42.159319
+MLN - Software for N-level analysis.   Sat 05 Apr 2025 05:04:43.608631
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000003
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000003
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000007
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000007
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000001
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1447,7 +1441,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =        .63
+Run time (seconds)         =       .608
 Deviance (dbar)            =    9122.42
 Deviance (thetabar)        =    9031.09
 Effective no. of pars (pd) =      91.34
@@ -1494,13 +1488,13 @@ Level 1: student             |
 >     level2(school: (cons, eq(1)) (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 05 Apr 2025 04:35:42.954961
+MLN - Software for N-level analysis.   Sat 05 Apr 2025 05:04:44.339395
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000002
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000002
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000006
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000006
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000007
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1515,7 +1509,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.12
+Run time (seconds)   =       0.09
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -1574,13 +1568,13 @@ Please compare with default output which reports median & centiles.
 >     level2(school: (cons, eq(1)) (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 05 Apr 2025 04:35:43.130080
+MLN - Software for N-level analysis.   Sat 05 Apr 2025 05:04:44.480043
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000002
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000002
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000006
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000006
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000007
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1595,7 +1589,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.11
+Run time (seconds)   =       0.10
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -1645,15 +1639,15 @@ Level 1: student             |
 > seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 05 Apr 2025 04:35:43.295458
+MLN - Software for N-level analysis.   Sat 05 Apr 2025 05:04:44.614754
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000003
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000003
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000007
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000007
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000008
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000008
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//S_42091.000001
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St50406.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1671,7 +1665,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.09
+Run time (seconds)         =       1.08
 Deviance (dbar)            =   29388.29
 Deviance (thetabar)        =   28877.57
 Effective no. of pars (pd) =     510.73
@@ -1907,8 +1901,7 @@ Note: LR test is conservative and provided only for reference.
 . webuse bangladesh, clear
 (Bangladesh Fertility Survey, 1989)
 
-. version 12: xtmelogit c_use urban age child* || district: urban, cov(uns) var
-note: children omitted because of collinearity.
+. version 12: xtmelogit c_use urban age child? || district: urban, cov(uns) var
 
 Refining starting values: 
 
@@ -1943,7 +1936,6 @@ Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
       child1 |    1.13252   .1603285     7.06   0.000     .8182819    1.446758
       child2 |   1.357739   .1770522     7.67   0.000     1.010724    1.704755
       child3 |   1.353827   .1828801     7.40   0.000     .9953881    1.712265
-    children |          0  (omitted)
        _cons |   -1.71165   .1605617   -10.66   0.000    -2.026345   -1.396954
 ------------------------------------------------------------------------------
 
@@ -1964,14 +1956,13 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       urban |  -.5931824                -.9623631           -.2892333
+       urban |  -.5896733                -.9622378           -.2954984
 ------------------------------------------------------------------------------
 
 . webuse bangladesh, clear
 (Bangladesh Fertility Survey, 1989)
 
-. version 13: meqrlogit c_use urban age child* || district: urban, cov(uns)
-note: children omitted because of collinearity.
+. version 13: meqrlogit c_use urban age child? || district: urban, cov(uns)
 
 Refining starting values: 
 
@@ -2006,7 +1997,6 @@ Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
       child1 |    1.13252   .1603285     7.06   0.000     .8182819    1.446758
       child2 |   1.357739   .1770522     7.67   0.000     1.010724    1.704755
       child3 |   1.353827   .1828801     7.40   0.000     .9953881    1.712265
-    children |          0  (omitted)
        _cons |   -1.71165   .1605617   -10.66   0.000    -2.026345   -1.396954
 ------------------------------------------------------------------------------
 
@@ -2027,14 +2017,13 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       urban |  -.5931824                -.9623631           -.2892333
+       urban |  -.5896733                -.9622378           -.2954984
 ------------------------------------------------------------------------------
 
 . webuse bangladesh, clear
 (Bangladesh Fertility Survey, 1989)
 
-. meqrlogit c_use urban age child* || district: urban, cov(uns)
-note: children omitted because of collinearity.
+. meqrlogit c_use urban age child? || district: urban, cov(uns)
 
 Refining starting values: 
 
@@ -2069,7 +2058,6 @@ Log likelihood =  -1199.315                     Prob > chi2       =     0.0000
       child1 |    1.13252   .1603285     7.06   0.000     .8182819    1.446758
       child2 |   1.357739   .1770522     7.67   0.000     1.010724    1.704755
       child3 |   1.353827   .1828801     7.40   0.000     .9953881    1.712265
-    children |          0  (omitted)
        _cons |   -1.71165   .1605617   -10.66   0.000    -2.026345   -1.396954
 ------------------------------------------------------------------------------
 
@@ -2090,7 +2078,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       urban |  -.5931824                -.9623631           -.2892333
+       urban |  -.5896733                -.9622378           -.2954984
 ------------------------------------------------------------------------------
 
 . 
@@ -2489,7 +2477,7 @@ end of do-file
       name:  reffadjustsim
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
   log type:  text
- closed on:   5 Apr 2025, 05:37:01
+ closed on:   5 Apr 2025, 06:05:56
 -------------------------------------------------------------------------------
 
 . 
@@ -2497,5 +2485,5 @@ end of do-file
       name:  master
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/master.log
   log type:  text
- closed on:   5 Apr 2025, 05:37:01
+ closed on:   5 Apr 2025, 06:05:56
 -------------------------------------------------------------------------------
