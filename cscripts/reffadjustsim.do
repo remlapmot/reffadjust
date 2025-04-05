@@ -74,13 +74,13 @@ reffadjustsim _cons tenure, eqn(idcode) seed(12345)
 
 // Example 4: based on xtmelogit helpfile
 webuse bangladesh, clear
-version 12: xtmelogit c_use urban age child* || district: urban, cov(uns) var
+version 12: xtmelogit c_use urban age child? || district: urban, cov(uns) var
 version 12: reffadjustsim _cons urban, eqn(district) seed(12345)
 webuse bangladesh, clear
-version 13: meqrlogit c_use urban age child* || district: urban, cov(uns)
+version 13: meqrlogit c_use urban age child? || district: urban, cov(uns)
 reffadjustsim _cons urban, eqn(district) seed(12345)
 webuse bangladesh, clear
-meqrlogit c_use urban age child* || district: urban, cov(uns)
+meqrlogit c_use urban age child? || district: urban, cov(uns)
 reffadjustsim _cons urban, eqn(district) seed(12345)
 
 // Example 5: based on xtmepoisson helpfile

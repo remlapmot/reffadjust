@@ -90,13 +90,13 @@ nlcom `r(beta_tenure)'
 
 // Example 4: based on xtmelogit helpfile
 webuse bangladesh, clear
-version 12: xtmelogit c_use urban age child* || district: urban, cov(uns) var
+version 12: xtmelogit c_use urban age child? || district: urban, cov(uns) var
 version 12: reffadjust4nlcom _cons urban, eqn(district)
 nlcom `r(beta_urban)'
-version 13: meqrlogit c_use urban age child* || district: urban, cov(uns)
+version 13: meqrlogit c_use urban age child? || district: urban, cov(uns)
 reffadjust4nlcom _cons urban, eqn(district)
 nlcom `r(beta_urban)'
-meqrlogit c_use urban age child* || district: urban, cov(uns)
+meqrlogit c_use urban age child? || district: urban, cov(uns)
 reffadjust4nlcom _cons urban, eqn(district)
 nlcom `r(beta_urban)'
 
