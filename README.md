@@ -39,6 +39,20 @@ The MLwiN libraries are now available natively for macOS (both Intel and Apple S
 
 On macOS the `mlnscript` and `libmln.dylib` files must be granted permission to run in _System Settings_ | _Privacy and Security_ | Scroll down to _Security_ section. See my [blogpost](https://remlapmot.github.io/post/2024/mlnscript-r2mlwin-apple-silicon/) for more details.
 
+## Running tests
+
+Either, in Stata change directory to the _cscripts_ directory and run
+
+```stata
+do master
+```
+
+or from a terminal session run the _test_ recipe in the justfile
+
+```sh
+just test
+```
+
 ## Acknowledgements
 
 Thanks to Gemma Clayton for discovering that `reffadjustsim` had stopped working under a recent version of Stata. And thanks to Stata Corp. for providing me with a fix for this issue.
