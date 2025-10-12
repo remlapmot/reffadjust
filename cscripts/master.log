@@ -2,7 +2,7 @@
       name:  master
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/master.log
   log type:  text
- opened on:  26 Sep 2025, 17:33:18
+ opened on:  12 Oct 2025, 11:47:58
 
 . 
 . cscript master
@@ -27,7 +27,7 @@
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjust4nlcom.l
 > og
   log type:  text
- opened on:  26 Sep 2025, 17:33:18
+ opened on:  12 Oct 2025, 11:47:58
 
 . * 2023-01-25 Examples from reffadjust4nlcom helpfile
 . 
@@ -42,7 +42,7 @@
 . about
 
 StataNow/MP 19.5 for Unix (Apple Silicon)
-Revision 24 Sep 2025
+Revision 06 Oct 2025
 Copyright 1985-2025 StataCorp LLC
 
 Total usable memory: 16.00 GB
@@ -74,15 +74,15 @@ Serial number: 501909307934
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Fri 26 Sep 2025 16:33:18
+MLN - Software for N-level analysis.   Sun 12 Oct 2025 14:48:06
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000002
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000002
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000006
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.14 multilevel model                     Number of obs      =      4059
+MLwiN 3.15 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -93,7 +93,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.05
+Run time (seconds)   =       5.05
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -156,17 +156,17 @@ Level 1: student             |
 >     seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Fri 26 Sep 2025 16:33:18
+MLN - Software for N-level analysis.   Sun 12 Oct 2025 14:48:06
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000003
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000003
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000007
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000007
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000001
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.14 multilevel model                     Number of obs      =      4059
+MLwiN 3.15 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: MCMC
 
@@ -180,7 +180,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       .932
+Run time (seconds)         =       .611
 Deviance (dbar)            =    9122.42
 Deviance (thetabar)        =    9031.09
 Effective no. of pars (pd) =      91.34
@@ -231,17 +231,17 @@ beta_standlrt|   1.289067    .456183      857   0.001     .4577979       2.279
 >  (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Fri 26 Sep 2025 16:33:19
+MLN - Software for N-level analysis.   Sun 12 Oct 2025 14:48:10
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000002
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000002
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000006
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000006
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000007
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.14 multilevel model                     Number of obs      =      1905
+MLwiN 3.15 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -252,7 +252,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.11
+Run time (seconds)   =       0.12
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -322,19 +322,19 @@ Level 1: student             |
 > seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Fri 26 Sep 2025 16:33:19
+MLN - Software for N-level analysis.   Sun 12 Oct 2025 14:48:10
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000003
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000003
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000007
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000007
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000008
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000008
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000001
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.14 multilevel model                     Number of obs      =      1905
+MLwiN 3.15 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: MCMC
 
@@ -348,7 +348,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.23
+Run time (seconds)         =       1.08
 Deviance (dbar)            =   29388.29
 Deviance (thetabar)        =   28877.57
 Effective no. of pars (pd) =     510.73
@@ -1235,13 +1235,13 @@ end of do-file
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjust4nlcom.l
 > og
   log type:  text
- closed on:  26 Sep 2025, 17:34:40
+ closed on:  12 Oct 2025, 11:49:18
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
       name:  reffadjustsim
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
   log type:  text
- opened on:  26 Sep 2025, 17:34:40
+ opened on:  12 Oct 2025, 11:49:18
 
 . * 2023-01-25 reffadjustsim cscript
 . 
@@ -1256,7 +1256,7 @@ end of do-file
 . about
 
 StataNow/MP 19.5 for Unix (Apple Silicon)
-Revision 24 Sep 2025
+Revision 06 Oct 2025
 Copyright 1985-2025 StataCorp LLC
 
 Total usable memory: 16.00 GB
@@ -1288,15 +1288,15 @@ Serial number: 501909307934
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Fri 26 Sep 2025 16:34:40
+MLN - Software for N-level analysis.   Sun 12 Oct 2025 14:49:25
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000002
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000002
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000006
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.14 multilevel model                     Number of obs      =      4059
+MLwiN 3.15 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -1307,7 +1307,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.05
+Run time (seconds)   =       0.06
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -1359,15 +1359,15 @@ Please compare with default output which reports median & centiles.
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Fri 26 Sep 2025 16:34:40
+MLN - Software for N-level analysis.   Sun 12 Oct 2025 14:49:25
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000002
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000002
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000006
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.14 multilevel model                     Number of obs      =      4059
+MLwiN 3.15 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -1419,17 +1419,17 @@ Level 1: student             |
 >     level2(school: cons standlrt) batch mcmc(on) initsprevious seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Fri 26 Sep 2025 16:34:40
+MLN - Software for N-level analysis.   Sun 12 Oct 2025 14:49:25
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000003
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000003
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000007
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000007
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000001
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.14 multilevel model                     Number of obs      =      4059
+MLwiN 3.15 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: MCMC
 
@@ -1443,7 +1443,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       .715
+Run time (seconds)         =       .595
 Deviance (dbar)            =    9122.42
 Deviance (thetabar)        =    9031.09
 Effective no. of pars (pd) =      91.34
@@ -1490,17 +1490,17 @@ Level 1: student             |
 >     level2(school: (cons, eq(1)) (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Fri 26 Sep 2025 16:34:41
+MLN - Software for N-level analysis.   Sun 12 Oct 2025 14:49:27
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000002
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000002
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000006
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000006
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000007
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.14 multilevel model                     Number of obs      =      1905
+MLwiN 3.15 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -1511,7 +1511,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.12
+Run time (seconds)   =       0.14
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -1570,17 +1570,17 @@ Please compare with default output which reports median & centiles.
 >     level2(school: (cons, eq(1)) (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Fri 26 Sep 2025 16:34:41
+MLN - Software for N-level analysis.   Sun 12 Oct 2025 14:49:27
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000002
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000002
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000006
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000006
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000007
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.14 multilevel model                     Number of obs      =      1905
+MLwiN 3.15 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -1591,7 +1591,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.12
+Run time (seconds)   =       0.10
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -1641,19 +1641,19 @@ Level 1: student             |
 > seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Fri 26 Sep 2025 16:34:41
+MLN - Software for N-level analysis.   Sun 12 Oct 2025 14:49:28
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000003
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000003
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000007
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000007
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000008
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000008
 
-/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St04957.000001
+/var/folders/1l/w0qjrymd3hb44s3skrzn4w4w0000gn/T//St37061.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.14 multilevel model                     Number of obs      =      1905
+MLwiN 3.15 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: MCMC
 
@@ -1667,7 +1667,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.37
+Run time (seconds)         =        1.1
 Deviance (dbar)            =   29388.29
 Deviance (thetabar)        =   28877.57
 Effective no. of pars (pd) =     510.73
@@ -2481,7 +2481,7 @@ end of do-file
       name:  reffadjustsim
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
   log type:  text
- closed on:  26 Sep 2025, 17:35:59
+ closed on:  12 Oct 2025, 11:50:33
 -------------------------------------------------------------------------------
 
 . 
@@ -2489,5 +2489,5 @@ end of do-file
       name:  master
        log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/master.log
   log type:  text
- closed on:  26 Sep 2025, 17:35:59
+ closed on:  12 Oct 2025, 11:50:33
 -------------------------------------------------------------------------------
