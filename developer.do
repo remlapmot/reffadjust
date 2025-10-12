@@ -1,2 +1,2 @@
 ssc install runmlwin
-exit
+exit, STATA
