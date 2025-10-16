@@ -1,0 +1,45 @@
+project: 
+  type: website
+  preview: 
+    port: 4000
+
+website: 
+  title: "reffadjust"
+  repo-url: https://github.com/remlapmot/reffadjust
+  repo-branch: main
+  navbar:
+    search: true
+    left:
+      - text: "Home"
+        href: index.html
+      - text: "Helpfile examples"
+        menu:
+        - text: "reffadjust4nlcom"
+          href: reffadjust4nlcom-examples.html
+        - text: "reffadjustsim"
+          href: reffadjustsim-examples.html
+      - text: "Helpfiles"
+        menu:
+        - text: "reffadjust"
+          href: reffadjust-helpfile.html
+        - text: "reffadjust4nlcom"
+          href: reffadjust4nlcom-helpfile.html
+        - text: "reffadjustsim"
+          href: reffadjustsim-helpfile.html
+      - text: "About"
+        href: about.html
+    right:
+      - icon: github
+        href: https://github.com/remlapmot/reffadjust
+        aria-label: GitHub
+
+format:
+  html:
+    theme: cosmo
+    css: mystyles.css
+    toc: true
+    highlight-style: arrow
+
+freeze: false  # re-render only when source changes
+
+# bibliography: refs.bib
