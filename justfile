@@ -7,7 +7,7 @@ render:
     source .venv/bin/activate
     python -m nbstata.install --sys-prefix
     quarto render
-    rm -r ../docs/*
+    rm -rf ../docs/*
     mv _site/* ../docs/
     
 [working-directory: 'cscripts']
