@@ -4,6 +4,7 @@ dev:
 [working-directory: 'site']
 render:
     #!/usr/bin/env bash
+    stata-mp "do developer"
     source .venv/bin/activate
     python -m nbstata.install --sys-prefix
     quarto render
