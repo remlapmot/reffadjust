@@ -1,0 +1,14 @@
+---
+title: ""
+pagetitle: about
+jupyter: nbstata
+---
+
+```{stata}
+*| include: false
+adopath ++ ..
+```
+
+```{stata}
+*%help reffadjust
+```
