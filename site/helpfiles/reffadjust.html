@@ -1,0 +1,91 @@
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css">
+BODY{background-color: ffffff;
+    font-family: monaco, "courier new", monospace;
+     color: #000000}
+.input, .result, .error{font-weight: bold}
+.input {color: #CC6600}
+.result{color: #000099}
+.error{color: #dd0000}
+</style>
+</head>
+<body>
+<pre>
+<span class=result>help reffadjust</span>
+----------------------------------------------------------------------------------------------------
+<br><br>
+<span class=result><u>Title</u></span>
+<br><br>
+     <span class=result>reffadjust</span> -- Introduction to random effects adjustment commands
+<br><br>
+<br><br>
+<a name="description"></a><span class=result><u>Description</u></span>
+<br><br>
+    The <span class=result>reffadjust</span> package provides postestimation commands to perform adjustment of random
+    effects estimates.
+<br><br>
+    The reffadjust commands are
+<br><br>
+        <span class=result>reffadjustsim</span>        simulating from the distribution of random effect variances and
+                               covariances
+        <span class=result>reffadjust4nlcom</span>     regression coefficient formula to pass to <span class=result>nlcom</span>
+<br><br>
+    Since multilevel models including random effects, such as those implemented in MLwiN (Rasbash
+    et al 2009) and <span class=result>mixed</span>/<span class=result>xtmixed</span>, return estimates of the variances and covariances of the random
+    effects and the corresponding variances and covariances of these estimates we can use these to
+    estimate adjusted coefficients.
+<br><br>
+    The approach is described in more detail in Macdonald-Wallis et al. (2012) and Palmer et al.
+    (in press).
+<br><br>
+    The commands run with estimates from <span class=result>runmlwin</span> or chains from <span class=result>runmlwin</span> by <span class=result>mcmcsum</span> (Leckie and
+    Charlton, 2011), <span class=result>mixed</span>/<span class=result>xtmixed</span>, <span class=result>meqrlogit</span>/<span class=result>xtmelogit</span>, and <span class=result>meqrpoisson</span>/<span class=result>xtmepoisson</span>.  Note that
+    in Stata 13 the following commands were renamed; <span class=result>xtmixed</span> became <span class=result>mixed</span>, <span class=result>xtmelogit</span> became
+    <span class=result>meqrlogit</span>, and <span class=result>xtmepoisson</span> became <span class=result>meqrpoisson</span>.
+<br><br>
+<br><br>
+<a name="references"></a><span class=result><u>References</u></span>
+<br><br>
+    Leckie G, Charlton C. 2011. <span class=result>runmlwin</span>: Stata module for fitting multilevel models in the MLwiN
+        software package. Centre for Multilevel Modelling, University of Bristol, UK. 
+        https://www.bristol.ac.uk/cmm/software/runmlwin/
+<br><br>
+    Macdonald-Wallis CM, Lawlor DA, Palmer TM, Tilling K. 2012. Multivariate multilevel spline
+        models for parallel growth processes: application to weight and mean arterial pressure in
+        pregnancy. Statistics in Medicine, 31, 3147-3164.
+<br><br>
+    Palmer TM, Macdonald-Wallis CM, Lawlor DA, Tilling K. Estimating adjusted associations between
+        random effects from multilevel models: the reffadjust package. The Stata Journal. In
+        press.
+<br><br>
+    Rasbash J, Charlton C, Browne WJ, Healy M, Cameron B. 2009. MLwiN version 2.1. Centre for
+        Multilevel Modelling, University of Bristol, UK. 
+        https://www.bristol.ac.uk/cmm/software/mlwin.
+<br><br>
+<br><br>
+<a name="authors"></a><span class=result><u>Authors</u></span>
+<br><br>
+    Tom Palmer, MRC Integrative Epidemiology Unit and Population Health Sciences, Bristol Medical
+        School, University of Bristol, UK.  tom.palmer@bristol.ac.uk.
+<br><br>
+    Corrie Macdonald-Wallis, MRC Integrative Epidemiology Unit and Population Health Sciences,
+        Bristol Medical School, University of Bristol, UK.  c.macdonald-wallis@bristol.ac.uk.
+<br><br>
+<br><br>
+<a name="acknowledgments"></a><span class=result><u>Acknowledgments</u></span>
+<br><br>
+    We thank Chris Charlton and George Leckie (Centre for Multilevel Modelling, University of
+    Bristol) for very helpful comments.
+<br><br>
+<br><br>
+<span class=result><u>Also see</u></span>
+<br><br>
+      Help:  <span class=result>reffadjustsim</span>, <span class=result>reffadjust4nlcom</span>, <span class=result>runmlwin</span> (if installed), <span class=result>mcmcsum</span> (if installed), 
+             <span class=result>nlcom</span>, <span class=result>mixed</span>, <span class=result>xtmixed</span>, <span class=result>meqrlogit</span>, <span class=result>xtmelogit</span>, <span class=result>meqrpoisson</span>, <span class=result>xtmepoisson</span>
+</pre>
+</body>
+</html>
