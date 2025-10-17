@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Stata commands for random effects adjustment: the reffadjust package",
+    "section": "",
+    "text": "The reffadjust package provides postestimation commands to perform adjustment of random effects estimates.\nThe reffadjust commands are:\n\nreffadjustsim: simulating from the distribution of random effect variances and covariances\nreffadjust4nlcom: regression coefficient formula to pass to nlcom.\n\nSince multilevel models including random effects, such as those implemented in MLwiN and mixed/xtmixed, return estimates of the variances and covariances of the random effects and the corresponding variances and covariances of these estimates we can use these to estimate adjusted coefficients.\nThe approach is described in more detail in Macdonald-Wallis et al. (2012) and Palmer et al. (2014).\n\n\nTo install, issue in Stata (in versions 13 and above) using the github package, first install the github package:\nnet install github, from(\"https://haghish.github.io/github/\")\nthen run\ngithub install remlapmot/reffadjust\nAlternatively use net install directly as follows\nnet install reffadjust, from(\"https://raw.github.com/remlapmot/reffadjust/master/\")\n\n\nThis is available from https://www.bristol.ac.uk/cmm/software/mlwin/.\nThe MLwiN libraries are now available natively for macOS (both Intel and Apple Silicon Macs) and a range of Linux ditributions.\nOn macOS the mlnscript and libmln.dylib files must be granted permission to run in System Settings | Privacy and Security | Scroll down to Security section. See my blogpost for more details.\n\n\n\n\nEither, in Stata change directory to the cscripts directory and run\ndo master\nor from a terminal session run the test recipe in the justfile\njust test\n\n\n\nThanks to Gemma Clayton for discovering that reffadjustsim had stopped working under a recent version of Stata. And thanks to Stata Corp. for providing me with a fix for this issue.\n\n\n\n\n2025-10-12 Tested under MLwiN 3.15 and StataNow 19.5 on macOS M4 chip\n2025-09-26 Tested under MLwiN 3.14 and StataNow 19.5 on macOS M4 chip\n2025-06-06 Tested under MLwiN 3.14 and StataNow 18.5 on macOS M4 chip\n2025-04-05 Tested under MLwiN 3.13 and StataNow 18.5 on macOS M4 chip\n2025-03-20 Tested under MLwiN 3.13 and StataNow 18.5 on macOS and Windows 11\n2024-10-12 Tested under MLwiN 3.13 and StataNow 18.5\n2024-08-12 Tested under MLwiN 3.12 and StataNow 18.5\n2024-06-15 Tested under MLwiN 3.11 and StataNow 18.5\n2024-03-19 Tested under MLwiN 3.10 and Stata 18.0\n2024-01-30 Tested under MLwiN 3.09 (and Stata 18)\n2024-01-29 Tested on Stata 18 and macOS\n\n\n\n\n\nMacdonald-Wallis C, Lawlor DA, Palmer TM, Tilling K. 2012. Multivariate multilevel spline models for parallel growth processes: application to weight and mean arterial pressure in pregnancy. Statistics in Medicine, 31, 26, 3147-3164. https://doi.org/10.1002/sim.5385\nPalmer TM, Macdonald-Wallis CM, Lawlor DA, Tilling K. Estimating adjusted associations between random effects from multilevel models: the reffadjust package. Stata Journal, 14, 1, 119-140. https://www.stata-journal.com/article.html?article=st0327"
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "Stata commands for random effects adjustment: the reffadjust package",
+    "section": "",
+    "text": "To install, issue in Stata (in versions 13 and above) using the github package, first install the github package:\nnet install github, from(\"https://haghish.github.io/github/\")\nthen run\ngithub install remlapmot/reffadjust\nAlternatively use net install directly as follows\nnet install reffadjust, from(\"https://raw.github.com/remlapmot/reffadjust/master/\")\n\n\nThis is available from https://www.bristol.ac.uk/cmm/software/mlwin/.\nThe MLwiN libraries are now available natively for macOS (both Intel and Apple Silicon Macs) and a range of Linux ditributions.\nOn macOS the mlnscript and libmln.dylib files must be granted permission to run in System Settings | Privacy and Security | Scroll down to Security section. See my blogpost for more details."
+  },
+  {
+    "objectID": "index.html#running-tests",
+    "href": "index.html#running-tests",
+    "title": "Stata commands for random effects adjustment: the reffadjust package",
+    "section": "",
+    "text": "Either, in Stata change directory to the cscripts directory and run\ndo master\nor from a terminal session run the test recipe in the justfile\njust test"
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "Stata commands for random effects adjustment: the reffadjust package",
+    "section": "",
+    "text": "Thanks to Gemma Clayton for discovering that reffadjustsim had stopped working under a recent version of Stata. And thanks to Stata Corp. for providing me with a fix for this issue."
+  },
+  {
+    "objectID": "index.html#notes",
+    "href": "index.html#notes",
+    "title": "Stata commands for random effects adjustment: the reffadjust package",
+    "section": "",
+    "text": "2025-10-12 Tested under MLwiN 3.15 and StataNow 19.5 on macOS M4 chip\n2025-09-26 Tested under MLwiN 3.14 and StataNow 19.5 on macOS M4 chip\n2025-06-06 Tested under MLwiN 3.14 and StataNow 18.5 on macOS M4 chip\n2025-04-05 Tested under MLwiN 3.13 and StataNow 18.5 on macOS M4 chip\n2025-03-20 Tested under MLwiN 3.13 and StataNow 18.5 on macOS and Windows 11\n2024-10-12 Tested under MLwiN 3.13 and StataNow 18.5\n2024-08-12 Tested under MLwiN 3.12 and StataNow 18.5\n2024-06-15 Tested under MLwiN 3.11 and StataNow 18.5\n2024-03-19 Tested under MLwiN 3.10 and Stata 18.0\n2024-01-30 Tested under MLwiN 3.09 (and Stata 18)\n2024-01-29 Tested on Stata 18 and macOS"
+  },
+  {
+    "objectID": "index.html#references",
+    "href": "index.html#references",
+    "title": "Stata commands for random effects adjustment: the reffadjust package",
+    "section": "",
+    "text": "Macdonald-Wallis C, Lawlor DA, Palmer TM, Tilling K. 2012. Multivariate multilevel spline models for parallel growth processes: application to weight and mean arterial pressure in pregnancy. Statistics in Medicine, 31, 26, 3147-3164. https://doi.org/10.1002/sim.5385\nPalmer TM, Macdonald-Wallis CM, Lawlor DA, Tilling K. Estimating adjusted associations between random effects from multilevel models: the reffadjust package. Stata Journal, 14, 1, 119-140. https://www.stata-journal.com/article.html?article=st0327"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "reffadjust",
+    "section": "",
+    "text": "This is the website for the reffadjust Stata package.\nThe GitHub repository is here.\nIt is maintained by Tom Palmer."
+  }
+]

@@ -1,0 +1,362 @@
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css">
+BODY{background-color: ffffff;
+    font-family: monaco, "courier new", monospace;
+     color: #000000}
+.input, .result, .error{font-weight: bold}
+.input {color: #CC6600}
+.result{color: #000099}
+.error{color: #dd0000}
+</style>
+</head>
+<body>
+<pre>
+<span class=result>help reffadjustsim</span>                                                                                  
+----------------------------------------------------------------------------------------------------
+<br><br>
+<span class=result><u>Title</u></span>
+<br><br>
+     <span class=result>reffadjustsim</span> -- random effects adjustment: simulating from the distribution of random effect
+variances and covariances
+<br><br>
+<br><br>
+<a name="syntax"></a><span class=result><u>Syntax</u></span>
+<br><br>
+        <span class=result>reffadjustsim</span> <i>depvar</i> <i>indepvars</i> <span class=result>,</span> <span class=result>eqn(</span>string<span class=result>)</span> [<i>options</i>]
+<br><br>
+<br><br>
+<a name="options"></a>    <i>options</i>                         Description
+    ----------------------------------------------------------------------------------------------
+      <span class=result>eqn(</span><i>string</i><span class=result>)</span>                   name of the equation the adjusted coefficients are to be
+                                      extracted from
+      <span class=result>centileopts(</span><i>string</i><span class=result>)</span>           options passed to <span class=result>centile</span>
+      <span class=result><u>l</u></span><span class=result>evel(</span><i>#</i><span class=result>)</span>                      set confidence level; default is <span class=result>level(95)</span>
+      <span class=result>mcmcsum</span>                       use chains from <span class=result>mcmcsum</span>
+      <span class=result>n(</span><i>#</i><span class=result>)</span>                          # of observations to simulate; default is 10,000
+      <span class=result>post</span>                          post estimation results
+      <span class=result>replace</span>                       replace beta_indepvar if variable exists in dataset
+      <span class=result><u>sav</u></span><span class=result>ing(</span><i>filename </i>[<span class=result>,</span><i> replace</i>]<span class=result>)</span>  save simulated observations to <i>filename</i>
+      <span class=result>sf(</span><i>numlist</i><span class=result>)</span>                   scaling factors corresponding to each coefficient
+      <span class=result>seed(</span><i>#</i><span class=result>)</span>                       seed for random-number generator
+      <span class=result>statadrawnorm</span>                 use Stata's <span class=result>drawnorm</span> for Wald type CIs
+      <span class=result><u>sub</u></span><span class=result>level(</span><i>#</i><span class=result>)</span>                   sublevel of a repeated group variable
+      <span class=result><u>wald</u></span><span class=result>type</span>                      report means &amp; Wald-type confidence intervals
+    ----------------------------------------------------------------------------------------------
+<br><br>
+<br><br>
+<a name="description"></a><span class=result><u>Description</u></span>
+<br><br>
+    <span class=result>reffadjustsim</span> is a postestimation command to perform adjustment of random effects estimates.
+    It runs with estimates from <span class=result>runmlwin</span> or chains from <span class=result>runmlwin</span> by <span class=result>mcmcsum</span> (Leckie and Charlton,
+    2011), <span class=result>mixed</span>/<span class=result>xtmixed</span>, <span class=result>meqrlogit</span>/<span class=result>xtmelogit</span>, and <span class=result>meqrpoisson</span>/<span class=result>xtmepoisson</span>.
+<br><br>
+    <span class=result>reffadjustsim</span> generates the specified number of observations of the variances and covariances
+    of the random effects from the corresponding multivariate normal distribution.  Alternatively,
+    values are used from the returned chains from Bayesian estimation in MLwiN by <span class=result>mcmcsum,</span>
+    <span class=result>getchains</span>.  For each observation the adjusted coefficient/s are estimated as described by
+    Fisher (1925, chapter 5, section 29).  The approach is described in more detail in
+    Macdonald-Wallis et al. (2012) and Palmer et al. (in press).  Further details are given in 
+    <span class=result>reffadjust</span>.  The covariates (<i>indepvars</i>) can be specified in any order.
+<br><br>
+    An alternative approach is to use the accompanying <span class=result>reffadjust4nlcom</span> command to generate the
+    expression for the adjusted coefficient, and pass that to <span class=result>nlcom</span> to estimate a delta-method
+    confidence interval.
+<br><br>
+    See Buis (2011) for a description of how to retrieve random effect variance and correlations
+    from <span class=result>xt</span>/some multilevel commands.
+<br><br>
+    <span class=result>Note on multivariate response models:</span>  Covariates (<i>indepvars</i>) in <span class=result>runmlwin</span> estimates from
+    multivariate response models have suffix <span class=result>_#</span>, where # is the corresponding equation number.
+    For example, from equation 1 <i>cons</i> would be referred to as <i>cons_1</i>.
+<br><br>
+    <span class=result>Note on shrinkage estimates:</span>  <span class=result>reffadjustsim</span> uses the estimated random effect variances and
+    covariances from the model.  It does not use the shrinkage estimates of these parameters, i.e.
+    the variances and covariances of the residuals (see chapter 3 of the MLwiN User Manual).
+<br><br>
+    <span class=result>Warning about waldtype option:</span>  By default<span class=result> reffadjustsim</span> reports coefficients as medians with
+    2.5 and 97.5 percentiles.  Coefficients can be reported as means with Wald-type confidence
+    intervals with the <span class=result>waldtype</span> option.  Means and Wald-type confidence intervals may not be
+    accurate.  It is always advised to compare results with the default output and if possible
+    also with the delta-method confidence interval via <span class=result>reffadjust4nlcom</span> and <span class=result>nlcom</span>.  In general,
+    P-values associated with these estimates may be affected by boundary value issues in the
+    estimation of the random effect variances and covariances (see Distribution theory for
+    likelihood ratio tests subsection in <span class=result>[XT] </span><i>xtmixed</i> /Distribution theory for likelihood ratio
+    test, Gutierrez et al. 2001).
+<br><br>
+    <span class=result>Interpretation of coefficients:</span>  The coefficients estimated by <span class=result>reffadjustsim</span> represent the
+    mean difference in the random effect entered as the dependent variable, which is associated
+    with a unit increase in each of the random effects entered as independent variables, whilst
+    adjusting for the other random effects included as independent variables.
+<br><br>
+    <span class=result>Parameters estimated with zero variance:</span>  Sometimes a multilevel model can be declared as
+    converged but some parameters (especially random effect variances and covariances) may not
+    have a standard error.  A warning is issued that resulting confidence intervals may not be
+    valid in this case.
+<br><br>
+<br><br>
+<a name="options"></a><span class=result><u>Options</u></span>
+<br><br>
+    <span class=result>eqn(</span><i>string</i><span class=result>)</span> the name of the equation the coefficients are to be extracted from.  For example a
+        two level random effects model from <span class=result>runmlwin</span> will typically return four equations (FP1,
+        FP2, RP1, RP2).
+<br><br>
+    <span class=result>centileopts(</span><i>string</i><span class=result>)</span> options passed to <span class=result>centile</span>, note you may not specify the <span class=result>centile(</span><i>#</i><span class=result>)</span> option
+        here.  The reported percentiles can be changed through the <span class=result>level(#)</span> option.
+<br><br>
+    <span class=result><u>l</u></span><span class=result>evel(</span><i>#</i><span class=result>)</span>; see <span class=result>[R] estimation options</span>.
+<br><br>
+    <span class=result>mcmcsum</span> calculates centiles from the Bayesian posterior distribution of the coefficients using
+        chains imported by:  <span class=result>mcmcsum, getchains</span>.  Note your <span class=result>runmlwin</span> model must have been fitted
+        by MCMC.  Options: <span class=result>seed</span>, <span class=result>n</span>, <span class=result>statadrawnorm</span>, <span class=result>waldtype</span> (and <span class=result>post</span>) are not required/allowed
+        with <span class=result>mcmcsum</span>.  Only allowed with <span class=result>runmlwin</span> estimates.
+<br><br>
+    <span class=result>n(</span><i>#</i><span class=result>)</span> specifies the number of observations to be simulated.  The default is 10,000 and is not
+        allowed to be less than 10.  Not allowed with <span class=result>mcmcsum</span>, where <span class=result>n</span> is taken as the number of
+        observations in the dataset imported by <span class=result>mcmcsum, getchains</span>.
+<br><br>
+    <span class=result>post</span> causes <span class=result>reffadjustsim</span> to behave like a Stata estimation (<span class=result>eclass</span>) command.  May only be
+        specified with <span class=result>waldtype</span>.  When <span class=result>post</span> is specified, <span class=result>reffadjustsim</span> will post the vector of
+        adjusted estimates and its estimated variance-covariance matrix to <span class=result>e()</span>. Thus you could,
+        after <span class=result>post</span>ing, treat the estimation results in the same way as you would treat results
+        from other Stata estimation commands.  For example, after posting, you could redisplay the
+        results by typing <span class=result>reffadjustsim</span> without any arguments, or use <span class=result>test</span> to perform simultaneous
+        tests of hypotheses on linear combinations of the estimates.
+<br><br>
+        Specifying <span class=result>post</span> clears out the previous estimation results, which can be recovered only by
+        refitting the original model or by storing the estimation results before running
+        <span class=result>reffadjustsim</span> and then restoring them; see <span class=result>[R] estimates store</span>.
+<br><br>
+    <span class=result>replace</span> overwrites variables named <i>beta_indepvar</i> if they exist in the dataset.  Only valid
+        with <span class=result>mcmcsum</span>.
+<br><br>
+    <span class=result><u>sav</u></span><span class=result>ing(</span><i>filename </i>[<span class=result>,</span><i> replace</i>]<span class=result>)</span> saves the simulated realisations of the random effect variances
+        and covariances to <i>filename</i>, optionally replacing <i>filename</i> if it exists.
+<br><br>
+    <span class=result>seed(</span><i>#</i><span class=result>)</span> specifies the initial value of the random-number seed.  The default is the current
+        random-number seed.  Specifying <span class=result>seed(</span><i>#</i><span class=result>)</span> is the same as typing <span class=result>set seed</span> <i>#</i> before issuing
+        the command; see <span class=result>set_seed</span>.  Not allowed with <span class=result>mcmcsum</span>.
+<br><br>
+    <span class=result>sf(</span><i>numlist</i><span class=result>)</span> a numlist of scaling factors.  If specified each number corresponds to the
+        respective covariate (<i>indepvar</i>), i.e. first number is the scaling factor for the first
+        coefficient and so on.  If specified the <i>numlist</i> must be the same length as the number of
+        covariates.  To scale the coefficient by 2 times the dependent variable (<i>Y</i>), for example,
+        then with one covariate (<i>X</i>) specify sf(2).  To scale the coefficient by 2 times the
+        covariate specify sf(.5) because in this case you scale by 2/2^2 since a regression
+        coefficient is given by: cov(<i>X</i>,<i>Y</i>)/var(<i>X</i>).
+<br><br>
+    <span class=result>statadrawnorm</span> use Stata's <span class=result>drawnorm</span> to simulate the adjusted coefficients.  For speed by
+        default <span class=result>reffadjustsim</span> uses its own Mata implementation; see <span class=result>drawnorm</span>.  Not allowed with
+        <span class=result>mcmcsum</span>.
+<br><br>
+    <span class=result><u>sub</u></span><span class=result>level(</span><i>#</i><span class=result>)</span> the sublevel of a repeated group variable.  For example, in the following model
+<br><br>
+        <span class=input>. mixed</span> <i>f_p</i> <span class=result>|| school: z1 z2, nocons cov(id) || school: z3 z4, nocons cov(un)</span> <i>options</i>
+<br><br>
+        <span class=result>z1</span> and <span class=result>z2</span> are at sublevel 1 and <span class=result>z3</span> and <span class=result>z4</span> are at sublevel 2 of the <span class=result>school</span> group variable.
+        Only valid with <span class=result>mixed</span>/<span class=result>xtmixed</span>, <span class=result>meqrlogit</span>/<span class=result>xtmelogit</span>, and <span class=result>meqrpoisson</span>/<span class=result>xtmepoisson</span>.
+<br><br>
+    <span class=result><u>wald</u></span><span class=result>type</span> report coefficients as means with Wald-type confidence intervals.  By default
+        <span class=result>reffadjustsim</span> reports coefficients as medians and centiles of the simulated coefficients.
+        This option can produce inaccurate results, as per the warning above please compare with
+        the default output.  Not allowed with <span class=result>mcmcsum</span>.
+<br><br>
+<br><br>
+<a name="examples"></a><span class=result><u>Examples</u></span>
+<br><br>
+    ------------------------------------------------------------------------------------------------
+    Examples 1 &amp; 2 assume the path to the MLwiN executable is set in <span class=result>global MLwiN_path</span>; see
+    runmlwin
+<br><br>
+    <span class=result>Example 1: Two level continuous response model</span> (see page 59 of the MLwiN User Manual)
+<br><br>
+    <span class=input>. * read in data</span>
+    <span class=input>. </span><span class=result>use https://www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear</span>
+<br><br>
+    <span class=input>. * fit model using MLwiN via runmlwin</span>
+    <span class=input>. </span><span class=result>runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) batch</span>
+<br><br>
+    <span class=input>. * report coefficient as median with 2.5 &amp; 97.5 percentiles</span>
+    <span class=input>. </span><span class=result>reffadjustsim cons standlrt, eqn(RP2) seed(12345)</span>
+<br><br>
+    <span class=input>. * report coefficient as mean &amp; Wald-type confidence interval</span>
+    <span class=input>. * Warning: mean and Wald-type confidence are inaccurate in this example</span>
+    <span class=input>. </span><span class=result>reffadjustsim cons standlrt, eqn(RP2) seed(12345) waldtype</span>
+<br><br>
+    <span class=input>. * compare with delta-method confidence interval (first refit model)</span>
+    <span class=input>. </span><span class=result>runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) batch</span>
+    <span class=input>. </span><span class=result>reffadjust4nlcom cons standlrt, eqn(RP2)</span>
+    <span class=input>. </span><span class=result>nlcom `r(beta_standlrt)'</span>
+<br><br>
+    <span class=input>. * compare with Bayesian posterior distribution</span>
+    <span class=input>. </span><span class=result>runmlwin normexam cons standlrt, level1(student: cons) level2(school: cons standlrt) batch</span>
+        <span class=result>mcmc(on) initsprevious seed(121211)</span>
+    <span class=input>. </span><span class=result>mcmcsum, getchains</span>
+    <span class=input>. </span><span class=result>reffadjustsim cons standlrt, eqn(RP2) mcmcsum</span>
+<br><br>
+<br><br>
+    <span class=result>Example 2: Multivariate response model</span> (see page 214 of the MLwiN User Manual)
+<br><br>
+    <span class=input>. * read in data</span>
+    <span class=input>. </span><span class=result>use https://www.bristol.ac.uk/cmm/media/runmlwin/gcsemv1, clear</span>
+<br><br>
+    <span class=input>. * fit model using MLwiN via runmlwin</span>
+    <span class=input>. </span><span class=result>runmlwin (written cons female, eq(1)) (csework cons female, eq(2)), level1(student: (cons,</span>
+        <span class=result>eq(1)) (cons, eq(2))) level2(school: (cons, eq(1)) (cons, eq(2))) batch</span>
+<br><br>
+    <span class=input>. * report coefficient as median with 2.5 and 97.5 percentiles</span>
+    <span class=input>. </span><span class=result>reffadjustsim cons_1 cons_2, eqn(RP2) seed(12345)</span>
+<br><br>
+    <span class=input>. * report coefficient as mean with Wald-type confidence interval</span>
+    <span class=input>. </span><span class=result>reffadjustsim cons_1 cons_2, eqn(RP2) seed(12345) waldtype</span>
+<br><br>
+    <span class=input>. * compare with delta-method confidence interval (first refit model)</span>
+    <span class=input>. </span><span class=result>runmlwin (written cons female, eq(1)) (csework cons female, eq(2)), level1(student: (cons,</span>
+        <span class=result>eq(1)) (cons, eq(2))) level2(school: (cons, eq(1)) (cons, eq(2))) batch</span>
+    <span class=input>. </span><span class=result>reffadjust4nlcom cons_1 cons_2, eqn(RP2)</span>
+    <span class=input>. </span><span class=result>nlcom `r(beta_cons_2)'</span>
+<br><br>
+    <span class=input>. * compare with Bayesian posterior distribution</span>
+    <span class=input>. </span><span class=result>runmlwin (written cons female, eq(1)) (csework cons female, eq(2)), level1(student: (cons,</span>
+        <span class=result>eq(1)) (cons, eq(2))) level2(school: (cons, eq(1)) (cons, eq(2))) batch mcmc(on)</span>
+        <span class=result>initsprevious seed(121211)</span>
+    <span class=input>. </span><span class=result>mcmcsum, getchains</span>
+    <span class=input>. </span><span class=result>reffadjustsim cons_1 cons_2, eqn(RP2) mcmcsum</span>
+<br><br>
+<br><br>
+    <span class=result>Example 3: based on xtmixed helpfile</span>
+    <span class=input>. </span><span class=result>webuse nlswork, clear</span>
+    <span class=input>. </span><span class=result>version 12: xtmixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure || idcode:</span>
+        <span class=result>tenure, cov(uns) var</span>
+    <span class=input>. </span><span class=result>version 12: reffadjustsim _cons tenure, eqn(idcode) seed(12345)</span>
+    <span class=input>. </span><span class=result>mixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure || idcode: tenure,</span>
+        <span class=result>cov(uns)</span>
+    <span class=input>. </span><span class=result>reffadjustsim _cons tenure, eqn(idcode) seed(12345)</span>
+<br><br>
+<br><br>
+    <span class=result>Example 4: based on xtmelogit helpfile</span>
+    <span class=input>. </span><span class=result>webuse bangladesh, clear</span>
+    <span class=input>. </span><span class=result>version 12: xtmelogit c_use urban age child* || district: urban, cov(uns) var</span>
+    <span class=input>. </span><span class=result>version 12: reffadjustsim _cons urban, eqn(district) seed(12345)</span>
+    <span class=input>. </span><span class=result>webuse bangladesh, clear</span>
+    <span class=input>. </span><span class=result>meqrlogit c_use urban age child* || district: urban, cov(uns)</span>
+    <span class=input>. </span><span class=result>reffadjustsim _cons urban, eqn(district) seed(12345)</span>
+<br><br>
+<br><br>
+    <span class=result>Example 5: based on xtmepoisson helpfile</span>
+    <span class=input>. </span><span class=result>webuse epilepsy, clear</span>
+    <span class=input>. </span><span class=result>version 12: xtmepoisson seizures treat lbas lbas_trt lage visit || subject: visit, cov(uns)</span>
+        <span class=result>var intpoints(9)</span>
+    <span class=input>. </span><span class=result>version 12: reffadjustsim _cons visit, eqn(subject) seed(12345)</span>
+    <span class=input>. </span><span class=result>meqrpoisson seizures treat lbas lbas_trt lage visit || subject: visit, cov(uns) intpoints(9)</span>
+    <span class=input>. </span><span class=result>reffadjustsim _cons visit, eqn(subject) seed(12345)</span>
+<br><br>
+<br><br>
+    <span class=result>Example 6: repeated group variable</span>
+    <span class=input>. </span><span class=result>webuse nlswork, clear</span>
+    <span class=input>. </span><span class=result>version 12: xtmixed ln_w grade age || idcode: tenure union, cov(uns) || idcode: race,</span>
+        <span class=result>cov(uns) var</span>
+    <span class=input>. </span><span class=result>version 12: reffadjustsim tenure union, eqn(idcode) sub(1) seed(12345)</span>
+    <span class=input>. </span><span class=result>version 12: reffadjustsim race _cons, eqn(idcode) sub(2) seed(12345)</span>
+    <span class=input>. </span><span class=result>mixed ln_w grade age || idcode: tenure union, cov(uns) || idcode: race, cov(uns)</span>
+    <span class=input>. </span><span class=result>reffadjustsim tenure union, eqn(idcode) sub(1) seed(12345)</span>
+    <span class=input>. </span><span class=result>reffadjustsim race _cons, eqn(idcode) sub(2) seed(12345)</span>
+    ------------------------------------------------------------------------------------------------
+<br><br>
+<br><br>
+<a name="saved_results"></a><span class=result><u>Saved results</u></span>
+<br><br>
+    <span class=result>reffadjustsim</span> saves the following in <span class=result>r()</span>:
+<br><br>
+    Scalars        
+      <span class=result>r(N)</span>                number of simulated observations
+<br><br>
+    If <span class=result>waldtype</span> is not specified, <span class=result>reffadjustsim</span> saves the following for each indepvar in <span class=result>r()</span>:
+<br><br>
+    Scalars        
+      <span class=result>r(n_cent_indepvar)</span>  number of centiles requested (usually 2)
+      <span class=result>r(c_1_indepvar)</span>     value of 1st centile for indepvar
+      <span class=result>r(lb_1_indepvar)</span>    1st centile lower confidence bound
+      <span class=result>r(ub_1_indepvar)</span>    1st centile upper confidence bound
+      <span class=result>r(c_2_indepvar)</span>     value of 2nd centile for indepvar
+      <span class=result>r(lb_2_indepvar)</span>    2nd centile lower confidence bound
+      <span class=result>r(ub_2_indepvar)</span>    2nd centile upper confidence bound
+      <span class=result>r(med_indepvar)</span>     median of indepvar
+      <span class=result>r(lb_med_indepvar)</span>  median lower confidence bound
+      <span class=result>r(ub_med_indepvar)</span>  median upper confidence bound
+<br><br>
+    If <span class=result>waldtype</span> is specified, <span class=result>reffadjustsim</span> saves the following in <span class=result>r()</span>:
+<br><br>
+    Matrices       
+      <span class=result>r(b)</span>                vector of adjusted coefficients
+      <span class=result>r(V)</span>                estimated variance-covariance matrix of the adjusted coefficients
+<br><br>
+    If <span class=result>waldtype</span> and <span class=result>post</span> are specified, <span class=result>reffadjustsim</span> also saves the following in <span class=result>e()</span>:
+<br><br>
+    Scalars        
+      <span class=result>e(N)</span>                number of simulated observations
+<br><br>
+    Macros         
+      <span class=result>e(cmd)</span>              <span class=result>reffadjustsim</span>
+      <span class=result>e(depvar)</span>           name of the dependent variable
+      <span class=result>e(properties)</span>       <span class=result>b V</span>
+<br><br>
+    Matrices       
+      <span class=result>e(b)</span>                vector of adjusted coefficients
+      <span class=result>e(V)</span>                estimated variance-covariance matrix of the adjusted coefficients
+<br><br>
+<br><br>
+<a name="references"></a><span class=result><u>References</u></span>
+<br><br>
+    Buis ML. 2011. Stata tip 97: Getting at rho's and sigma's. The Stata Journal. 11(2) 315-317.
+<br><br>
+    Fisher RA. 1925. Chapter 5: Tests of significance of means, differences of means, and
+        regression coefficients, Section 29:  Regression with several independent variates in
+        Statistical Methods for Research Workers. Oliver and Boyd, Edinburgh.
+<br><br>
+    Gutierrez RG, Carter S, Drukker DM. 2001. sg160: On boundary-value likelihood ratio tests.
+        Stata Technical Bulletin. 60. 15-18.
+<br><br>
+    Leckie G, Charlton C. 2011. <span class=result>runmlwin</span>: Stata module for fitting multilevel models in the MLwiN
+        software package. Centre for Multilevel Modelling, University of Bristol, UK. 
+        https://www.bristol.ac.uk/cmm/software/runmlwin/
+<br><br>
+    Macdonald-Wallis C, Lawlor DA, Palmer TM, Tilling K. 2012. Multivariate multilevel spline
+        models for parallel growth processes: application to weight and mean arterial pressure in
+        pregnancy. Statistics in Medicine, 31, 3147-3164.
+<br><br>
+    Palmer TM, Macdonald-Wallis CM, Lawlor DA, Tilling K. Estimating adjusted associations between
+        random effects from multilevel models: the reffadjust package. The Stata Journal. In
+        press.
+<br><br>
+    Rasbash J, Charlton C, Browne WJ, Healy M, Cameron B. 2009. MLwiN version 2.1. Centre for
+        Multilevel Modelling, University of Bristol, UK. 
+        https://www.bristol.ac.uk/cmm/software/mlwin.
+<br><br>
+    Rasbash J, Steele F, Browne WJ, Goldstein H. 2009. A user's guide to MLwiN, v2.10. Centre for
+        Multilevel Modelling, University of Bristol, UK. 
+        https://www.bristol.ac.uk/cmm/software/mlwin/download/manuals.html.
+<br><br>
+<br><br>
+<a name="authors"></a><span class=result><u>Authors</u></span>
+<br><br>
+    Tom Palmer, MRC Integrative Epidemiology Unit and Population Health Sciences, Bristol Medical
+        School, University of Bristol, UK.  tom.palmer@bristol.ac.uk.
+<br><br>
+    Corrie Macdonald-Wallis, MRC Integrative Epidemiology Unit and Population Health Sciences,
+        Bristol Medical School, University of Bristol, UK.  c.macdonald-wallis@bristol.ac.uk.
+<br><br>
+    Kate Tilling, MRC Integrative Epidemiology Unit and Population Health Sciences, Bristol
+        Medical School, University of Bristol, UK.
+<br><br>
+<br><br>
+<span class=result><u>Also see</u></span>
+<br><br>
+      Help:  <span class=result>reffadjust</span>, <span class=result>reffadjust4nlcom</span>, <span class=result>runmlwin</span> (if installed), <span class=result>mcmcsum</span> (if installed), <span class=result>nlcom</span>,
+             <span class=result>mixed</span>, <span class=result>xtmixed</span>, <span class=result>meqrlogit</span>, <span class=result>xtmelogit</span>, <span class=result>meqrpoisson</span>, <span class=result>xtmepoisson</span>
+</pre>
+</body>
+</html>
