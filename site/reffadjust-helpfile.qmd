@@ -1,14 +1,6 @@
 ---
-title: ""
-pagetitle: about
-jupyter: nbstata
+pagetitle: reffadjust-helpfile
 ---
 
-```{stata}
-*| include: false
-adopath ++ ..
-```
-
-```{stata}
-*%help reffadjust
-```
+<iframe src="./helpfiles/reffadjust.html" width="100%" style="height: 100em; border: none">
+</iframe>
