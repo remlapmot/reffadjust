@@ -4,10 +4,12 @@ dev:
 [working-directory: 'site']
 render:
     #!/usr/bin/env bash
+    uv sync
     source .venv/bin/activate
-    python -m nbstata.install --sys-prefix
+    python -m nbstata.install
     quarto render
-    rm -rf ../docs/*
+    rm -rf ../docs
+    mkdir ../docs
     mv _site/* ../docs/
     
 [working-directory: 'cscripts']
