@@ -75,5 +75,5 @@ Thanks to Gemma Clayton for discovering that `reffadjustsim` had stopped working
 
 ## References
 
-- Macdonald-Wallis C, Lawlor DA, Palmer TM, Tilling K. 2012. Multivariate multilevel spline models for parallel growth processes: application to weight and mean arterial pressure in pregnancy. Statistics in Medicine, 31, 26, 3147-3164. <https://doi.org/10.1002/sim.5385>
-- Palmer TM, Macdonald-Wallis CM, Lawlor DA, Tilling K. Estimating adjusted associations between random effects from multilevel models: the reffadjust package. Stata Journal, 14, 1, 119-140. <https://www.stata-journal.com/article.html?article=st0327>
+- Macdonald-Wallis C, Lawlor DA, Palmer TM, Tilling K. Multivariate multilevel spline models for parallel growth processes: application to weight and mean arterial pressure in pregnancy. Statistics in Medicine, 2012, 31, 26, 3147--3164. <https://doi.org/10.1002/sim.5385>
+- Palmer TM, Macdonald-Wallis CM, Lawlor DA, Tilling K. Estimating adjusted associations between random effects from multilevel models: the reffadjust package. Stata Journal, 2014, 14, 1, 119--140. <https://www.stata-journal.com/article.html?article=st0327>
