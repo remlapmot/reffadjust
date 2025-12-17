@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -118,8 +118,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">reffadjust</span>
     </a>
@@ -232,27 +230,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>read in data</li>
 </ul>
-<div id="0a4edf50" class="cell" data-execution_count="2">
+<div id="9b2283ee" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> https:<span class="co">//www.bristol.ac.uk/cmm/media/runmlwin/tutorial, clear</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>fit model using MLwiN via <code>runmlwin</code></li>
 </ul>
-<div id="6284fc52" class="cell" data-execution_count="3">
+<div id="6d73f4e6" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>runmlwin normexam cons standlrt, level1(student: cons) <span class="co">///</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    level2(school: cons standlrt) batch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> 
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 25 Oct 2025 22:35:05
+MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:28:00
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St77659.000003
+/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St24178.000003
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St77659.000007
+/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St24178.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.16 multilevel model                     Number of obs      =      4059
+MLwiN 3.17 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -263,7 +261,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.07
+Run time (seconds)   =       0.06
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -296,7 +294,7 @@ Execution completed</code></pre>
 <ul>
 <li>report coefficient as median with 2.5 &amp; 97.5 percentiles</li>
 </ul>
-<div id="b030a21d" class="cell" data-execution_count="4">
+<div id="f14b0c8f" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>reffadjustsim cons standlrt, eqn(RP2) <span class="dv">seed</span>(12345)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -311,7 +309,7 @@ Execution completed</code></pre>
 <li>report coefficient as mean &amp; Wald-type confidence interval</li>
 <li>Warning: mean and Wald-type confidence are inaccurate in this example</li>
 </ul>
-<div id="2aecbcd6" class="cell" data-execution_count="5">
+<div id="af2ded3e" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>reffadjustsim cons standlrt, eqn(RP2) <span class="dv">seed</span>(12345) waldtype</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -327,7 +325,7 @@ Please compare with default output which reports median &amp; centiles.</code></
 <ul>
 <li>compare with delta-method confidence interval (first refit model)</li>
 </ul>
-<div id="b0c88691" class="cell" data-execution_count="6">
+<div id="c00da013" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>runmlwin normexam cons standlrt, level1(student: cons) <span class="co">///</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    level2(school: cons standlrt) batch</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>reffadjust4nlcom cons standlrt, eqn(RP2)</span>
@@ -335,15 +333,15 @@ Please compare with default output which reports median &amp; centiles.</code></
 <div class="cell-output cell-output-stdout">
 <pre><code> 
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 25 Oct 2025 22:35:05
+MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:28:00
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St77659.000004
+/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St24178.000004
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St77659.000008
+/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St24178.000008
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.16 multilevel model                     Number of obs      =      4059
+MLwiN 3.17 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -395,7 +393,7 @@ Execution completed</code></pre>
 <ul>
 <li>compare with Bayesian posterior distribution</li>
 </ul>
-<div id="89a3201c" class="cell" data-execution_count="7">
+<div id="124c32f0" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>runmlwin normexam cons standlrt, level1(student: cons) <span class="co">///</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    level2(school: cons standlrt) batch mcmc(<span class="kw">on</span>) initsprevious <span class="dv">seed</span>(121211)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>mcmcsum, getchains</span>
@@ -506,23 +504,23 @@ Actual update 4200 of 5000, Stored update 4200 of 5000
 Actual update 4250 of 5000, Stored update 4250 of 5000
 Actual update 4300 of 5000, Stored update 4300 of 5000
 Actual update 4350 of 5000, Stored update 4350 of 5000
-Actual update 4400 of 5000, Stored update 4400 of 5000
-Actual update 4450 of 5000, Stored update 4450 of 5000</code></pre>
+Actual update 4400 of 5000, Stored update 4400 of 5000</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code> --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 25 Oct 2025 22:35:05
+MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:28:00
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St77659.000006
+/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St24178.000006
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St77659.00000a
+/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St24178.00000a
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St77659.000004
+/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St24178.000004
  --- End MLwiN error log --- 
 </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Actual update 4500 of 5000, Stored update 4500 of 5000
+<pre><code>Actual update 4450 of 5000, Stored update 4450 of 5000
+Actual update 4500 of 5000, Stored update 4500 of 5000
 Actual update 4550 of 5000, Stored update 4550 of 5000
 Actual update 4600 of 5000, Stored update 4600 of 5000
 Actual update 4650 of 5000, Stored update 4650 of 5000
@@ -537,7 +535,7 @@ Execution completed</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: getversion plugin could not be loaded
-MLwiN 3.16 multilevel model                     Number of obs      =      4059
+MLwiN 3.17 multilevel model                     Number of obs      =      4059
 Normal response model (hierarchical)
 Estimation algorithm: MCMC
 
@@ -551,7 +549,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       .605
+Run time (seconds)         =        .66
 Deviance (dbar)            =    9122.42
 Deviance (thetabar)        =    9031.09
 Effective no. of pars (pd) =      91.34
@@ -589,13 +587,13 @@ Level 1: student             |
 <ul>
 <li>read in data</li>
 </ul>
-<div id="e8351103" class="cell" data-execution_count="8">
+<div id="30f989a3" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> https:<span class="co">//www.bristol.ac.uk/cmm/media/runmlwin/gcsemv1, clear</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>fit model using MLwiN via <code>runmlwin</code></li>
 </ul>
-<div id="8f230af3" class="cell" data-execution_count="9">
+<div id="eac3ca1f" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>runmlwin (written cons female, <span class="kw">eq</span>(1)) (csework cons female, <span class="kw">eq</span>(2)), <span class="co">///</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>        level1(student: (cons, <span class="kw">eq</span>(1)) (cons, <span class="kw">eq</span>(2))) <span class="co">///</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        level2(school: (cons, <span class="kw">eq</span>(1)) (cons, <span class="kw">eq</span>(2))) <span class="co">///</span></span>
@@ -603,17 +601,17 @@ Level 1: student             |
 <div class="cell-output cell-output-stdout">
 <pre><code> 
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 25 Oct 2025 22:35:06
+MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:28:01
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St77659.000005
+/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St24178.000005
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St77659.000009
+/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St24178.000009
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St77659.00000a
+/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St24178.00000a
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.16 multilevel model                     Number of obs      =      1905
+MLwiN 3.17 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -624,7 +622,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.10
+Run time (seconds)   =       0.11
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -664,7 +662,7 @@ Execution completed</code></pre>
 <ul>
 <li>report coefficient as median with 2.5 and 97.5 percentiles</li>
 </ul>
-<div id="183e8076" class="cell" data-execution_count="10">
+<div id="0b529ae2" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>reffadjustsim cons_1 cons_2, eqn(RP2) <span class="dv">seed</span>(12345)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -678,7 +676,7 @@ Execution completed</code></pre>
 <ul>
 <li>report coefficient as mean with Wald-type confidence interval</li>
 </ul>
-<div id="efeefb06" class="cell" data-execution_count="11">
+<div id="1f0c9e2e" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>reffadjustsim cons_1 cons_2, eqn(RP2) <span class="dv">seed</span>(12345) waldtype</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -694,7 +692,7 @@ Please compare with default output which reports median &amp; centiles.</code></
 <ul>
 <li>compare with delta-method confidence interval (first refit model)</li>
 </ul>
-<div id="8bfba89a" class="cell" data-execution_count="12">
+<div id="0fe97fc1" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>runmlwin (written cons female, <span class="kw">eq</span>(1)) (csework cons female, <span class="kw">eq</span>(2)), <span class="co">///</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>        level1(student: (cons, <span class="kw">eq</span>(1)) (cons, <span class="kw">eq</span>(2))) <span class="co">///</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>        level2(school: (cons, <span class="kw">eq</span>(1)) (cons, <span class="kw">eq</span>(2))) <span class="co">///</span></span>
@@ -704,17 +702,17 @@ Please compare with default output which reports median &amp; centiles.</code></
 <div class="cell-output cell-output-stdout">
 <pre><code> 
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Sat 25 Oct 2025 22:35:06
+MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:28:01
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St77659.000006
+/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St24178.000006
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St77659.00000a
+/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St24178.00000a
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St77659.00000b
+/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St24178.00000b
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
-MLwiN 3.16 multilevel model                     Number of obs      =      1905
+MLwiN 3.17 multilevel model                     Number of obs      =      1905
 Multivariate response model (hierarchical)
 Estimation algorithm: IGLS
 
@@ -777,7 +775,7 @@ Execution completed</code></pre>
 <pre><code>
 ## Example 3: based on xtmixed helpfile
 
-::: {#93f34de6 .cell execution_count=13}
+::: {#82659430 .cell execution_count=13}
 ``` {.stata .cell-code}
 webuse nlswork, clear
 version 12: xtmixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure || ///
@@ -844,7 +842,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------</code></pre>
 </div>
 <p>:::</p>
-<div id="f77b81c8" class="cell" data-execution_count="14">
+<div id="27173b3e" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>mixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure || <span class="co">///</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    idcode: tenure, cov(uns)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>reffadjustsim <span class="dt">_cons</span> tenure, eqn(idcode) <span class="dv">seed</span>(12345)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -910,7 +908,7 @@ Note: LR test is conservative and provided only for reference.
 </section>
 <section id="example-4-based-on-xtmelogit-helpfile" class="level2">
 <h2 class="anchored" data-anchor-id="example-4-based-on-xtmelogit-helpfile">Example 4: based on xtmelogit helpfile</h2>
-<div id="3b783c8a" class="cell" data-execution_count="15">
+<div id="9e174cb5" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">webuse</span> bangladesh, <span class="kw">clear</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="kw">version</span> 12: xtmelogit c_use urban age child* || district: urban , <span class="co">///</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    cov(uns) <span class="kw">var</span></span>
@@ -975,7 +973,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------</code></pre>
 </div>
 </div>
-<div id="ce6b3466" class="cell" data-execution_count="16">
+<div id="7e3ff3c0" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">webuse</span> bangladesh, <span class="kw">clear</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>meqrlogit c_use urban age child* || district: urban, cov(uns)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>reffadjustsim <span class="dt">_cons</span> urban, eqn(district) <span class="dv">seed</span>(12345)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1042,7 +1040,7 @@ Note: LR test is conservative and provided only for reference.
 </section>
 <section id="example-5-based-on-xtmepoisson-helpfile" class="level2">
 <h2 class="anchored" data-anchor-id="example-5-based-on-xtmepoisson-helpfile">Example 5: based on xtmepoisson helpfile</h2>
-<div id="d9d5fbdc" class="cell" data-execution_count="17">
+<div id="884d8506" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">webuse</span> epilepsy, <span class="kw">clear</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="kw">version</span> 12: xtmepoisson seizures treat lbas lbas_trt lage visit || <span class="co">///</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>        subject: visit, cov(uns) <span class="kw">var</span> <span class="kw">intpoints</span>(9)</span>
@@ -1104,7 +1102,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------</code></pre>
 </div>
 </div>
-<div id="f24f10f5" class="cell" data-execution_count="18">
+<div id="46629886" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>meqrpoisson seizures treat lbas lbas_trt lage visit || subject: visit, <span class="co">///</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>        cov(uns) <span class="kw">intpoints</span>(9)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>reffadjustsim <span class="dt">_cons</span> visit, eqn(subject) <span class="dv">seed</span>(12345)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1167,7 +1165,7 @@ Note: LR test is conservative and provided only for reference.
 </section>
 <section id="example-6-repeated-group-variable" class="level2">
 <h2 class="anchored" data-anchor-id="example-6-repeated-group-variable">Example 6: repeated group variable</h2>
-<div id="73aef662" class="cell" data-execution_count="19">
+<div id="03c183d6" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">webuse</span> nlswork, <span class="kw">clear</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="kw">version</span> 12: <span class="kw">xtmixed</span> ln_w grade age || idcode: tenure <span class="kw">union</span>, cov(uns) || <span class="co">///</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    idcode: race, cov(uns) <span class="kw">var</span></span>
@@ -1240,7 +1238,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------</code></pre>
 </div>
 </div>
-<div id="49ae16b8" class="cell" data-execution_count="20">
+<div id="91fd06d5" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>mixed ln_w grade age || idcode: tenure <span class="kw">union</span>, cov(uns) || idcode: race, <span class="co">///</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    cov(uns)</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>reffadjustsim tenure <span class="kw">union</span>, eqn(idcode) sub(1) <span class="dv">seed</span>(12345)</span>
