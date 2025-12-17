@@ -59,6 +59,7 @@ Thanks to Gemma Clayton for discovering that `reffadjustsim` had stopped working
 
 ## Notes
 
+- 2025-12-17 Tested under MLwiN 3.17 and StataNow 19.5 on macOS M4 chip
 - 2025-10-20 Tested under MLwiN 3.16 and StataNow 19.5 on macOS M4 chip
 - 2025-10-17 reffadjust now has a website <https://remlapmot.github.io/reffadjust/>
 - 2025-10-12 Tested under MLwiN 3.15 and StataNow 19.5 on macOS M4 chip
