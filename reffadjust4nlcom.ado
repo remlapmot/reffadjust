@@ -678,7 +678,7 @@ else if `len' == 5 {
 	local SS33b "`eqnvarx1'*(`eqncovx2x4')^2 - `eqnvarx4'*(`eqncovx1x2')^2 - `eqnvarx2'*(`eqncovx1x4')^2"
 	local SS33 "`SS33a' - `SS33b'"
 	local SS34a "`eqnvarx1'*`eqncovx2x4'*`eqncovx2x3' + `eqncovx3x4'*(`eqncovx1x2')^2 + `eqncovx1x4'*`eqnvarx2'*`eqncovx1x3'"
-	local SS34b "`eqnvarx1'*`eqnvarx2'*`eqncovx3x4' - `eqncovx1x2'*`eqncovx2x4'*`eqncovx1x3' - `eqncovx1x2'*`eqncovx2x4'*`eqncovx1x3'"
+	local SS34b "`eqnvarx1'*`eqnvarx2'*`eqncovx3x4' - `eqncovx1x2'*`eqncovx2x4'*`eqncovx1x3' - `eqncovx1x4'*`eqncovx1x2'*`eqncovx2x3'"
 	local SS34 "`SS34a' - `SS34b'"
 	local SS41 "`SS14'"
 	local SS42 "`SS24'"
