@@ -59,7 +59,7 @@ if e(cmd) == "runmlwin" {
 	}
 
 	if real(e(version)) < 2.23 {
-		di as err "reffadjust4nlcom requires runmlwin ouput using MLwiN version 2.23 or above."
+		di as err "reffadjust4nlcom requires runmlwin output using MLwiN version 2.23 or above."
 		error 322
 	}
 
