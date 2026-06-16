@@ -1,7 +1,7 @@
 dev:
     stata-mp "do developer"
 
-[working-directory: 'site']
+[working-directory('site')]
 render:
     #!/usr/bin/env bash
     uv sync
@@ -11,7 +11,7 @@ render:
     rm -rf ../docs
     mkdir ../docs
     mv _site/* ../docs/
-    
-[working-directory: 'cscripts']
+
+[working-directory('cscripts')]
 test:
     stata-mp -b "do master"
