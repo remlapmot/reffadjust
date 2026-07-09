@@ -803,7 +803,7 @@ void function dmsim_caller(string scalar namelist2,
 	real scalar nx, string scalar betanames, string scalar sf,
 	string scalar bname, string scalar vname)
 {
-	real matrix namelist2data, namelist2adata, namelist3data, betahats, A, SY, b, x, V, means
+	real matrix namelist2data, namelist2adata, namelist3data, betahats, A, mv
 
 	namelist2data = st_data(., namelist2)
 	if (namelist2a == "") {
@@ -814,30 +814,23 @@ void function dmsim_caller(string scalar namelist2,
 	}
 	namelist3data = st_data(., namelist3)
 	betahats = J(n, nx, .)
-	b = I(nx)
 
 	for (i=1; i<=n; i++) {
 		A = dmsim_Amatrix(namelist2data[i,]', namelist2adata[i,]', nx)
-		x = lusolve(A, b)
-		SY = namelist3data[i,]'
-		betahats[i,] = (x*SY)'
+		betahats[i,] = lusolve(A, namelist3data[i,]')'
 	}
 
 	// rescale betas by sf scaling factors
 	if (sf != "") {
-		realsf = strtoreal(tokens(sf))
-		realsfmat = J(n, 1, realsf)
-		betahats = betahats:*realsfmat
+		betahats = betahats :* strtoreal(tokens(sf))
 	}
 
 	// store the betahats in dataset
 	st_store(., tokens(betanames), betahats)
 	// generate and save means and V matrices
-	V = meanvariance(betahats)
-	means = mean(betahats)
-	V = variance(betahats)
-	st_matrix(bname, means)
-	st_matrix(vname, V)
+	mv = meanvariance(betahats)
+	st_matrix(bname, mv[1,])
+	st_matrix(vname, mv[2::rows(mv),])
 }
 
 end
