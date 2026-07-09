@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.2.0  9jul2026 Tom Palmer}{...}
+{* *! version 1.3.0  9jul2026 Tom Palmer}{...}
 {cmd:help reffadjust4nlcom} {right:}
 {hline}
 

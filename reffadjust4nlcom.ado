@@ -1,4 +1,4 @@
-*! version 1.2.0 9jul2026 Tom Palmer & Corrie Macdonald-Wallis
+*! version 1.3.0 9jul2026 Tom Palmer & Corrie Macdonald-Wallis
 program reffadjust4nlcom, rclass
 if _caller() >= 13 version 13.0
 if _caller() < 13 version 11.2
