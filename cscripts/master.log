@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
       name:  master
-       log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/master.log
+       log:  /Users/eptmp/Documents/GitHub/reffadjust/cscripts/master.log
   log type:  text
- opened on:  17 Dec 2025, 15:23:40
+ opened on:   9 Jul 2026, 10:22:43
 
 . 
 . cscript master
@@ -24,10 +24,10 @@
   5. }
 -------------------------------------------------------------------------------
       name:  reffadjust4nlcom
-       log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjust4nlcom.l
-> og
+       log:  /Users/eptmp/Documents/GitHub/reffadjust/cscripts/reffadjust4nlcom
+> .log
   log type:  text
- opened on:  17 Dec 2025, 15:23:40
+ opened on:   9 Jul 2026, 10:22:43
 
 . * 2023-01-25 Examples from reffadjust4nlcom helpfile
 . 
@@ -35,19 +35,19 @@
 ---------------------------------------------------------BEGIN reffadjust4nlcom
 
 -> which reffadjust4nlcom, usesysdir
-/Users/tom/Documents/GitHub/reffadjust/reffadjust4nlcom.ado
-*! version 1.1.0 2sep2013 Tom Palmer & Corrie Macdonald-Wallis
+/Users/eptmp/Documents/GitHub/reffadjust/reffadjust4nlcom.ado
+*! version 1.2.0 9jul2026 Tom Palmer & Corrie Macdonald-Wallis
 
 . 
 . about
 
 StataNow/MP 19.5 for Unix (Apple Silicon)
-Revision 12 Nov 2025
+Revision 03 Jun 2026
 Copyright 1985-2025 StataCorp LLC
 
-Total usable memory: 16.00 GB
+Total usable memory: 18.00 GB
 
-Stata license: Unlimited-user 2-core network, expiring 29 Jan 2026
+Stata license: Unlimited-user 2-core network, expiring 29 Jan 2027
 Serial number: 501909307934
   Licensed to: Tom Palmer
                University of Bristol
@@ -56,8 +56,8 @@ Serial number: 501909307934
 . // Examples 1 & 2 assume the path to the MLwiN executable is set in global ML
 > wiN_path; see runmlwin
 . 
-. if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.13\\mlwi
-> n.exe"
+. if c(os) == "Windows" global MLwiN_path "C:\Program Files\MLwiN v3.13\mlwin.e
+> xe"
 
 . if c(machine_type) == "Mac (Apple Silicon)" global MLwiN_path "/opt/mln/mlnsc
 > ript"
@@ -74,11 +74,11 @@ Serial number: 501909307934
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:23:46
+MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:22:43
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000002
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000002
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000006
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -93,7 +93,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       6.10
+Run time (seconds)   =       0.07
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -156,13 +156,13 @@ Level 1: student             |
 >     seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:23:46
+MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:22:43
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000003
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000003
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000007
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000007
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000001
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -180,7 +180,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       .637
+Run time (seconds)         =       .686
 Deviance (dbar)            =    9122.42
 Deviance (thetabar)        =    9031.09
 Effective no. of pars (pd) =      91.34
@@ -231,13 +231,13 @@ beta_standlrt|   1.289067    .456183      857   0.001     .4577979       2.279
 >  (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:23:47
+MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:22:44
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000002
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000002
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000006
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000006
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000007
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -252,7 +252,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.10
+Run time (seconds)   =       0.13
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -322,15 +322,15 @@ Level 1: student             |
 > seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:23:47
+MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:22:44
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000003
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000003
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000007
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000007
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000008
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000008
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000001
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -348,7 +348,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.04
+Run time (seconds)         =       1.34
 Deviance (dbar)            =   29388.29
 Deviance (thetabar)        =   28877.57
 Effective no. of pars (pd) =     510.73
@@ -1232,16 +1232,17 @@ Note: LR test is conservative and provided only for reference.
 . 
 end of do-file
       name:  reffadjust4nlcom
-       log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjust4nlcom.l
-> og
+       log:  /Users/eptmp/Documents/GitHub/reffadjust/cscripts/reffadjust4nlcom
+> .log
   log type:  text
- closed on:  17 Dec 2025, 15:24:49
+ closed on:   9 Jul 2026, 10:23:58
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
       name:  reffadjustsim
-       log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
+       log:  /Users/eptmp/Documents/GitHub/reffadjust/cscripts/reffadjustsim.lo
+> g
   log type:  text
- opened on:  17 Dec 2025, 15:24:49
+ opened on:   9 Jul 2026, 10:23:58
 
 . * 2023-01-25 reffadjustsim cscript
 . 
@@ -1249,19 +1250,19 @@ end of do-file
 ------------------------------------------------------------BEGIN reffadjustsim
 
 -> which reffadjustsim, usesysdir
-/Users/tom/Documents/GitHub/reffadjust/reffadjustsim.ado
-*! version 1.1.0 2sep2013 Tom Palmer & Corrie Macdonald-Wallis
+/Users/eptmp/Documents/GitHub/reffadjust/reffadjustsim.ado
+*! version 1.2.0 9jul2026 Tom Palmer & Corrie Macdonald-Wallis
 
 . 
 . about
 
 StataNow/MP 19.5 for Unix (Apple Silicon)
-Revision 12 Nov 2025
+Revision 03 Jun 2026
 Copyright 1985-2025 StataCorp LLC
 
-Total usable memory: 16.00 GB
+Total usable memory: 18.00 GB
 
-Stata license: Unlimited-user 2-core network, expiring 29 Jan 2026
+Stata license: Unlimited-user 2-core network, expiring 29 Jan 2027
 Serial number: 501909307934
   Licensed to: Tom Palmer
                University of Bristol
@@ -1270,8 +1271,8 @@ Serial number: 501909307934
 . // Examples 1 & 2 assume the path to the MLwiN executable is set in global ML
 > wiN_path; see runmlwin
 . 
-. if c(os) == "Windows" global MLwiN_path "C:\\Program Files\\MLwiN v3.13\\mlwi
-> n.exe"
+. if c(os) == "Windows" global MLwiN_path "C:\Program Files\MLwiN v3.13\mlwin.e
+> xe"
 
 . if c(machine_type) == "Mac (Apple Silicon)" global MLwiN_path "/opt/mln/mlnsc
 > ript"
@@ -1288,11 +1289,11 @@ Serial number: 501909307934
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:24:49
+MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:23:59
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000002
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000002
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000006
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1307,7 +1308,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.05
+Run time (seconds)   =       0.07
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -1337,7 +1338,7 @@ Level 1: student             |
 ------------------------------------------------------------------------------
         cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-    standlrt |   1.242541                 .4311653            2.607229
+    standlrt |   1.239544                 .4175606            2.542327
 ------------------------------------------------------------------------------
 
 . 
@@ -1348,7 +1349,7 @@ Level 1: student             |
 ------------------------------------------------------------------------------
         cons |      Coef.   Std. Err.                     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
-    standlrt |   1.319134    1.22225                     -1.076431      3.7147
+    standlrt |   1.411469   8.157446                     -14.57683    17.39977
 ------------------------------------------------------------------------------
 Warning: Coef. & Wald-type conf. interval limits may be inaccurate.
 Please compare with default output which reports median & centiles.
@@ -1359,11 +1360,11 @@ Please compare with default output which reports median & centiles.
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:24:49
+MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:23:59
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000002
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000002
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000006
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1378,7 +1379,7 @@ Estimation algorithm: IGLS
          school |       65          2       62.4        198
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.04
+Run time (seconds)   =       0.06
 Number of iterations =          4
 Log likelihood       =  -4658.435
 Deviance             =    9316.87
@@ -1419,13 +1420,13 @@ Level 1: student             |
 >     level2(school: cons standlrt) batch mcmc(on) initsprevious seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:24:50
+MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:23:59
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000003
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000003
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000007
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000007
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000001
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1443,7 +1444,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       .569
+Run time (seconds)         =       .706
 Deviance (dbar)            =    9122.42
 Deviance (thetabar)        =    9031.09
 Effective no. of pars (pd) =      91.34
@@ -1490,13 +1491,13 @@ Level 1: student             |
 >     level2(school: (cons, eq(1)) (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:24:50
+MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:24:00
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000002
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000002
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000006
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000006
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000007
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1511,7 +1512,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.10
+Run time (seconds)   =       0.13
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -1548,7 +1549,7 @@ Level 1: student             |
 ------------------------------------------------------------------------------
       cons_1 |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-      cons_2 |   .3308853                 .1231026            .5395364
+      cons_2 |   .3294409                 .1244707            .5373427
 ------------------------------------------------------------------------------
 
 . 
@@ -1558,7 +1559,7 @@ Level 1: student             |
 ------------------------------------------------------------------------------
       cons_1 |      Coef.   Std. Err.                     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
-      cons_2 |    .330939   .1065639                      .1220777    .5398003
+      cons_2 |   .3307584   .1038475                      .1272211    .5342957
 ------------------------------------------------------------------------------
 Warning: Coef. & Wald-type conf. interval limits may be inaccurate.
 Please compare with default output which reports median & centiles.
@@ -1570,13 +1571,13 @@ Please compare with default output which reports median & centiles.
 >     level2(school: (cons, eq(1)) (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:24:50
+MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:24:00
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000002
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000002
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000006
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000006
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000007
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1591,7 +1592,7 @@ Estimation algorithm: IGLS
          school |       73          2       26.1        104
 -----------------------------------------------------------
 
-Run time (seconds)   =       0.09
+Run time (seconds)   =       0.13
 Number of iterations =          4
 Log likelihood       = -13400.244
 Deviance             =  26800.488
@@ -1641,15 +1642,15 @@ Level 1: student             |
 > seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Wed 17 Dec 2025 15:24:50
+MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:24:00
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000003
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000003
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000007
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000007
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000008
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000008
 
-/var/folders/9j/bw4vdrw94yndry3z9cv8ms1m0000gn/T//St23551.000001
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -1667,7 +1668,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.04
+Run time (seconds)         =       1.35
 Deviance (dbar)            =   29388.29
 Deviance (thetabar)        =   28877.57
 Effective no. of pars (pd) =     510.73
@@ -1772,7 +1773,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-      tenure |   1.377053                 .2240176            2.619103
+      tenure |   1.392978                 .2382027            2.638403
 ------------------------------------------------------------------------------
 
 . version 13: mixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure
@@ -1834,7 +1835,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-      tenure |   1.377053                 .2240176            2.619103
+      tenure |   1.392978                 .2382027            2.638403
 ------------------------------------------------------------------------------
 
 . mixed ln_w grade age c.age#c.age ttl_exp tenure c.tenure#c.tenure || idcode: 
@@ -1895,7 +1896,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-      tenure |   1.377053                  .224019            2.619103
+      tenure |   1.392979                 .2382037            2.638403
 ------------------------------------------------------------------------------
 
 . 
@@ -1958,7 +1959,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       urban |  -.5896734                -.9622378           -.2954986
+       urban |   -.590102                -.9731654           -.2980916
 ------------------------------------------------------------------------------
 
 . webuse bangladesh, clear
@@ -2019,7 +2020,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       urban |  -.5896734                -.9622378           -.2954986
+       urban |   -.590102                -.9731654           -.2980916
 ------------------------------------------------------------------------------
 
 . webuse bangladesh, clear
@@ -2080,7 +2081,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       urban |  -.5896734                -.9622378           -.2954986
+       urban |   -.590102                -.9731654           -.2980916
 ------------------------------------------------------------------------------
 
 . 
@@ -2143,7 +2144,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       visit |   .0044339                -.3128618            .3397986
+       visit |   .0047654                -.3206803            .3403058
 ------------------------------------------------------------------------------
 
 . version 13: meqrpoisson seizures treat lbas lbas_trt lage visit || subject: v
@@ -2201,7 +2202,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       visit |   .0044339                -.3128618            .3397986
+       visit |   .0047654                -.3206803            .3403058
 ------------------------------------------------------------------------------
 
 . meqrpoisson seizures treat lbas lbas_trt lage visit || subject: visit, cov(un
@@ -2259,7 +2260,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
        _cons |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       visit |   .0044339                -.3128618            .3397986
+       visit |   .0047654                -.3206803            .3403058
 ------------------------------------------------------------------------------
 
 . 
@@ -2326,7 +2327,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
       tenure |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       union |   .0321253                 .0121897            .0521846
+       union |   .0323748                 .0122874             .052057
 ------------------------------------------------------------------------------
 
 . version 12: reffadjustsim race _cons, eqn(idcode) sub(2) seed(12345)
@@ -2334,7 +2335,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
         race |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       _cons |  -.2544331                 -.476558           -.1166022
+       _cons |  -.2554899                -.4841479           -.1141768
 ------------------------------------------------------------------------------
 
 . version 13: mixed ln_w grade age || idcode: tenure union, cov(uns) || idcode:
@@ -2396,7 +2397,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
       tenure |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       union |   .0321253                 .0121897            .0521846
+       union |   .0323748                 .0122874             .052057
 ------------------------------------------------------------------------------
 
 . reffadjustsim race _cons, eqn(idcode) sub(2) seed(12345)
@@ -2404,7 +2405,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
         race |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       _cons |  -.2544331                 -.476558           -.1166022
+       _cons |  -.2554899                -.4841479           -.1141768
 ------------------------------------------------------------------------------
 
 . mixed ln_w grade age || idcode: tenure union, cov(uns) || idcode: race, cov(u
@@ -2465,7 +2466,7 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
       tenure |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       union |   .0321253                 .0121897            .0521846
+       union |   .0323748                 .0122874             .052057
 ------------------------------------------------------------------------------
 
 . reffadjustsim race _cons, eqn(idcode) sub(2) seed(12345)
@@ -2473,21 +2474,22 @@ Note: LR test is conservative and provided only for reference.
 ------------------------------------------------------------------------------
         race |     Median              2.5 Percentile      97.5 Percentile
 -------------+----------------------------------------------------------------
-       _cons |  -.2544335                -.4765523           -.1166046
+       _cons |  -.2554898                -.4841419           -.1141794
 ------------------------------------------------------------------------------
 
 . 
 end of do-file
       name:  reffadjustsim
-       log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/reffadjustsim.log
+       log:  /Users/eptmp/Documents/GitHub/reffadjust/cscripts/reffadjustsim.lo
+> g
   log type:  text
- closed on:  17 Dec 2025, 15:25:54
+ closed on:   9 Jul 2026, 10:25:14
 -------------------------------------------------------------------------------
 
 . 
 . log close _all
       name:  master
-       log:  /Users/tom/Documents/GitHub/reffadjust/cscripts/master.log
+       log:  /Users/eptmp/Documents/GitHub/reffadjust/cscripts/master.log
   log type:  text
- closed on:  17 Dec 2025, 15:25:54
+ closed on:   9 Jul 2026, 10:25:14
 -------------------------------------------------------------------------------
