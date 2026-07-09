@@ -746,7 +746,7 @@ function dmsim_drawnorm(real scalar n, string scalar b,
 {
 	real rowvector means
 	real matrix P, C, data
-	string rowvector newcolfulnames
+	string rowvector newnametokens
 
 	newnametokens = tokens(newcolfullnames)
 	means = st_matrix(b)
@@ -761,15 +761,7 @@ function dmsim_drawnorm(real scalar n, string scalar b,
 		exit(506)
 	}
 
-	rand = rnormal(n*nx,1,0,1)
-	data = J(n, nx, .)
-	for (i=1; i<=nx; i++) {
-		start = 1 + (i - 1)*n
-		stop = n*i
-		data[,i] = rand[start..stop, 1]
-	}
-	data = data*C'
-	data = data + J(n,1,means)
+	data = rnormal(n, nx, 0, 1)*C' :+ means
 	(void) st_addvar("double", newnametokens)
 	st_store(., newnametokens, data)
 }
