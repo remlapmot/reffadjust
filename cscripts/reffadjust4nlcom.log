@@ -3,7 +3,7 @@
        log:  /Users/eptmp/Documents/GitHub/reffadjust/cscripts/reffadjust4nlcom
 > .log
   log type:  text
- opened on:   9 Jul 2026, 10:22:43
+ opened on:   9 Jul 2026, 10:34:27
 
 . * 2023-01-25 Examples from reffadjust4nlcom helpfile
 . 
@@ -12,7 +12,7 @@
 
 -> which reffadjust4nlcom, usesysdir
 /Users/eptmp/Documents/GitHub/reffadjust/reffadjust4nlcom.ado
-*! version 1.2.0 9jul2026 Tom Palmer & Corrie Macdonald-Wallis
+*! version 1.3.0 9jul2026 Tom Palmer & Corrie Macdonald-Wallis
 
 . 
 . about
@@ -50,11 +50,11 @@ Serial number: 501909307934
 > andlrt) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:22:43
+MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:34:27
 
-/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000002
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St62920.000002
 
-/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000006
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St62920.000006
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -132,13 +132,13 @@ Level 1: student             |
 >     seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:22:43
+MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:34:27
 
-/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000003
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St62920.000003
 
-/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000007
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St62920.000007
 
-/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000001
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St62920.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -156,7 +156,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       .686
+Run time (seconds)         =       .681
 Deviance (dbar)            =    9122.42
 Deviance (thetabar)        =    9031.09
 Effective no. of pars (pd) =      91.34
@@ -207,13 +207,13 @@ beta_standlrt|   1.289067    .456183      857   0.001     .4577979       2.279
 >  (cons, eq(2))) batch
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:22:44
+MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:34:28
 
-/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000002
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St62920.000002
 
-/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000006
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St62920.000006
 
-/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000007
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St62920.000007
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -298,15 +298,15 @@ Level 1: student             |
 > seed(121211)
  
  --- Begin MLwiN error log --- 
-MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:22:44
+MLN - Software for N-level analysis.   Thu 09 Jul 2026 09:34:28
 
-/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000003
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St62920.000003
 
-/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000007
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St62920.000007
 
-/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000008
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St62920.000008
 
-/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St61221.000001
+/var/folders/kt/7xskrb1n4_x2jkd9lt0rhybh0000gp/T//St62920.000001
  --- End MLwiN error log --- 
 
 Warning: getversion plugin could not be loaded
@@ -324,7 +324,7 @@ Estimation algorithm: MCMC
 Burnin                     =        500
 Chain                      =       5000
 Thinning                   =          1
-Run time (seconds)         =       1.34
+Run time (seconds)         =       1.32
 Deviance (dbar)            =   29388.29
 Deviance (thetabar)        =   28877.57
 Effective no. of pars (pd) =     510.73
@@ -1211,5 +1211,5 @@ end of do-file
        log:  /Users/eptmp/Documents/GitHub/reffadjust/cscripts/reffadjust4nlcom
 > .log
   log type:  text
- closed on:   9 Jul 2026, 10:23:58
+ closed on:   9 Jul 2026, 10:35:42
 -------------------------------------------------------------------------------
