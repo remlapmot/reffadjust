@@ -15,7 +15,7 @@ if c(version) < 13 & !inlist(e(cmd), "runmlwin", "xtmixed", "xtmelogit", "xtmepo
 	error 322
 }
 else if c(version) >= 13 & !inlist(e(cmd), "runmlwin", "mixed", "meqrlogit", "meqrpoisson") {
-	di as err "reffadjustsim currently only works for estimates returned by runmlwin, mixed, meqrlogit, or meqrpoisson."
+	di as err "reffadjust4nlcom currently only works for estimates returned by runmlwin, mixed, meqrlogit, or meqrpoisson."
 	error 322
 }
 
