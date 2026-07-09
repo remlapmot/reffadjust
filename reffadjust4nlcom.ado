@@ -208,7 +208,7 @@ else if inlist(e(cmd), "xtmixed", "xtmelogit", "xtmepoisson", "mixed", "meqrlogi
 			local repos = `relevel' + `diff'
 		}
 	}
-	* set sublevel to 1 it doesn't exist
+	* set sublevel to 1 if it doesn't exist
 	if "`sublevel'" == "" {
 		local sublevel 1
 	}

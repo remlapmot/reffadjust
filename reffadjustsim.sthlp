@@ -11,11 +11,11 @@
 {marker syntax}{...}
 {title:Syntax}
 
-{p 8 14 2}{cmd:reffadjustsim} {it:depvar} {it:indepvars} {cmd:,} {cmd:eqn(}string{cmd:)} [{it:{help betaformula##options:options}}]
+{p 8 14 2}{cmd:reffadjustsim} {it:depvar} {it:indepvars} {cmd:,} {cmd:eqn(}string{cmd:)} [{it:{help reffadjustsim##options_table:options}}]
 
 
 {synoptset 30 tabbed}{...}
-{marker options}{...}
+{marker options_table}{...}
 {synopthdr:options}
 {synoptline}
 {synopt :{opt eqn:(string)}}name of the equation the adjusted coefficients are to be extracted from{p_end}

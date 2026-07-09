@@ -11,11 +11,11 @@
 {marker syntax}{...}
 {title:Syntax}
 
-{p 8 14 2}{cmd:reffadjust4nlcom} {it:depvar} {it:indepvars} {cmd:,} {cmd:eqn(}string{cmd:)} [{it:{help betaformula##options:options}}]
+{p 8 14 2}{cmd:reffadjust4nlcom} {it:depvar} {it:indepvars} {cmd:,} {cmd:eqn(}string{cmd:)} [{it:{help reffadjust4nlcom##options_table:options}}]
 
 
 {synoptset 30 tabbed}{...}
-{marker options}{...}
+{marker options_table}{...}
 {synopthdr:options}
 {synoptline}
 {synopt :{opt eqn:(string)}}name of the equation the adjusted coefficients are to be extracted from{p_end}
@@ -40,7 +40,7 @@ It returns the formula for a regression coefficient to pass to {cmd:nlcom} to ge
 {pstd}The approach is described in more detail in Macdonald-Wallis et al. (2012) and Palmer et al. (in press).
 Further details are given in {helpb reffadjust}.
 
-{pstd}{cmd:reffadjust4nlcom} can return the formulae for upto four covariates and returns locals for all specified covariates.
+{pstd}{cmd:reffadjust4nlcom} can return the formulae for up to four covariates and returns locals for all specified covariates.
 The covariates ({it:indepvars}) can be specified in any order.
 {cmd:reffadjustsim} can adjust for more covariates.
 
@@ -88,7 +88,7 @@ Only allowed with {cmd:runmlwin} estimates.
 If specified each number corresponds to the respective covariate ({it:indepvar}), i.e. the first number is the scaling factor for the first coefficient and so on.
 If specified the {it:numlist} must be the same length as the number of covariates.
 To scale the coefficient by 2 times the dependent variable ({it:Y}), for example, then with one covariate ({it:X}) specify sf(2).
-To scale the coefficient by 2 times the covariate specify sf(.5) because the coefficient is by 2/2^2 since a regression coefficient is given by: cov({it:X},{it:Y})/var({it:X}).
+To scale the coefficient by 2 times the covariate specify sf(.5) because in this case you scale by 2/2^2 since a regression coefficient is given by: cov({it:X},{it:Y})/var({it:X}).
 
 {phang}
 {opt sub:level(#)} the sublevel of a repeated group variable.
@@ -262,5 +262,5 @@ Bristol Medical School, University of Bristol, UK.
 
 {psee}
 {space 2}Help:  {helpb reffadjust}, {helpb reffadjustsim}, {helpb runmlwin} (if installed), {helpb mcmcsum} (if installed), {helpb nlcom},
-{helpb mixed} {helpb xtmixed}, {helpb meqrlogit}, {helpb xtmelogit}, {helpb meqrpoisson}, {helpb xtmepoisson}
+{helpb mixed}, {helpb xtmixed}, {helpb meqrlogit}, {helpb xtmelogit}, {helpb meqrpoisson}, {helpb xtmepoisson}
 {p_end}

@@ -123,7 +123,7 @@ tempname test diagtest1 diagtest2 test1 test2 eqntest diagtest3
 local lowcentile = (100 - `level')/2
 local uppcentile = 100 - (100 - `level')/2
 
-* check no specification of centileopts with centile
+* check centileopts not specified with waldtype
 if "`centileopts'" != "" & "`waldtype'" == "waldtype" {
 	di as err "option centileopts() cannot be specified with option waldtype."
 	error 197
@@ -239,7 +239,7 @@ else { // xtmixed:
 			local repos = `relevel' + `diff'
 		}
 	}
-	* set sublevel to 1 it doesn't exist
+	* set sublevel to 1 if it doesn't exist
 	if "`sublevel'" == "" {
 		local sublevel 1
 	}
