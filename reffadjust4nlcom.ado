@@ -596,6 +596,7 @@ else if `len' == 5 {
 		local eqncovx1x4 = strtoname("`eqn'_`=strtoname("`covx1x4'")'")
 		local eqncovx2x3 = strtoname("`eqn'_`=strtoname("`covx2x3'")'")
 		local eqncovx2x4 = strtoname("`eqn'_`=strtoname("`covx2x4'")'")
+		local eqncovx3x4 = strtoname("`eqn'_`=strtoname("`covx3x4'")'")
 	}
 	else if e(cmd) != "runmlwin" {
 		if word("`e(vartypes)'", `repos') == "Exchangeable" {
