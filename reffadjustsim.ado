@@ -184,23 +184,10 @@ forvalues i=1/`nx' {
 	}
 }
 
-* locals for scaling factors sf
-if "`sf'" == "" {
-	forvalues i=1/`nx' {
-		local sf`i' ""
-	}
-}
-else {
-	local sflen = wordcount("`sf'")
-	if `sflen' == `nx' {
-		forvalues i=1/`nx' {
-			local sf`i' : word `i' of `sf'
-		}
-	}
-	else {
-		di as err "sf(numlist) not the same length as no. covariates"
-		error 197
-	}
+* check scaling factors sf same length as no. covariates
+if "`sf'" != "" & wordcount("`sf'") != `nx' {
+	di as err "sf(numlist) not the same length as no. covariates"
+	error 197
 }
 
 * test eqn() equation name is valid
@@ -601,7 +588,6 @@ if e(cmd) != "runmlwin" { //
 }
 
 * create new variables for the beta#
-local betanames ""
 foreach var in `xvars' {
 	local betaindepvar = strtoname("beta_`var'")
 	capture gen `betaindepvar' = .
@@ -622,9 +608,7 @@ mata st_local("betanames", invtokens(strtoname("beta_" :+ tokens(st_local("xvars
 tempname means VAR
 mata dmsim_caller("`namelist2'", "`namelist2a'", "`namelist3'", `n', `nx', "`betanames'", "`sf'", "`means'", "`VAR'")
 
-tempname n2
-scalar `n2' = `n'
-return scalar N = `n2'
+return scalar N = `n'
 
 if "`waldtype'" == "" {
 	local i 1
