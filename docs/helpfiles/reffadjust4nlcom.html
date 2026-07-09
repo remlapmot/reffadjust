@@ -28,7 +28,7 @@ BODY{background-color: ffffff;
         <span class=result>reffadjust4nlcom</span> <i>depvar</i> <i>indepvars</i> <span class=result>,</span> <span class=result>eqn(</span>string<span class=result>)</span> [<i>options</i>]
 <br><br>
 <br><br>
-<a name="options"></a>    <i>options</i>                         Description
+<a name="options_table"></a>    <i>options</i>                         Description
     ----------------------------------------------------------------------------------------------
       <span class=result>eqn(</span><i>string</i><span class=result>)</span>                   name of the equation the adjusted coefficients are to be
                                       extracted from
@@ -54,7 +54,7 @@ BODY{background-color: ffffff;
     The approach is described in more detail in Macdonald-Wallis et al. (2012) and Palmer et al.
     (in press).  Further details are given in <span class=result>reffadjust</span>.
 <br><br>
-    <span class=result>reffadjust4nlcom</span> can return the formulae for upto four covariates and returns locals for all
+    <span class=result>reffadjust4nlcom</span> can return the formulae for up to four covariates and returns locals for all
     specified covariates.  The covariates (<i>indepvars</i>) can be specified in any order.
     <span class=result>reffadjustsim</span> can adjust for more covariates.
 <br><br>
@@ -100,7 +100,7 @@ BODY{background-color: ffffff;
         coefficient and so on.  If specified the <i>numlist</i> must be the same length as the number of
         covariates.  To scale the coefficient by 2 times the dependent variable (<i>Y</i>), for example,
         then with one covariate (<i>X</i>) specify sf(2).  To scale the coefficient by 2 times the
-        covariate specify sf(.5) because the coefficient is by 2/2^2 since a regression
+        covariate specify sf(.5) because in this case you scale by 2/2^2 since a regression
         coefficient is given by: cov(<i>X</i>,<i>Y</i>)/var(<i>X</i>).
 <br><br>
     <span class=result><u>sub</u></span><span class=result>level(</span><i>#</i><span class=result>)</span> the sublevel of a repeated group variable.  For example, in the following model
@@ -282,7 +282,7 @@ BODY{background-color: ffffff;
 <span class=result><u>Also see</u></span>
 <br><br>
       Help:  <span class=result>reffadjust</span>, <span class=result>reffadjustsim</span>, <span class=result>runmlwin</span> (if installed), <span class=result>mcmcsum</span> (if installed), <span class=result>nlcom</span>, 
-             <span class=result>mixed</span> <span class=result>xtmixed</span>, <span class=result>meqrlogit</span>, <span class=result>xtmelogit</span>, <span class=result>meqrpoisson</span>, <span class=result>xtmepoisson</span>
+             <span class=result>mixed</span>, <span class=result>xtmixed</span>, <span class=result>meqrlogit</span>, <span class=result>xtmelogit</span>, <span class=result>meqrpoisson</span>, <span class=result>xtmepoisson</span>
 </pre>
 </body>
 </html>
