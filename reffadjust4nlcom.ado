@@ -25,19 +25,13 @@ tempname test test2 eqntest
 tokenize "`namelist'"
 local len = wordcount("`namelist'")
 local y `1'
-local colnames : colnames e(V)
 * check no repeats in namelist
 local nx = `len' - 1
-forvalues i=1/`nx' {
-	local k = `i' + 1
-	forvalues j=`k'/`len' {
-		if `i' != `j' {
-			if "``i''" == "``j''" {
-				di as err "``i'' is repeated in the namelist."
-				error 197
-			}
-		}
-	}
+local dups : list dups namelist
+if "`dups'" != "" {
+	local dups : list uniq dups
+	di as err "`dups' repeated in the namelist."
+	error 197
 }
 
 if e(cmd) == "runmlwin" {

@@ -172,16 +172,11 @@ forvalues i=2/`len' {
 mata st_local("xvars", strltrim(st_local("xvars")))
 
 * check no repeats in namelist
-forvalues i=1/`nx' {
-	local k = `i' + 1
-	forvalues j=`k'/`len' {
-		if `i' != `j' {
-			if "``i''" == "``j''" {
-				di as err "``i'' is repeated in the namelist"
-				error 197
-			}
-		}
-	}
+local dups : list dups namelist
+if "`dups'" != "" {
+	local dups : list uniq dups
+	di as err "`dups' repeated in the namelist"
+	error 197
 }
 
 * check scaling factors sf same length as no. covariates
@@ -443,21 +438,19 @@ if e(cmd) == "runmlwin" {
 		}
 		local j = `i' + 1
 		while `j' <= `nx' {
-			if `j' != `i' {
-				local add2cov : di "`eqn'_cov_" abbrev(strtoname("`x`j''"), 13) "_" abbrev(strtoname("`x`i''"), 13)
-				mata st_numscalar(st_local("test1"), sum(strmatch(tokens(st_local("newcolfullnames")), st_local("add2cov"))))
-				if `test1' == 0 {
-					local add2cov : di "`eqn'_cov_" abbrev(strtoname("`x`i''"), 13) "_" abbrev(strtoname("`x`j''"), 13)
-					mata st_numscalar(st_local("test2"), sum(strmatch(tokens(st_local("newcolfullnames")), st_local("add2cov"))))
-					if `test2' == 0 {
-						di as err "created variable `add2cov' not in derived column names." ///
-							_n "Please check you have not specified the " ///
-							"diagonal random part option in runmlwin."
-						error 322
-					}
+			local add2cov : di "`eqn'_cov_" abbrev(strtoname("`x`j''"), 13) "_" abbrev(strtoname("`x`i''"), 13)
+			mata st_numscalar(st_local("test1"), sum(strmatch(tokens(st_local("newcolfullnames")), st_local("add2cov"))))
+			if `test1' == 0 {
+				local add2cov : di "`eqn'_cov_" abbrev(strtoname("`x`i''"), 13) "_" abbrev(strtoname("`x`j''"), 13)
+				mata st_numscalar(st_local("test2"), sum(strmatch(tokens(st_local("newcolfullnames")), st_local("add2cov"))))
+				if `test2' == 0 {
+					di as err "created variable `add2cov' not in derived column names." ///
+						_n "Please check you have not specified the " ///
+						"diagonal random part option in runmlwin."
+					error 322
 				}
-				local namelist2a "`namelist2a' `add2cov'"
 			}
+			local namelist2a "`namelist2a' `add2cov'"
 			local j = `j' + 1
 		}
 	}
@@ -547,14 +540,12 @@ if e(cmd) != "runmlwin" { //
 			* cov(xi,xj) terms namelist2a
 			local j = `i' + 1
 			while `j' <= `nx' {
-				if `j' != `i' {
-					* work out which has smaller/bigger pos no
-					local lowpos = min(`x`i'pos', `x`j'pos')
-					local upppos = max(`x`i'pos', `x`j'pos')
-					local add2a cov_x`i'_x`j'
-					gen double `add2a' = tanh(`atr'_`lowpos'_`upppos'__cons)*exp(`lns'_`lowpos'__cons + `lns'_`upppos'__cons)
-					local namelist2a "`namelist2a' `add2a'"
-				}
+				* work out which has smaller/bigger pos no
+				local lowpos = min(`x`i'pos', `x`j'pos')
+				local upppos = max(`x`i'pos', `x`j'pos')
+				local add2a cov_x`i'_x`j'
+				gen double `add2a' = tanh(`atr'_`lowpos'_`upppos'__cons)*exp(`lns'_`lowpos'__cons + `lns'_`upppos'__cons)
+				local namelist2a "`namelist2a' `add2a'"
 				local j = `j' + 1
 			}
 		}
@@ -572,11 +563,9 @@ if e(cmd) != "runmlwin" { //
 			* cov(xi,xj) terms namelist2a
 			local j = `i' + 1
 			while `j' <= `nx' {
-				if `j' != `i' {
-					local add2a cov_x`i'_x`j'
-					gen double `add2a' = tanh(`atr'_1_1__cons)*exp(2*`lns'_1__cons)
-					local namelist2a "`namelist2a' `add2a'"
-				}
+				local add2a cov_x`i'_x`j'
+				gen double `add2a' = tanh(`atr'_1_1__cons)*exp(2*`lns'_1__cons)
+				local namelist2a "`namelist2a' `add2a'"
 				local j = `j' + 1
 			}
 		}
