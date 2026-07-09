@@ -28,7 +28,7 @@ github install remlapmot/reffadjust
 Alternatively use `net install` directly as follows
 
 ```stata
-net install reffadjust, from("https://raw.github.com/remlapmot/reffadjust/master/")
+net install reffadjust, from("https://raw.githubusercontent.com/remlapmot/reffadjust/master/")
 ```
 
 ### Installation of MLwiN
