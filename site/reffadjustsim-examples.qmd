@@ -105,6 +105,7 @@ nlcom `r(beta_cons_2)'
 
 * compare with Bayesian posterior distribution
 
+```{stata}
 runmlwin (written cons female, eq(1)) (csework cons female, eq(2)), ///
     level1(student: (cons, eq(1)) (cons, eq(2))) ///
     level2(school: (cons, eq(1)) (cons, eq(2))) ///
