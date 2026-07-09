@@ -120,37 +120,30 @@ if e(cmd) == "runmlwin" {
 	}
 
 	* create cov(x_i,x_j) expressions
-	local i = 1
-	while `i' < `len' {
-		forvalues k = `i'/`len' {
-			if (`i' != `k') {
-				local covx`i'x`k' : di "cov(" abbrev(strtoname("`x`i''"), 13) "\" abbrev(strtoname("`x`k''"), 13) ")"
-				mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,2], st_local("covx`i'x`k'"))))
-				if (`test' == 0) {
-					local covx`i'x`k' : di "cov(" abbrev(strtoname("`x`k''"), 13) "\" abbrev(strtoname("`x`i''"), 13) ")"
-					mata st_numscalar(st_local("test2"),sum(strmatch(st_matrixcolstripe("e(V)")[,2], st_local("covx`i'x`k'"))))
-					if (`test2' == 0) {
-						di as err "No column named `eqn':cov(" ///
-							abbrev(strtoname("`x`k''"), 13) "\" abbrev(strtoname("`x`i''"), 13) ")" ///
-							" or `eqn':cov(" ///
-							abbrev(strtoname("`x`i''"), 13) "\" abbrev(strtoname("`x`k''"), 13) ") in e(V)." ///
-							_n "Please check you have not specified the " ///
-							"diagonal random part option in runmlwin."
-						error 322
-					}
-				}
-				* check the variance and hence SE of this parameter is not zero
-				* if se == 0 issue a warning (could be convergence problem or due to a constraint)
-				if _se[`eqn':`covx`i'x`k''] == 0 {
-					di as err "`eqn':`covx`i'x`k'' has variance = 0 in e(V)." ///
-						_n "It is advised not to run reffadjust4nlcom for this case."
+	forvalues i = 1/`=`len' - 2' {
+		forvalues k = `=`i' + 1'/`=`len' - 1' {
+			local covx`i'x`k' : di "cov(" abbrev(strtoname("`x`i''"), 13) "\" abbrev(strtoname("`x`k''"), 13) ")"
+			mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,2], st_local("covx`i'x`k'"))))
+			if (`test' == 0) {
+				local covx`i'x`k' : di "cov(" abbrev(strtoname("`x`k''"), 13) "\" abbrev(strtoname("`x`i''"), 13) ")"
+				mata st_numscalar(st_local("test2"),sum(strmatch(st_matrixcolstripe("e(V)")[,2], st_local("covx`i'x`k'"))))
+				if (`test2' == 0) {
+					di as err "No column named `eqn':cov(" ///
+						abbrev(strtoname("`x`k''"), 13) "\" abbrev(strtoname("`x`i''"), 13) ")" ///
+						" or `eqn':cov(" ///
+						abbrev(strtoname("`x`i''"), 13) "\" abbrev(strtoname("`x`k''"), 13) ") in e(V)." ///
+						_n "Please check you have not specified the " ///
+						"diagonal random part option in runmlwin."
+					error 322
 				}
 			}
-			if (`k' == `len' - 1) {
-				continue, break
+			* check the variance and hence SE of this parameter is not zero
+			* if se == 0 issue a warning (could be convergence problem or due to a constraint)
+			if _se[`eqn':`covx`i'x`k''] == 0 {
+				di as err "`eqn':`covx`i'x`k'' has variance = 0 in e(V)." ///
+					_n "It is advised not to run reffadjust4nlcom for this case."
 			}
 		}
-		local i = `i' + 1
 	}
 }
 else if inlist(e(cmd), "xtmixed", "xtmelogit", "xtmepoisson", "mixed", "meqrlogit", "meqrpoisson") {
@@ -343,67 +336,58 @@ else if inlist(e(cmd), "xtmixed", "xtmelogit", "xtmepoisson", "mixed", "meqrlogi
 	}
 
 	* create cov(x_i,x_j) expressions
-	if `len' > 2 {
-		local i 1
-		while `i' < `len' {
-			forvalues k = `i'/`len' {
-				if (`i' != `k') {
-					* work out which has smaller/bigger pos no
-					local lowpos = min(`x`i'pos', `x`k'pos')
-					local upppos = max(`x`i'pos', `x`k'pos')
-					local lns lns`relevel'_`sublevel'
-					local atr atr`relevel'_`sublevel'
-					if word("`e(vartypes)'", `repos') == "Exchangeable" {
-						* check the components exist as colnames in e(V): already checked
-						* check non-zero SE
-						if _se[`atr'_1_1:_cons] == 0 {
-							di as err "`atr'_1_1:_cons has variance = 0 in e(V)." ///
-								_n "It is advised not to run reffadjust4nlcom for this case."
-						}
-						if _se[`lns'_1:_cons] == 0 {
-							di as err "`lns'_1:_cons has variance = 0 in e(V)." ///
-								_n "It is advised not to run reffadjust4nlcom for this case."
-						}
-						local covx`i'x`k' tanh([`atr'_1_1]_cons)*exp(2*[`lns'_1]_cons)
-					}
-					else if word("`e(vartypes)'", `repos') == "Unstructured" {
-						* check the components exist as colnames in e(V)
-						mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,1], st_macroexpand("`atr'_`lowpos'_`upppos'"))))
-						if (`test' == 0) {
-							di as err "No column named `atr'_`lowpos'_`upppos':_cons in e(V)."
-							error 322
-						}
-						mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,1], st_macroexpand("`lns'_`lowpos'"))))
-						if (`test' == 0) {
-							di as err "No column named `lns'_`lowpos':_cons in e(V)."
-							error 322
-						}
-						mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,1], st_macroexpand("`lns'_`upppos'"))))
-						if (`test' == 0) {
-							di as err "No column named `lns'_`upppos':_cons in e(V)."
-							error 322
-						}
-						* check non-zero SE
-						if _se[`atr'_`lowpos'_`upppos':_cons] == 0 {
-							di as err "`atr'_`lowpos'_`upppos':_cons has variance = 0 in e(V)." ///
-								_n "It is advised not to run reffadjust4nlcom for this case."
-						}
-						if _se[`lns'_`lowpos':_cons] == 0 {
-							di as err "`lns'_`lowpos':_cons has variance = 0 in e(V)." ///
-								_n "It is advised not to run reffadjust4nlcom for this case."
-						}
-						if _se[`lns'_`upppos':_cons] == 0 {
-							di as err "`lns'_`upppos':_cons has variance = 0 in e(V)." ///
-								_n "It is advised not to run reffadjust4nlcom for this case."
-						}
-						local covx`i'x`k' tanh([`atr'_`lowpos'_`upppos']_cons)*exp([`lns'_`lowpos']_cons + [`lns'_`upppos']_cons)
-					}
+	forvalues i = 1/`=`len' - 2' {
+		forvalues k = `=`i' + 1'/`=`len' - 1' {
+			* work out which has smaller/bigger pos no
+			local lowpos = min(`x`i'pos', `x`k'pos')
+			local upppos = max(`x`i'pos', `x`k'pos')
+			local lns lns`relevel'_`sublevel'
+			local atr atr`relevel'_`sublevel'
+			if word("`e(vartypes)'", `repos') == "Exchangeable" {
+				* check the components exist as colnames in e(V): already checked
+				* check non-zero SE
+				if _se[`atr'_1_1:_cons] == 0 {
+					di as err "`atr'_1_1:_cons has variance = 0 in e(V)." ///
+						_n "It is advised not to run reffadjust4nlcom for this case."
 				}
-				if (`k' == `len' - 1) {
-					continue, break
+				if _se[`lns'_1:_cons] == 0 {
+					di as err "`lns'_1:_cons has variance = 0 in e(V)." ///
+						_n "It is advised not to run reffadjust4nlcom for this case."
 				}
+				local covx`i'x`k' tanh([`atr'_1_1]_cons)*exp(2*[`lns'_1]_cons)
 			}
-			local i = `i' + 1
+			else if word("`e(vartypes)'", `repos') == "Unstructured" {
+				* check the components exist as colnames in e(V)
+				mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,1], st_macroexpand("`atr'_`lowpos'_`upppos'"))))
+				if (`test' == 0) {
+					di as err "No column named `atr'_`lowpos'_`upppos':_cons in e(V)."
+					error 322
+				}
+				mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,1], st_macroexpand("`lns'_`lowpos'"))))
+				if (`test' == 0) {
+					di as err "No column named `lns'_`lowpos':_cons in e(V)."
+					error 322
+				}
+				mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,1], st_macroexpand("`lns'_`upppos'"))))
+				if (`test' == 0) {
+					di as err "No column named `lns'_`upppos':_cons in e(V)."
+					error 322
+				}
+				* check non-zero SE
+				if _se[`atr'_`lowpos'_`upppos':_cons] == 0 {
+					di as err "`atr'_`lowpos'_`upppos':_cons has variance = 0 in e(V)." ///
+						_n "It is advised not to run reffadjust4nlcom for this case."
+				}
+				if _se[`lns'_`lowpos':_cons] == 0 {
+					di as err "`lns'_`lowpos':_cons has variance = 0 in e(V)." ///
+						_n "It is advised not to run reffadjust4nlcom for this case."
+				}
+				if _se[`lns'_`upppos':_cons] == 0 {
+					di as err "`lns'_`upppos':_cons has variance = 0 in e(V)." ///
+						_n "It is advised not to run reffadjust4nlcom for this case."
+				}
+				local covx`i'x`k' tanh([`atr'_`lowpos'_`upppos']_cons)*exp([`lns'_`lowpos']_cons + [`lns'_`upppos']_cons)
+			}
 		}
 	}
 }
