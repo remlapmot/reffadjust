@@ -294,12 +294,12 @@ else if inlist(e(cmd), "xtmixed", "xtmelogit", "xtmepoisson", "mixed", "meqrlogi
 			* check the components exist as colnames in e(V)
 			mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,1], st_macroexpand("`atr'_1_1"))))
 			if (`test' == 0) {
-				di as err "No column named `atr'_1_1:_cons ") in e(V)."
+				di as err "No column named `atr'_1_1:_cons in e(V)."
 				error 322
 			}
 			mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,1], st_macroexpand("`lns'_1"))))
 			if (`test' == 0) {
-				di as err "No column named `lns'_1:_cons ") in e(V)."
+				di as err "No column named `lns'_1:_cons in e(V)."
 				error 322
 			}
 			* check non-zero SE
@@ -317,17 +317,17 @@ else if inlist(e(cmd), "xtmixed", "xtmelogit", "xtmepoisson", "mixed", "meqrlogi
 			* check the components exist as colnames in e(V)
 			mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,1], st_macroexpand("`atr'_`lowpos'_`upppos'"))))
 			if (`test' == 0) {
-				di as err "No column named `atr'_`lowpos'_`upppos':_cons ") in e(V)."
+				di as err "No column named `atr'_`lowpos'_`upppos':_cons in e(V)."
 				error 322
 			}
 			mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,1], st_macroexpand("`lns'_`lowpos'"))))
 			if (`test' == 0) {
-				di as err "No column named `lns'_`lowpos':_cons ") in e(V)."
+				di as err "No column named `lns'_`lowpos':_cons in e(V)."
 				error 322
 			}
 			mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,1], st_macroexpand("`lns'_`upppos'"))))
 			if (`test' == 0) {
-				di as err "No column named `lns'_`upppos':_cons ") in e(V)."
+				di as err "No column named `lns'_`upppos':_cons in e(V)."
 				error 322
 			}
 			* check non-zero SE
@@ -376,17 +376,17 @@ else if inlist(e(cmd), "xtmixed", "xtmelogit", "xtmepoisson", "mixed", "meqrlogi
 						* check the components exist as colnames in e(V)
 						mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,1], st_macroexpand("`atr'_`lowpos'_`upppos'"))))
 						if (`test' == 0) {
-							di as err "No column named `atr'_`lowpos'_`upppos':_cons ") in e(V)."
+							di as err "No column named `atr'_`lowpos'_`upppos':_cons in e(V)."
 							error 322
 						}
 						mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,1], st_macroexpand("`lns'_`lowpos'"))))
 						if (`test' == 0) {
-							di as err "No column named `lns'_`lowpos':_cons ") in e(V)."
+							di as err "No column named `lns'_`lowpos':_cons in e(V)."
 							error 322
 						}
 						mata st_numscalar(st_local("test"),sum(strmatch(st_matrixcolstripe("e(V)")[,1], st_macroexpand("`lns'_`upppos'"))))
 						if (`test' == 0) {
-							di as err "No column named `lns'_`upppos':_cons ") in e(V)."
+							di as err "No column named `lns'_`upppos':_cons in e(V)."
 							error 322
 						}
 						* check non-zero SE
