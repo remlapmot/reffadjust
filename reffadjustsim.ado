@@ -755,7 +755,11 @@ function dmsim_drawnorm(real scalar n, string scalar b,
 
 	// check if P positive definite
 	C = cholesky(P)
-	// if not use eigen decomposition
+	if (hasmissing(C)) {
+		errprintf("the variance matrix of the random part parameter estimates is not positive definite\n")
+		errprintf("please specify the statadrawnorm option\n")
+		exit(506)
+	}
 
 	rand = rnormal(n*nx,1,0,1)
 	data = J(n, nx, .)
