@@ -629,7 +629,7 @@ return scalar N = `n2'
 if "`waldtype'" == "" {
 	local i 1
 	foreach var in `xvars' {
-		qui centile beta_`var', centile(`lowcentile' `uppcentile' 50) `centileopts'
+		qui centile `=strtoname("beta_`var'")', centile(`lowcentile' `uppcentile' 50) `centileopts'
 		local `i'c1 = r(c_1)
 		local `i'c2 = r(c_2)
 		local `i'c3 = r(c_3)
