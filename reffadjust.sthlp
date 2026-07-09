@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.1.0 Tom Palmer 2sep2013}{...}
+{* *! version 1.2.0 Tom Palmer 9jul2026}{...}
 {cmd:help reffadjust}
 {hline}
 
