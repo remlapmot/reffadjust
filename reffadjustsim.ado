@@ -350,7 +350,7 @@ if e(cmd) == "runmlwin" {
 }
 else { // xtmixed: extract relevant rows and cols from e(b) & e(V)
 	* extract all random levels and residuals
-	mata pos = 1 :- strpos(st_matrixcolstripe("e(V)")[,1], "`e(depvar)'")
+	mata pos = strpos(st_matrixcolstripe("e(V)")[,1], "`e(depvar)'") :== 0
 	mata st_matrix(st_local("rpb"), select(st_matrix("e(b)"), pos'))
 	mata st_matrix(st_local("rpV"), select(select(st_matrix("e(V)"), pos), pos'))
 	mata colnames = select(st_matrixcolstripe("e(V)"), pos)
@@ -367,7 +367,7 @@ else { // xtmixed: extract relevant rows and cols from e(b) & e(V)
 				* remove other level lns & atr names from rpb rbV
 				mata poslns = strpos(st_matrixcolstripe("`rpV'")[,1], "lns`i'")
 				mata posatr = strpos(st_matrixcolstripe("`rpV'")[,1], "atr`i'")
-				mata pos = 1 :- (poslns + posatr)
+				mata pos = (poslns + posatr) :== 0
 				mata st_matrix("`rpb'", select(st_matrix("`rpb'"), pos'))
 				mata st_matrix("`rpV'", select(select(st_matrix("`rpV'"), pos), pos'))
 				mata colnames = select(colnames, pos)
