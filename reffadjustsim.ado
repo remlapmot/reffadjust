@@ -619,7 +619,8 @@ foreach var in `xvars' {
 mata st_local("betanames", invtokens(strtoname("beta_" :+ tokens(st_local("xvars")))))
 
 * call the solver
-mata dmsim_caller("`namelist2'", "`namelist2a'", "`namelist3'", `n', `nx', "`betanames'", "`sf'")
+tempname means VAR
+mata dmsim_caller("`namelist2'", "`namelist2a'", "`namelist3'", `n', `nx', "`betanames'", "`sf'", "`means'", "`VAR'")
 
 tempname n2
 scalar `n2' = `n'
@@ -651,19 +652,19 @@ if "`waldtype'" == "" {
 		lowcentile(`lowcentile') uppcentile(`uppcentile')
 }
 else {
-	matname means `xvars', columns(.) explicit
-	matname VAR `xvars', explicit
-	return matrix V VAR, copy
-	return matrix b means, copy
+	matname `means' `xvars', columns(.) explicit
+	matname `VAR' `xvars', explicit
+	return matrix V `VAR', copy
+	return matrix b `means', copy
 
 	if "`post'" == "post" {
-		reffadjustsim_waldtype_display, b("means") v("VAR") fmt(%9.0g) ///
+		reffadjustsim_waldtype_display, b("`means'") v("`VAR'") fmt(%9.0g) ///
 			varnames(`xvars') nx(`nx') depname(`y') ///
 			level(`level')
-		dmsim_post , b(means) vce(VAR) depname(`y') n(`n')
+		dmsim_post , b(`means') vce(`VAR') depname(`y') n(`n')
 	}
 	else {
-		reffadjustsim_waldtype_display, b("means") v("VAR") fmt(%9.0g) ///
+		reffadjustsim_waldtype_display, b("`means'") v("`VAR'") fmt(%9.0g) ///
 			varnames(`xvars') nx(`nx') depname(`y') ///
 			level(`level')
 	}
@@ -795,7 +796,8 @@ function dmsim_Amatrix(real colvector VARS,
 
 void function dmsim_caller(string scalar namelist2,
 	string scalar namelist2a, string scalar namelist3, real scalar n,
-	real scalar nx, string scalar betanames, string scalar sf)
+	real scalar nx, string scalar betanames, string scalar sf,
+	string scalar bname, string scalar vname)
 {
 	real matrix namelist2data, namelist2adata, namelist3data, betahats, A, SY, b, x, V, means
 
@@ -830,8 +832,8 @@ void function dmsim_caller(string scalar namelist2,
 	V = meanvariance(betahats)
 	means = mean(betahats)
 	V = variance(betahats)
-	st_matrix("means", means)
-	st_matrix("VAR", V)
+	st_matrix(bname, means)
+	st_matrix(vname, V)
 }
 
 end
