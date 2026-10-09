@@ -35,9 +35,9 @@ net install reffadjust, from("https://raw.githubusercontent.com/remlapmot/reffad
 
 This is available from <https://www.bristol.ac.uk/cmm/software/mlwin/>.
 
-The MLwiN libraries are now available natively for macOS (both Intel and Apple Silicon Macs) and a range of Linux distributions.
+The MLwiN libraries are now available natively for macOS (both Intel and Apple Silicon Macs) and a range of Linux distributions and architectures.
 
-On macOS the `mlnscript` and `libmln.dylib` files must be granted permission to run in _System Settings_ | _Privacy and Security_ | Scroll down to _Security_ section. See my [blogpost](https://remlapmot.github.io/post/2024/mlnscript-r2mlwin-apple-silicon/) for more details.
+On macOS, install the `mlnscript` and `libmln.dylib` files in `/opt/mln` (you may have to create this directory). They must be granted permission to run in _System Settings_ | _Privacy and Security_ | Scroll down to _Security_ section. See my [blogpost](https://remlapmot.github.io/post/2024/mlnscript-r2mlwin-apple-silicon/) for more details.
 
 ## Running tests
 
