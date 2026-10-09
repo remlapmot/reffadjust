@@ -59,6 +59,7 @@ Thanks to Gemma Clayton for discovering that `reffadjustsim` had stopped working
 
 ## Notes
 
+- 2026-10-09 Tested under MLwiN 3.19 and StataNow 19.5 on macOS M4 chip
 - 2026-07-20 Tested under MLwiN 3.18 and StataNow 19.5 on macOS M4 chip
 - 2026-07-09 Bug fixes and rerun tests
 - 2025-12-17 Tested under MLwiN 3.17 and StataNow 19.5 on macOS M4 chip
@@ -73,8 +74,8 @@ Thanks to Gemma Clayton for discovering that `reffadjustsim` had stopped working
 - 2024-08-12 Tested under MLwiN 3.12 and StataNow 18.5
 - 2024-06-15 Tested under MLwiN 3.11 and StataNow 18.5
 - 2024-03-19 Tested under MLwiN 3.10 and Stata 18.0
-- 2024-01-30 Tested under MLwiN 3.09 (and Stata 18)
-- 2024-01-29 Tested on Stata 18 and macOS
+- 2024-01-30 Tested under MLwiN 3.09 and Stata 18.0
+- 2024-01-29 Tested under Stata 18.0 on macOS
 
 ## References
 
