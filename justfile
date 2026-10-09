@@ -12,6 +12,10 @@ render:
     mkdir ../docs
     mv _site/* ../docs/
 
+[working-directory('site')]
+update:
+    uv sync -U
+    
 [working-directory('cscripts')]
 test:
     stata-mp -b "do master"
